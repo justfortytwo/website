@@ -1,5 +1,39 @@
 <script setup lang="ts">
-// SEO is added in Task 9; nothing else needed here yet.
+useSeoMeta({
+  title: 'fortytwo — a local-first personal-assistant spine',
+  description: 'fortytwo wraps an existing agent with memory, a safety gate, channels, approvals, and audit — without replacing the agent you trust. The answer is 42.',
+  ogTitle: 'fortytwo',
+  ogDescription: 'A local-first personal-assistant spine for the agents you already use.',
+  ogType: 'website',
+  ogImage: '/og.png',
+  twitterCard: 'summary_large_image',
+})
+useHead({
+  link: [{ rel: 'canonical', href: 'https://justfortytwo.org/' }],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'fortytwo',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Cross-platform',
+      description: 'A local-first personal-assistant spine for the agents and tools you already use.',
+      url: 'https://justfortytwo.org/',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      author: { '@type': 'Organization', name: 'justfortytwo', url: 'https://github.com/justfortytwo' },
+      license: 'https://opensource.org/license/mit',
+    }),
+  }, {
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'justfortytwo',
+      url: 'https://github.com/justfortytwo',
+    }),
+  }],
+})
 </script>
 <template>
   <div>

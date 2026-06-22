@@ -1,0 +1,22 @@
+# fortytwo
+
+fortytwo is a local-first personal-assistant spine for the agents and tools you already use.
+It wraps an existing harness with memory, a safety gate, channels, approvals, and audit.
+The answer is 42. The hard part is knowing the right question.
+
+## Components (codename → function)
+- vogon → gate (PreToolUse safety gate)
+- guide → memory (semantic memory, SQLite + vectors)
+- babelfish → telegram (channel adapter)
+- ford → persona (CLAUDE.md + context)
+- magrathea → cli (installer & lifecycle)
+- subetha → marketplace (Claude Code plugin marketplace)
+- deepthought → cognition (reasoning, in design)
+
+## Install
+- npm: `npm create fortytwo`
+- Claude Code: `/plugin marketplace add justfortytwo/marketplace` then `/plugin install fortytwo@justfortytwo`
+
+## Links
+- GitHub: https://github.com/justfortytwo
+- License: MIT

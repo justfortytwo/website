@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/robots'],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
   css: ['~/assets/css/tokens.css', '~/assets/css/base.css'],
