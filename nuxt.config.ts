@@ -15,4 +15,11 @@ export default defineNuxtConfig({
     },
   },
   site: { url: 'https://justfortytwo.org', name: 'fortytwo' },
+  nitro: {
+    prerender: {
+      // Routes linked from header/footer (/docs, /principles, /components, /security)
+      // are added in later tasks. Don't fail the build for links to not-yet-existing pages.
+      failOnError: false,
+    },
+  },
 });
