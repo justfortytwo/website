@@ -32,19 +32,24 @@ This site deploys as a static Nuxt SSG to Cloudflare Pages.
 
 **Dashboard (recommended for first deploy):**
 - Framework preset: **Nuxt** (or "None" — Nuxt is pre-built)
-- Build command: `bun run generate`
-- Build output directory: `.output/public`
-- Environment: Node 20+ with bun (set `BUN` / Node version via the Pages
-  environment variables, e.g. `NODE_VERSION=20`)
+- Build command: `npm install -g bun && bun install && bun run generate`
+- Build output directory: **`dist`** (Cloudflare sets `CF_PAGES=1`, so Nitro
+  auto-selects the cloudflare-pages preset and writes `dist/` — not `.output/public`,
+  which is what `nuxi generate` produces locally)
+- Environment: `SKIP_DEPENDENCY_INSTALL=1`, `NODE_VERSION=20`
 
-**CLI (one-off / manual):**
+> **Output-dir note:** locally `bun run generate` writes `.output/public`; on
+> Cloudflare Pages the same command writes `dist/`. `wrangler.toml` points Pages
+> at `dist` and overrides the dashboard "Build output directory" setting.
+
+**CLI (one-off / manual, from a local build):**
 
 ```bash
 bun run generate
 wrangler pages deploy .output/public --project-name=justfortytwo-website
 ```
 
-`wrangler.toml` pins `pages_build_output_dir = ".output/public"` and
+`wrangler.toml` pins `pages_build_output_dir = "dist"` and
 `compatibility_date = "2025-07-15"` (kept in sync with `nuxt.config.ts`).
 
 ### CI (GitHub Actions)
