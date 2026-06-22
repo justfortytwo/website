@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# nuxt / build
+.nuxt/
+.output/
+.data/
+dist/
+.cache/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.swp
+
+# local tooling
+.superpowers/
+.codegraph/
+.wolf/
