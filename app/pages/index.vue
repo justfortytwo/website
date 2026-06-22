@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { site } from '~/data/site'
 useSeoMeta({
   title: 'fortytwo — a local-first personal-assistant spine',
   description: 'fortytwo wraps an existing agent with memory, a safety gate, channels, approvals, and audit — without replacing the agent you trust. The answer is 42.',
@@ -21,7 +22,7 @@ useHead({
       description: 'A local-first personal-assistant spine for the agents and tools you already use.',
       url: 'https://forty-two.it/',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      author: { '@type': 'Organization', name: 'justfortytwo', url: 'https://github.com/justfortytwo' },
+      author: { '@type': 'Person', name: site.author },
       license: 'https://opensource.org/license/mit',
     }),
   }, {

@@ -5,6 +5,7 @@ export const site = {
   lang: 'en' as const,
   url: 'https://forty-two.it',
   github: 'https://github.com/justfortytwo',
+  author: 'Enrico Deleo',
   tagline: 'The hard part is knowing the right question.',
   motto: ["Don't Panic.", 'Ask the right question.', 'Never cross the gate silently.'],
   nav: [
@@ -14,7 +15,7 @@ export const site = {
     { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
   ] satisfies NavItem[],
   footer: {
-    copyright: '© 2026 justfortytwo · MIT',
+    copyright: '© 2026 Enrico Deleo · MIT',
     disclaimer: 'Not affiliated with Anthropic.',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },

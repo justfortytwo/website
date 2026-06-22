@@ -2,6 +2,13 @@
   "name": "justfortytwo-website",
   "type": "module",
   "private": true,
+  "author": "Enrico Deleo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/justfortytwo/website.git"
+  },
+  "homepage": "https://forty-two.it",
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
