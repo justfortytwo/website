@@ -17,9 +17,11 @@ export default defineNuxtConfig({
   site: { url: 'https://justfortytwo.org', name: 'fortytwo' },
   nitro: {
     prerender: {
-      // Routes linked from header/footer (/docs, /principles, /components, /security)
-      // are added in later tasks. Don't fail the build for links to not-yet-existing pages.
-      failOnError: false,
+      // Only the homepage exists yet; nav links to future pages (/docs, /principles,
+      // /components, /security) are added in later tasks. Prerender just '/' explicitly
+      // and don't crawl, so the build stays green without masking real errors.
+      routes: ['/'],
+      crawlLinks: false,
     },
   },
 });
