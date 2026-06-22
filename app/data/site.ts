@@ -3,7 +3,7 @@ export const site = {
   name: 'fortytwo',
   org: 'justfortytwo',
   lang: 'en' as const,
-  url: 'https://justfortytwo.org',
+  url: 'https://forty-two.it',
   github: 'https://github.com/justfortytwo',
   tagline: 'The hard part is knowing the right question.',
   motto: ["Don't Panic.", 'Ask the right question.', 'Never cross the gate silently.'],

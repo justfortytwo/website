@@ -15,7 +15,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  site: { url: 'https://justfortytwo.org', name: 'fortytwo' },
+  site: { url: 'https://forty-two.it', name: 'fortytwo' },
   nitro: {
     prerender: {
       // Only the homepage exists yet; nav links to future pages (/docs, /principles,

@@ -1,6 +1,6 @@
 # fortytwo — Design System
 
-> The source of truth for the look and feel of justfortytwo.org.
+> The source of truth for the look and feel of forty-two.it.
 > Status: **v0.1** — established 2026-06-22 from the approved homepage concept
 > (`docs/design/homepage-v1.html`).
 

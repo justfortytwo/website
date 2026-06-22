@@ -1,4 +1,4 @@
-# Spec — justfortytwo.org homepage (v0.1)
+# Spec — forty-two.it homepage (v0.1)
 
 - **Date:** 2026-06-22
 - **Status:** Design approved; spec pending review

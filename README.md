@@ -1,4 +1,4 @@
-# justfortytwo.org
+# forty-two.it
 
 The website for **fortytwo** — a local-first personal-assistant spine for the
 agents and tools you already use. The umbrella is fortytwo; the components carry

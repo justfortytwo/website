@@ -9,7 +9,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
-  link: [{ rel: 'canonical', href: 'https://justfortytwo.org/' }],
+  link: [{ rel: 'canonical', href: 'https://forty-two.it/' }],
   script: [{
     type: 'application/ld+json',
     innerHTML: JSON.stringify({
@@ -19,7 +19,7 @@ useHead({
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'Cross-platform',
       description: 'A local-first personal-assistant spine for the agents and tools you already use.',
-      url: 'https://justfortytwo.org/',
+      url: 'https://forty-two.it/',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       author: { '@type': 'Organization', name: 'justfortytwo', url: 'https://github.com/justfortytwo' },
       license: 'https://opensource.org/license/mit',
