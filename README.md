@@ -39,8 +39,9 @@ This site deploys as a static Nuxt SSG to Cloudflare Pages.
 - Environment: `SKIP_DEPENDENCY_INSTALL=1`, `NODE_VERSION=20`
 
 > **Output-dir note:** locally `bun run generate` writes `.output/public`; on
-> Cloudflare Pages the same command writes `dist/`. `wrangler.toml` points Pages
-> at `dist` and overrides the dashboard "Build output directory" setting.
+> Cloudflare Pages the same command writes `dist/`. Set **Build output directory
+> = `dist`** in the Pages dashboard (it's intentionally not pinned in
+> `wrangler.toml`, so the dashboard owns it).
 
 **CLI (one-off / manual, from a local build):**
 
@@ -49,21 +50,8 @@ bun run generate
 wrangler pages deploy .output/public --project-name=justfortytwo-website
 ```
 
-`wrangler.toml` pins `pages_build_output_dir = "dist"` and
-`compatibility_date = "2025-07-15"` (kept in sync with `nuxt.config.ts`).
-
-### CI (GitHub Actions)
-
-`.github/workflows/deploy.yml` builds and deploys on every push to `main`:
-`bun install --frozen-lockfile` → `bun run verify` →
-`cloudflare/wrangler-action@v3` `pages deploy`. To enable it, add these
-repository secrets:
-
-- `CLOUDFLARE_API_TOKEN` — a token with the *Cloudflare Pages* Edit permission
-- `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
-
-Until both secrets are set, the workflow will fail at the deploy step (the
-build/verify steps still run).
+`wrangler.toml` holds only `name` + `compatibility_date`; the build output
+directory (`dist`) is configured in the Pages dashboard.
 
 ## Docs
 

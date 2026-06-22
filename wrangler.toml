@@ -1,6 +1,5 @@
 name = "justfortytwo-website"
 compatibility_date = "2025-07-15"
-# Cloudflare Pages sets CF_PAGES=1 during the build, so Nitro auto-selects the
-# `cloudflare-pages` preset and writes static output to `dist/` (not .output/public,
-# which is what `nuxi generate` produces locally). Point Pages at `dist`.
-pages_build_output_dir = "dist"
+# The build output directory is intentionally NOT pinned here — it's set in the
+# Cloudflare Pages dashboard ("Build output directory" = `dist`). On Cloudflare,
+# Nitro writes `dist/` (CF_PAGES auto-detection), not the local `.output/public`.
