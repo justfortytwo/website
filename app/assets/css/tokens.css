@@ -1,0 +1,12 @@
+:root{
+  --paper:#F3EFE6; --paper-2:#ECE7DA;
+  --ink:#15120C; --ink-2:#3A352B; --mute:#7A7466;
+  --rule:#DCD5C5;
+  --bronze-1:#E7C163; --bronze-2:#C99A3F; --bronze-3:#9A6F1E; --bronze-deep:#4D3A10;
+  --navy:#16213E;
+  --grid:#C9D2DC;
+  --maxw:1160px;
+  --ok:#3F7D4E;
+  --font-serif:'Newsreader', Georgia, serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+}
