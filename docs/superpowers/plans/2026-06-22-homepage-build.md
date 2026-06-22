@@ -256,7 +256,7 @@ import { milestones } from '../app/data/status'
 describe('site', () => {
   it('has english lang, motto, nav, footer', () => {
     expect(site.lang).toBe('en')
-    expect(site.motto).toMatch(/Don't Panic/i)
+    expect(site.motto.join(' ')).toMatch(/Don't Panic/i)
     expect(site.nav.length).toBeGreaterThanOrEqual(3)
     expect(site.org).toBe('justfortytwo')
   })
