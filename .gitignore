@@ -4,9 +4,12 @@ node_modules/
 # nuxt / build
 .nuxt/
 .output/
+.nitro/
 .data/
 dist/
+dist
 .cache/
+logs/
 
 # env / secrets
 .env
