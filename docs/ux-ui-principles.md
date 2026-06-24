@@ -13,7 +13,7 @@ and every line of copy.
 ## 1. Honesty over theatre
 
 - Show what the thing **is**, not what it aspires to be. Status pills say `M1 —
-  DONE` / `M2 — IN PROGRESS`; `deepthought` is labelled `— in design`. No
+  DONE` / `M2 — IN PROGRESS`; `salience` is labelled `— in design`. No
   "coming soon" hype.
 - The terminal blocks show **real** commands that really run. No fake output,
   no inflated claims. If a command is illustrative, it's still accurate.
@@ -63,7 +63,7 @@ and every line of copy.
 
 ## 6. The voice
 
-- **Calm, dry, faintly arch.** The Hitchhiker's Guide wit, dialed to
+- **Calm, dry, faintly arch.** Wry and understated, dialed to
   professionalism. "The answer is 42. The hard part is knowing the right
   question." — not "Supercharge your AI workflow."
 - Precise nouns over marketing adjectives. "A local-first personal-assistant
@@ -102,4 +102,4 @@ and every line of copy.
 
 ### One-line summary
 
-> Don't Panic. Show the truth. Leave room. Never animate. Make it findable.
+> Stay calm. Show the truth. Leave room. Never animate. Make it findable.

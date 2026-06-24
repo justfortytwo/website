@@ -6,7 +6,7 @@ import { site } from '~/data/site'
     <div class="wrap row">
       <NuxtLink to="/" class="brand"><span class="dot"></span>{{ site.name }}</NuxtLink>
       <nav class="links">
-        <NuxtLink v-for="item in site.nav" :key="item.href" :to="item.href">{{ item.label }}</NuxtLink>
+        <NuxtLink v-for="item in site.nav" :key="item.label" :to="item.href">{{ item.label }}</NuxtLink>
       </nav>
     </div>
   </header>

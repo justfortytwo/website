@@ -27,7 +27,7 @@ justfortytwo-website/
       base.css                   # reset + base typography + shared primitives (section-label, pill, terminal)
     data/
       site.ts                    # org/site identity, nav, footer, motto
-      components.ts              # the 7 codenames (vogon…deepthought)
+      components.ts              # the 7 codenames (gate…salience)
       principles.ts              # the 6 principles
       status.ts                  # M1 / M2 milestones
     components/
@@ -61,7 +61,7 @@ justfortytwo-website/
 - **Package manager:** bun only. `bun add`, `bun run`, `bun x`.
 - **Styling:** scoped `<style>` in components referencing `var(--token)`; shared primitives (`.section-label`, `.terminal`, `.pill`) in `base.css`. **No Tailwind.**
 - **Motion policy (hard rule):** no `transition`, `animation`, `@keyframes`, `text-shadow`, `box-shadow`, or `filter: blur()` anywhere. `scripts/checks.mjs` fails the build if any appear in compiled CSS.
-- **Bronze rule:** bronze (`--bronze-*`) only on the 42, wordmark, DON'T PANIC stamp, "in progress" status, hover links, and `//` index numerals.
+- **Bronze rule:** bronze (`--bronze-*`) only on the 42, wordmark, STAY CALM stamp, "in progress" status, hover links, and `//` index numerals.
 - **Commits:** one per task, conventional commits (`feat:`, `chore:`, `test:`, `docs:`).
 
 ---
@@ -256,7 +256,7 @@ import { milestones } from '../app/data/status'
 describe('site', () => {
   it('has english lang, motto, nav, footer', () => {
     expect(site.lang).toBe('en')
-    expect(site.motto.join(' ')).toMatch(/Don't Panic/i)
+    expect(site.motto.join(' ')).toMatch(/Stay calm/i)
     expect(site.nav.length).toBeGreaterThanOrEqual(3)
     expect(site.org).toBe('justfortytwo')
   })
@@ -265,18 +265,18 @@ describe('site', () => {
 describe('components data', () => {
   it('has the 7 codenames in canonical order', () => {
     expect(components.map(c => c.codename)).toEqual([
-      'vogon','guide','babelfish','ford','magrathea','subetha','deepthought'
+      'gate','memory','telegram','persona','installer','marketplace','salience'
     ])
   })
   it('maps codenames to the right functions', () => {
     const m = Object.fromEntries(components.map(c => [c.codename, c.role]))
     expect(m).toEqual({
-      vogon:'gate', guide:'memory', babelfish:'telegram',
-      ford:'persona', magrathea:'cli', subetha:'marketplace', deepthought:'cognition'
+      gate:'gate', memory:'memory', telegram:'telegram',
+      persona:'persona', installer:'cli', marketplace:'marketplace', salience:'cognition'
     })
   })
-  it('marks deepthought as in-design', () => {
-    const dt = components.find(c => c.codename === 'deepthought')!
+  it('marks salience as in-design', () => {
+    const dt = components.find(c => c.codename === 'salience')!
     expect(dt.state).toBe('design')
   })
   it('every component has codename, role, description', () => {
@@ -334,7 +334,7 @@ export const site = {
   url: 'https://forty-two.it',
   github: 'https://github.com/justfortytwo',
   tagline: 'The hard part is knowing the right question.',
-  motto: ["Don't Panic.", 'Ask the right question.', 'Never cross the gate silently.'],
+  motto: ["Stay calm.", 'Ask the right question.', 'Never cross the gate silently.'],
   nav: [
     { label: 'Components', href: '/components' },
     { label: 'Principles', href: '/principles' },
@@ -364,13 +364,13 @@ export interface Component {
   state?: 'live' | 'design'
 }
 export const components: Component[] = [
-  { codename:'vogon', role:'gate', description:'The PreToolUse safety gate. Every tool call passes through it — allow · defer · deny. Nothing crosses silently.' },
-  { codename:'guide', role:'memory', description:'Semantic memory over SQLite, full-text and vector recall. Remembers what you’d want remembered — with provenance.' },
-  { codename:'babelfish', role:'telegram', description:'The channel adapter. Talk to your assistant where you already are — mobile interface, approval cards, continuity.' },
-  { codename:'ford', role:'persona', description:'Identity & context — CLAUDE.md + context/*. Who the assistant is, and who it serves. Scaffolded, never shipped filled.' },
-  { codename:'magrathea', role:'cli', description:'The installer & lifecycle. init · doctor · update · rollback · enrich · forget. One operator over both surfaces.' },
-  { codename:'subetha', role:'marketplace', description:'The Claude Code plugin marketplace. Install any part, à la carte, and keep it current.' },
-  { codename:'deepthought', role:'cognition', description:'The reasoning layer.', state:'design' },
+  { codename:'gate', role:'gate', description:'The PreToolUse safety gate. Every tool call passes through it — allow · defer · deny. Nothing crosses silently.' },
+  { codename:'memory', role:'memory', description:'Semantic memory over SQLite, full-text and vector recall. Remembers what you’d want remembered — with provenance.' },
+  { codename:'telegram', role:'telegram', description:'The channel adapter. Talk to your assistant where you already are — mobile interface, approval cards, continuity.' },
+  { codename:'persona', role:'persona', description:'Identity & context — CLAUDE.md + context/*. Who the assistant is, and who it serves. Scaffolded, never shipped filled.' },
+  { codename:'installer', role:'cli', description:'The installer & lifecycle. init · doctor · update · rollback · enrich · forget. One operator over both surfaces.' },
+  { codename:'marketplace', role:'marketplace', description:'The Claude Code plugin marketplace. Install any part, à la carte, and keep it current.' },
+  { codename:'salience', role:'cognition', description:'The reasoning layer.', state:'design' },
 ]
 ```
 
@@ -381,7 +381,7 @@ export interface Principle { title: string; body: string }
 export const principles: Principle[] = [
   { title:'Local-first where it matters', body:'Private memory and recall live on your machine. Markdown for human-readable policy, SQLite for durable state.' },
   { title:'Bring your own agent', body:'Claude Code is the first harness, not the boundary. The core stays portable across agents, models, and runtimes.' },
-  { title:'Conservative autonomy', body:'Ford may read, draft, and reason internally. External or irreversible actions require approval.' },
+  { title:'Conservative autonomy', body:'The assistant may read, draft, and reason internally. External or irreversible actions require approval.' },
   { title:'Propose-only learning', body:'It may notice patterns — but never silently promotes them into durable behavior. Propose first, then approve.' },
   { title:'Prompt-injection boundaries', body:'Documents, messages, web pages and recalled memory are content, not command authority.' },
   { title:'Auditable evolution', body:'Every meaningful change is inspectable — as a file diff, a database record, or an approval decision.' },
@@ -510,7 +510,7 @@ git add -A && git commit -m "feat: section-label, terminal-block, status-pill pr
     </div>
     <div class="annot a-top">ANSWER · ABSOLUTE</div>
     <div class="annot a-right">FIG. 042</div>
-    <div class="annot a-bl">DEEP THOUGHT, 7.5M YR</div>
+    <div class="annot a-bl">COMPUTED · 7.5M YR</div>
     <div class="annot a-br">★ CERTAINTY 1.0</div>
     <div class="tick top">042</div>
     <div class="tick bot">▾</div>
@@ -792,7 +792,7 @@ git add -A && git commit -m "feat: decomposition chart, principle grid, status p
       <div class="wrap">
         <div class="section-label"><span class="num">// 02</span><span>quick start</span></div>
         <div class="qs-grid">
-          <TerminalBlock tag="install · magrathea">
+          <TerminalBlock tag="install · installer">
             <div class="s"># bring the spine to your machine</div>
             <div><span class="pr">$</span> <span class="k">npm create fortytwo</span></div>
             <div><span class="pr">$</span> <span class="k">fortytwo</span> <span class="c">init</span>      <span class="s"># identity · persona · provision</span></div>
@@ -803,7 +803,7 @@ git add -A && git commit -m "feat: decomposition chart, principle grid, status p
           </TerminalBlock>
           <div class="qs-note">
             <h3>Two surfaces, one operator.</h3>
-            <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">magrathea</span> is the single CLI over both.</p>
+            <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">installer</span> is the single CLI over both.</p>
             <p class="meta mono">Node ≥ 18 · Ollama for the local embedder · SQLite + vectors, all on your machine.</p>
           </div>
         </div>
@@ -816,7 +816,7 @@ git add -A && git commit -m "feat: decomposition chart, principle grid, status p
         <div class="section-label"><span class="num">// 03</span><span>the decomposition</span></div>
         <div class="decomp-intro">
           <h2>Seven parts. <em>One spine.</em></h2>
-          <p>fortytwo is decomposed into independent, composable pieces — each named after the Guide. Bring your own agent; assemble the spine you need. The contract matters more than the adapter.</p>
+          <p>fortytwo is decomposed into independent, composable pieces — each named for the role it plays. Bring your own agent; assemble the spine you need. The contract matters more than the adapter.</p>
         </div>
         <DecompChart />
       </div>
@@ -843,7 +843,7 @@ git add -A && git commit -m "feat: decomposition chart, principle grid, status p
     <!-- MOTTO -->
     <section class="motto">
       <div class="wrap">
-        <span class="stamp mono">DON'T&nbsp;PANIC</span>
+        <span class="stamp mono">STAY&nbsp;CALM</span>
         <h2>Ask the right question.<br><em>Never cross the gate silently.</em></h2>
         <div class="wordmark">42</div>
       </div>
@@ -989,13 +989,13 @@ It wraps an existing harness with memory, a safety gate, channels, approvals, an
 The answer is 42. The hard part is knowing the right question.
 
 ## Components (codename → function)
-- vogon → gate (PreToolUse safety gate)
-- guide → memory (semantic memory, SQLite + vectors)
-- babelfish → telegram (channel adapter)
-- ford → persona (CLAUDE.md + context)
-- magrathea → cli (installer & lifecycle)
-- subetha → marketplace (Claude Code plugin marketplace)
-- deepthought → cognition (reasoning, in design)
+- gate → gate (PreToolUse safety gate)
+- memory → memory (semantic memory, SQLite + vectors)
+- telegram → telegram (channel adapter)
+- persona → persona (CLAUDE.md + context)
+- installer → cli (installer & lifecycle)
+- marketplace → marketplace (Claude Code plugin marketplace)
+- salience → cognition (reasoning, in design)
 
 ## Install
 - npm: `npm create fortytwo`
@@ -1022,7 +1022,7 @@ assert(html.includes('<html') && /lang="en"/.test(html), 'html lang=en missing')
 assert((html.match(/<h1[\s>]/g) || []).length === 1, 'not exactly one <h1>')
 assert(/The answer is/.test(html), 'hero headline missing')
 for (const s of ['// 01','// 02','// 03','// 04','// 05']) assert(html.includes(s), `section ${s} missing`)
-for (const c of ['vogon','guide','babelfish','ford','magrathea','subetha','deepthought']) assert(html.includes(c), `component ${c} missing`)
+for (const c of ['gate','memory','telegram','persona','installer','marketplace','salience']) assert(html.includes(c), `component ${c} missing`)
 assert(/Ask the right question/i.test(html), 'motto missing')
 
 // seo

@@ -8,14 +8,14 @@
 
 ## 1. North star
 
-**Minimal cyberpunk, read like the Guide.** A warm-paper canvas, near-black ink,
+**Minimal cyberpunk, read like a field manual.** A warm-paper canvas, near-black ink,
 and a single bronze accent reserved for the answer. Everything is flat and
 geometric — with one rare exception: the **"42"**, which is allowed to be a
 fake-3D sculptural object, because *it is the answer*.
 
 Three words to test any decision against: **calm, technical, deliberate.**
 
-- **Calm** — generous space, restrained color, no noise. "Don't Panic."
+- **Calm** — generous space, restrained color, no noise. "Stay calm."
 - **Technical** — monospace chrome, blueprint precision, terminal honesty.
 - **Deliberate** — every element earns its place; nothing decorative.
 
@@ -48,7 +48,7 @@ Two surfaces of ink on paper, one accent, one rare secondary. Bronze is a
 - **Background is always paper.** Never invert to dark for UI. (The terminal
   block and the `fortytwo` umbrella bar are the *only* dark insets — they are
   "the machine speaking," not page chrome.)
-- **Bronze appears only on:** the 42 monument, the wordmark, the `DON'T PANIC`
+- **Bronze appears only on:** the 42 monument, the wordmark, the `STAY CALM`
   stamp, "in progress" status, links on hover, and a `//` index numeral. Never
   on body text, never as a fill behind content.
 - **No gradients anywhere except the 42** (and the wordmark, which *is* the 42).
@@ -62,7 +62,7 @@ Two families. **Newsreader** carries meaning (headlines, body); **IBM Plex Mono*
 carries the machine (labels, terminals, the 42 system, metadata).
 
 ```
-Newsreader        — editorial serif, slight literary warmth. The "Guide" voice.
+Newsreader        — editorial serif, slight literary warmth. The editorial voice.
 IBM Plex Mono     — the terminal. System, provenance, precision.
 ```
 
@@ -120,7 +120,7 @@ sitting on an engineering drawing.
    `+2px/+2px` and stepped darker (`#6E5213 → #5A4310 → #47340C → #352708 →
    #241A05`). Hard edges only.
 4. **Mono annotations** — tiny `FIG. 042`, `ANSWER · ABSOLUTE`,
-   `CERTAINTY 1.0`, `DEEP THOUGHT, 7.5M YR`, each preceded by a 14px tick rule.
+   `CERTAINTY 1.0`, `COMPUTED · 7.5M YR`, each preceded by a 14px tick rule.
 
 ### Hard rules
 
@@ -139,11 +139,11 @@ These repeat across the site to make it read as one system:
   em-rule, the section name in `--mute` UPPERCASE, trailing into a short
   hairline. The code-comment voice.
 - **Terminal blocks** — `--ink` background, Plex Mono, a chrome header (three
-  hollow dots + an uppercase tag like `install · magrathea`), `$`/`>` prompts
+  hollow dots + an uppercase tag like `install · installer`), `$`/`>` prompts
   in bronze-1, commands in paper, comments in `#5D6770`. The machine speaking.
 - **Blueprint annotations** — tiny Plex Mono labels with tick rules, used
   wherever we treat something as a *figure* (the 42, diagrams).
-- **The `DON'T PANIC` stamp** — a 1px bronze outline, Plex Mono, wide tracking.
+- **The `STAY CALM` stamp** — a 1px bronze outline, Plex Mono, wide tracking.
   Used once, at the close.
 
 ---

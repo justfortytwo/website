@@ -7,12 +7,11 @@
 
 ## Context
 
-`fortytwo` ("Ford") is a local-first personal-assistant spine around Claude
+`fortytwo` is a local-first personal-assistant spine around Claude
 Code, being open-sourced as composable pieces under the `justfortytwo` org. The
-umbrella is **fortytwo**; components carry Hitchhiker's-Guide codenames:
-**vogon** (gate), **guide** (memory), **babelfish** (telegram), **ford**
-(persona), **magrathea** (cli), **subetha** (marketplace), **deepthought**
-(cognition). Copy is sourced from the org profile README and component READMEs.
+umbrella is **fortytwo**; components are named for the role they play: **gate**,
+**memory**, **salience**, **telegram**, **persona**, **installer**, and
+**marketplace**. Copy is sourced from the org profile README and component READMEs.
 
 This site is the **English, SEO/GEO-oriented marketing + orientation surface**.
 Homepage first; other sections follow.
@@ -28,7 +27,7 @@ Homepage first; other sections follow.
 
 | # | Decision | Chosen | Rejected |
 |---|---|---|---|
-| D1 | Visual direction | **A · GUIDE** — warm paper, bronze reserved for the 42 | dark "Deep Thought", split "Eclipse" |
+| D1 | Visual direction | **A · GUIDE** — warm paper, bronze reserved for the 42 | dark "Midnight", split "Eclipse" |
 | D2 | Type system | **B · GUIDE** — IBM Plex Mono (chrome/42/system) + Newsreader (headlines/body) | all-mono, mono+grotesk |
 | D3 | Homepage shape | **Field Manual** (synthesized after rejecting 3 IA wireframes as uninspiring) — hero wow + component centerpiece + scannable | long-form-only, hub-only |
 | D4 | The "42" | CSS-rendered **monument** (stacked-solid-layer extrusion, no shadow/glow) | raster PNG in hero |
@@ -42,10 +41,10 @@ Homepage first; other sections follow.
 1. **Top bar** — bronze-square `fortytwo` wordmark; nav: Components · Principles · Docs · GitHub ↗; hairline rule.
 2. **Hero** *(asymmetric)* — left: `// 01 — the answer`, headline *"The answer is fortytwo."*, italic *"The hard part is knowing the right question."*, lede, terminal CTA (`$ npm create fortytwo`) + ghost *"Read the brief →"*. Right: the **42 monument** on a blueprint field with mono annotations.
 3. **Quick start** `// 02` — terminal block (`npm create fortytwo` → `init`/`doctor`; plugin marketplace path) + "Two surfaces, one operator" note.
-4. **The decomposition** `// 03` — *"Seven parts. One spine."* → 7 codename cards (vogon…deepthought) in a hairline grid, closed by the dark `fortytwo` umbrella bar.
+4. **The decomposition** `// 03` — *"Seven parts. One spine."* → 7 codename cards (gate…salience) in a hairline grid, closed by the dark `fortytwo` umbrella bar.
 5. **Principles** `// 04` — *"Conservative by design."* → 3×2 grid (local-first, BYO agent, conservative autonomy, propose-only learning, prompt-injection boundaries, auditable evolution).
 6. **Status** `// 05` — M1 done / M2 in progress, two columns, status pills.
-7. **Motto** — `DON'T PANIC` stamp + *"Ask the right question. Never cross the gate silently."* + giant gradient `42`.
+7. **Motto** — `STAY CALM` stamp + *"Ask the right question. Never cross the gate silently."* + giant gradient `42`.
 8. **Footer** — © 2026 justfortytwo · MIT; links; "Not affiliated with Anthropic."
 
 ## Tech stack

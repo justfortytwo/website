@@ -9,9 +9,9 @@ export const site = {
   tagline: 'The hard part is knowing the right question.',
   motto: ['Stay calm.', 'Ask the right question.', 'Never cross the gate silently.'],
   nav: [
-    { label: 'Components', href: '/components' },
-    { label: 'Principles', href: '/principles' },
-    { label: 'Docs', href: '/docs' },
+    { label: 'Components', href: '/#components' },
+    { label: 'Principles', href: '/#principles' },
+    { label: 'Docs ↗', href: 'https://github.com/justfortytwo' },
     { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
   ] satisfies NavItem[],
   footer: {
@@ -20,9 +20,9 @@ export const site = {
     acknowledgement: 'The number 42 and the occasional borrowed turn of phrase are an affectionate nod to Douglas Adams. fortytwo is an independent project, not affiliated with or endorsed by the Douglas Adams estate.',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
-      { label: 'Docs', href: '/docs' },
-      { label: 'Marketplace', href: 'https://github.com/justfortytwo/marketplace' },
-      { label: 'Security', href: '/security' },
+      { label: 'Components', href: '/#components' },
+      { label: 'Principles', href: '/#principles' },
+      { label: 'Marketplace ↗', href: 'https://github.com/justfortytwo/marketplace' },
     ] satisfies NavItem[],
   },
 }

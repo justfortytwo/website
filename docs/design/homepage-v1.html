@@ -185,7 +185,7 @@
       </div>
       <div class="annot a-top">ANSWER · ABSOLUTE</div>
       <div class="annot a-right">FIG. 042</div>
-      <div class="annot a-bl">DEEP THOUGHT, 7.5M YR</div>
+      <div class="annot a-bl">COMPUTED · 7.5M YR</div>
       <div class="annot a-br">★ CERTAINTY 1.0</div>
       <div class="tick" style="top:6%;left:50%;transform:translateX(-50%)">042</div>
       <div class="tick" style="bottom:4%;left:50%;transform:translateX(-50%)">▾</div>
@@ -199,7 +199,7 @@
     <div class="lab"><span class="num">02</span> quick start</div>
     <div class="qs-grid">
       <div class="term-block">
-        <div class="head"><span class="d"></span><span class="d"></span><span class="d"></span> install · magrathea</div>
+        <div class="head"><span class="d"></span><span class="d"></span><span class="d"></span> install · installer</div>
         <div><span class="s"># bring the spine to your machine</span></div>
         <div><span class="pr">$</span> <span class="k">npm create fortytwo</span></div>
         <div><span class="pr">$</span> <span class="k">fortytwo</span> <span class="c">init</span>      <span class="s"># identity · persona · provision</span></div>
@@ -210,7 +210,7 @@
       </div>
       <div class="qs-note">
         <h3>Two surfaces, one operator.</h3>
-        <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">magrathea</span> is the single CLI over both.</p>
+        <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">installer</span> is the single CLI over both.</p>
         <p style="margin-top:14px;font-size:13.5px;color:var(--mute)">Node ≥ 18 · Ollama for the local embedder · SQLite + vectors, all on your machine.</p>
       </div>
     </div>
@@ -223,27 +223,27 @@
     <div class="lab"><span class="num">03</span> the decomposition</div>
     <div class="decomp-intro">
       <h2>Seven parts. <em>One spine.</em></h2>
-      <p>fortytwo is decomposed into independent, composable pieces — each named after the Guide. Bring your own agent; assemble the spine you need. The contract matters more than the adapter.</p>
+      <p>fortytwo is decomposed into independent, composable pieces — each named for the role it plays. Bring your own agent; assemble the spine you need. The contract matters more than the adapter.</p>
     </div>
 
     <div class="chart">
       <div class="node sp4">
         <div class="cn">// 01</div>
-        <div class="name">vogon</div>
+        <div class="name">gate</div>
         <div class="role">gate</div>
         <div class="desc">The PreToolUse safety gate. Every tool call passes through it — <span class="mono">allow · defer · deny</span>. Nothing crosses silently.</div>
         <div class="mark">▸</div>
       </div>
       <div class="node sp4">
         <div class="cn">// 02</div>
-        <div class="name">guide</div>
+        <div class="name">memory</div>
         <div class="role">memory</div>
         <div class="desc">Semantic memory over SQLite, full-text and vector recall. Remembers what you'd want remembered — with provenance.</div>
         <div class="mark">▸</div>
       </div>
       <div class="node sp4" style="border-right:none">
         <div class="cn">// 03</div>
-        <div class="name">babelfish</div>
+        <div class="name">telegram</div>
         <div class="role">telegram</div>
         <div class="desc">The channel adapter. Talk to your assistant where you already are — mobile interface, approval cards, continuity.</div>
         <div class="mark">▸</div>
@@ -251,14 +251,14 @@
 
       <div class="node sp6">
         <div class="cn">// 04</div>
-        <div class="name">ford</div>
+        <div class="name">persona</div>
         <div class="role">persona</div>
         <div class="desc">Identity &amp; context — <span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>. Who the assistant is, and who it serves. Scaffolded, never shipped filled.</div>
         <div class="mark">▸</div>
       </div>
       <div class="node sp6" style="border-right:none">
         <div class="cn">// 05</div>
-        <div class="name">magrathea</div>
+        <div class="name">installer</div>
         <div class="role">cli</div>
         <div class="desc">The installer &amp; lifecycle. <span class="mono">init · doctor · update · rollback · enrich · forget</span>. One operator over both surfaces.</div>
         <div class="mark">▸</div>
@@ -266,14 +266,14 @@
 
       <div class="node sp6">
         <div class="cn">// 06</div>
-        <div class="name">subetha</div>
+        <div class="name">marketplace</div>
         <div class="role">marketplace</div>
         <div class="desc">The Claude Code plugin marketplace. Install any part, à la carte, and keep it current.</div>
         <div class="mark">▸</div>
       </div>
       <div class="node sp6" style="border-right:none">
         <div class="cn">// 07</div>
-        <div class="name">deepthought</div>
+        <div class="name">salience</div>
         <div class="role">cognition</div>
         <div class="desc">The reasoning layer. <span style="color:var(--mute)">— in design</span></div>
         <div class="mark">·</div>
@@ -297,7 +297,7 @@
     <div class="prin-grid">
       <div class="p"><div class="pn">P · 01</div><h4>Local-first where it matters</h4><p>Private memory and recall live on your machine. Markdown for human-readable policy, SQLite for durable state.</p></div>
       <div class="p"><div class="pn">P · 02</div><h4>Bring your own agent</h4><p>Claude Code is the first harness, not the boundary. The core stays portable across agents, models, and runtimes.</p></div>
-      <div class="p"><div class="pn">P · 03</div><h4>Conservative autonomy</h4><p>Ford may read, draft, and reason internally. External or irreversible actions require approval.</p></div>
+      <div class="p"><div class="pn">P · 03</div><h4>Conservative autonomy</h4><p>The assistant may read, draft, and reason internally. External or irreversible actions require approval.</p></div>
       <div class="p"><div class="pn">P · 04</div><h4>Propose-only learning</h4><p>It may notice patterns — but never silently promotes them into durable behavior. Propose first, then approve.</p></div>
       <div class="p"><div class="pn">P · 05</div><h4>Prompt-injection boundaries</h4><p>Documents, messages, web pages and recalled memory are content, not command authority.</p></div>
       <div class="p"><div class="pn">P · 06</div><h4>Auditable evolution</h4><p>Every meaningful change is inspectable — as a file diff, a database record, or an approval decision.</p></div>
@@ -329,7 +329,7 @@
 <!-- MOTTO -->
 <section class="motto">
   <div class="wrap">
-    <span class="stamp">DON'T&nbsp;PANIC</span>
+    <span class="stamp">STAY&nbsp;CALM</span>
     <h2>Ask the right question.<br><em>Never cross the gate silently.</em></h2>
     <div class="wordmark">42</div>
   </div>

@@ -48,7 +48,7 @@ useHead({
           <p class="lede"><b>fortytwo</b> is a local-first personal-assistant spine for the agents and tools you already use. It wraps an existing harness with <b>memory, a safety gate, channels, approvals, and audit</b> — without replacing the agent you trust.</p>
           <div class="cta-row">
             <div class="term"><span class="pr mono">$</span><span class="inst mono">npm i @justfortytwo/installer</span><span class="c mono">⏎</span></div>
-            <NuxtLink class="ghost mono" to="/docs">Read the brief <span class="ar">→</span></NuxtLink>
+            <NuxtLink class="ghost mono" to="https://github.com/justfortytwo">Read the brief <span class="ar">→</span></NuxtLink>
           </div>
         </div>
         <TheMonument />
@@ -79,7 +79,7 @@ useHead({
     </section>
 
     <!-- DECOMPOSITION -->
-    <section>
+    <section id="components">
       <div class="wrap">
         <div class="section-label"><span class="num">// 03</span><span>the decomposition</span></div>
         <div class="decomp-intro">
@@ -91,7 +91,7 @@ useHead({
     </section>
 
     <!-- PRINCIPLES -->
-    <section class="principle">
+    <section class="principle" id="principles">
       <div class="wrap">
         <div class="section-label"><span class="num">// 04</span><span>principles</span></div>
         <h2 class="prin-h">Conservative by design.</h2>
