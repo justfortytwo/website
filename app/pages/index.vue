@@ -80,7 +80,7 @@ function copyInstall() {
           <div class="qs-note">
             <h3>Two surfaces, one operator.</h3>
             <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">create-fortytwo</span> / <span class="mono">fortytwo</span> is the single CLI over both — and <span class="mono">init</span> installs the engine for you.</p>
-            <p class="meta mono">Node ≥ 18 · Ollama for the local embedder · SQLite + vectors, all on your machine.</p>
+            <p class="meta mono">Node ≥ 20 · Ollama for the local embedder · SQLite + vectors, all on your machine.</p>
           </div>
         </div>
       </div>
