@@ -17,7 +17,6 @@ export const site = {
   footer: {
     copyright: '© 2026 Enrico Deleo · MIT',
     disclaimer: 'Not affiliated with Anthropic.',
-    acknowledgement: 'The number 42 and the occasional borrowed turn of phrase are an affectionate nod to Douglas Adams. fortytwo is an independent project, not affiliated with or endorsed by the Douglas Adams estate.',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
       { label: 'Components', href: '/#components' },

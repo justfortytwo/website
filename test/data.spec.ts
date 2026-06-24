@@ -11,9 +11,6 @@ describe('site', () => {
     expect(site.nav.length).toBeGreaterThanOrEqual(3)
     expect(site.org).toBe('justfortytwo')
   })
-  it('carries the buried Douglas Adams acknowledgement', () => {
-    expect(site.footer.acknowledgement).toMatch(/Douglas Adams/)
-  })
 })
 
 describe('components data', () => {
