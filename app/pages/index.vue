@@ -35,6 +35,14 @@ useHead({
     }),
   }],
 })
+
+const installCmd = 'npm i @justfortytwo/installer'
+const copied = ref(false)
+function copyInstall() {
+  navigator.clipboard?.writeText(installCmd)
+    .then(() => { copied.value = true; setTimeout(() => (copied.value = false), 1600) })
+    .catch(() => { /* clipboard unavailable (non-secure context) — no-op */ })
+}
 </script>
 <template>
   <div>
@@ -47,7 +55,7 @@ useHead({
           <p class="q">The hard part is knowing<br>the right question.</p>
           <p class="lede"><b>fortytwo</b> is a local-first personal-assistant spine for the agents and tools you already use. It wraps an existing harness with <b>memory, a safety gate, channels, approvals, and audit</b> — without replacing the agent you trust.</p>
           <div class="cta-row">
-            <div class="term"><span class="pr mono">$</span><span class="inst mono">npm i @justfortytwo/installer</span><span class="c mono">⏎</span></div>
+            <button type="button" class="term" @click="copyInstall" :title="copied ? 'Copied!' : 'Click to copy'"><span class="pr mono">$</span><span class="inst mono">{{ installCmd }}</span><span class="c mono">{{ copied ? 'copied ✓' : 'copy ⧉' }}</span></button>
             <NuxtLink class="ghost mono" to="https://github.com/justfortytwo">Read the brief <span class="ar">→</span></NuxtLink>
           </div>
         </div>
@@ -128,7 +136,8 @@ section{padding:96px 0;border-top:1px solid var(--rule)}
 .lede{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:46ch;margin-bottom:30px}
 .lede b{color:var(--ink);font-weight:500}
 .cta-row{display:flex;gap:14px;align-items:stretch;flex-wrap:wrap}
-.term{background:var(--ink);color:#e9e4d8;padding:13px 16px;border-radius:3px;display:flex;align-items:center;gap:10px}
+.term{background:var(--ink);color:#e9e4d8;padding:13px 16px;border-radius:3px;display:flex;align-items:center;gap:10px;border:0;font:inherit;cursor:pointer;text-align:left}
+.term .c{cursor:pointer}
 .term .pr{color:var(--bronze-1)} .term .inst{color:#fff} .term .c{color:#9aa0a8}
 .ghost{font-size:13px;letter-spacing:.3px;padding:13px 4px;border-bottom:1px solid var(--ink)}
 .ghost .ar{color:var(--bronze-3)}

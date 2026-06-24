@@ -5,6 +5,11 @@ const noRight = [2,4,6]
 </script>
 <template>
   <div class="chart">
+    <div class="umbrella">
+      <span class="u-l">// umbrella</span>
+      <span class="u-n">fortytwo</span>
+      <span class="u-r">seven packages · npm · MIT</span>
+    </div>
     <div v-for="(c,i) in components" :key="c.name" class="node" :class="[spans[i], { noright: noRight.includes(i) }]">
       <div class="cn">// 0{{ i+1 }}</div>
       <div class="name">{{ c.name }}</div>
@@ -12,17 +17,15 @@ const noRight = [2,4,6]
       <div class="desc">{{ c.description }}</div>
       <div class="mark">▸</div>
     </div>
-    <div class="umbrella">
-      <span class="u-l">// umbrella</span>
-      <span class="u-n">fortytwo</span>
-      <span class="u-r">seven packages · npm · MIT</span>
-    </div>
   </div>
 </template>
 <style scoped>
 .chart{position:relative;display:grid;grid-template-columns:repeat(12,1fr);border:1px solid var(--rule);background:var(--paper-2)}
 .node{position:relative;padding:26px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
 .node.noright{border-right:none}
+/* umbrella now leads the chart, so the bottom row's border would double the
+   chart's outer border — drop it to keep a single hairline at the bottom. */
+.node:nth-last-child(-n+2){border-bottom:none}
 .node:hover{background:var(--paper-2)}
 .cn{font-family:var(--font-mono);font-size:10px;color:var(--mute);letter-spacing:1.5px}
 .name{font-family:var(--font-serif);font-weight:500;font-size:28px;letter-spacing:-.5px;margin:4px 0 2px}
