@@ -47,7 +47,7 @@ useHead({
           <p class="q">The hard part is knowing<br>the right question.</p>
           <p class="lede"><b>fortytwo</b> is a local-first personal-assistant spine for the agents and tools you already use. It wraps an existing harness with <b>memory, a safety gate, channels, approvals, and audit</b> — without replacing the agent you trust.</p>
           <div class="cta-row">
-            <div class="term"><span class="pr mono">$</span><span class="inst mono">npm create fortytwo</span><span class="c mono">⏎</span></div>
+            <div class="term"><span class="pr mono">$</span><span class="inst mono">npm i @justfortytwo/installer</span><span class="c mono">⏎</span></div>
             <NuxtLink class="ghost mono" to="/docs">Read the brief <span class="ar">→</span></NuxtLink>
           </div>
         </div>
@@ -60,18 +60,18 @@ useHead({
       <div class="wrap">
         <div class="section-label"><span class="num">// 02</span><span>quick start</span></div>
         <div class="qs-grid">
-          <TerminalBlock tag="install · magrathea">
+          <TerminalBlock tag="install · create-fortytwo">
             <div class="s"># bring the spine to your machine</div>
-            <div><span class="pr">$</span> <span class="k">npm create fortytwo</span></div>
-            <div><span class="pr">$</span> <span class="k">fortytwo</span> <span class="c">init</span>      <span class="s"># identity · persona · provision</span></div>
-            <div><span class="pr">$</span> <span class="k">fortytwo</span> <span class="c">doctor</span>    <span class="s"># boot · gate · versions</span></div>
+            <div><span class="pr">$</span> <span class="k">npm i @justfortytwo/installer</span></div>
+            <div><span class="pr">$</span> <span class="k">npx create-fortytwo</span> <span class="c">init</span>    <span class="s"># identity · persona · engine · provision</span></div>
+            <div><span class="pr">$</span> <span class="k">npx fortytwo</span> <span class="c">doctor</span>         <span class="s"># contracts · migrations · embedder</span></div>
             <div class="s" style="margin-top:12px"># or, in claude code —</div>
             <div><span class="pr">&gt;</span> <span class="c">/plugin marketplace add</span> <span class="k">justfortytwo/marketplace</span></div>
-            <div><span class="pr">&gt;</span> <span class="c">/plugin install</span> <span class="k">fortytwo@justfortytwo</span></div>
+            <div><span class="pr">&gt;</span> <span class="c">/plugin install</span> <span class="k">fortytwo@fortytwo</span></div>
           </TerminalBlock>
           <div class="qs-note">
             <h3>Two surfaces, one operator.</h3>
-            <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">magrathea</span> is the single CLI over both.</p>
+            <p>The <b>npm engine</b> ships the reusable machinery — memory, the gate, channel adapters — as <span class="mono">@justfortytwo/*</span> packages wired in as plugins. The <b>scaffolded persona</b> (<span class="mono">CLAUDE.md</span> + <span class="mono">context/*</span>) is per-user, personal, and gitignored. <span class="mono">create-fortytwo</span> / <span class="mono">fortytwo</span> is the single CLI over both — and <span class="mono">init</span> installs the engine for you.</p>
             <p class="meta mono">Node ≥ 18 · Ollama for the local embedder · SQLite + vectors, all on your machine.</p>
           </div>
         </div>
@@ -84,7 +84,7 @@ useHead({
         <div class="section-label"><span class="num">// 03</span><span>the decomposition</span></div>
         <div class="decomp-intro">
           <h2>Seven parts. <em>One spine.</em></h2>
-          <p>fortytwo is decomposed into independent, composable pieces — each named after the Guide. Bring your own agent; assemble the spine you need. The contract matters more than the adapter.</p>
+          <p>fortytwo is decomposed into independent, composable pieces — each named for the role it plays, each on npm. Bring your own agent; assemble the spine you need. The contract matters more than the adapter.</p>
         </div>
         <DecompChart />
       </div>
@@ -111,7 +111,7 @@ useHead({
     <!-- MOTTO -->
     <section class="motto">
       <div class="wrap">
-        <span class="stamp mono">DON'T&nbsp;PANIC</span>
+        <span class="stamp mono">STAY&nbsp;CALM</span>
         <h2>Ask the right question.<br><em>Never cross the gate silently.</em></h2>
         <div class="wordmark">42</div>
       </div>

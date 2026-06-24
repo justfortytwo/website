@@ -5,17 +5,17 @@ const noRight = [2,4,6]
 </script>
 <template>
   <div class="chart">
-    <div v-for="(c,i) in components" :key="c.codename" class="node" :class="[spans[i], { noright: noRight.includes(i) }]">
+    <div v-for="(c,i) in components" :key="c.name" class="node" :class="[spans[i], { noright: noRight.includes(i) }]">
       <div class="cn">// 0{{ i+1 }}</div>
-      <div class="name">{{ c.codename }}</div>
-      <div class="role">{{ c.role }}</div>
-      <div class="desc">{{ c.description }} <span v-if="c.state==='design'" class="design">— in design</span></div>
-      <div class="mark">{{ c.state==='design' ? '·' : '▸' }}</div>
+      <div class="name">{{ c.name }}</div>
+      <div class="role">{{ c.pkg }}</div>
+      <div class="desc">{{ c.description }}</div>
+      <div class="mark">▸</div>
     </div>
     <div class="umbrella">
       <span class="u-l">// umbrella</span>
       <span class="u-n">fortytwo</span>
-      <span class="u-r">the spine · v0 · MIT</span>
+      <span class="u-r">seven packages · npm · MIT</span>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ const noRight = [2,4,6]
 .node:hover{background:var(--paper-2)}
 .cn{font-family:var(--font-mono);font-size:10px;color:var(--mute);letter-spacing:1.5px}
 .name{font-family:var(--font-serif);font-weight:500;font-size:28px;letter-spacing:-.5px;margin:4px 0 2px}
-.role{font-family:var(--font-mono);font-size:11px;color:var(--bronze-3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+.role{font-family:var(--font-mono);font-size:11px;color:var(--bronze-3);letter-spacing:.3px;margin-bottom:12px}
 .desc{font-size:14px;color:var(--ink-2);line-height:1.45}
 .design{color:var(--mute)}
 .mark{position:absolute;top:18px;right:18px;font-family:var(--font-mono);font-size:11px;color:var(--rule)}

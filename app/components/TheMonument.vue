@@ -11,7 +11,7 @@
     </div>
     <div class="annot a-top">ANSWER · ABSOLUTE</div>
     <div class="annot a-right">FIG. 042</div>
-    <div class="annot a-bl">DEEP THOUGHT, 7.5M YR</div>
+    <div class="annot a-bl">COMPUTED · 7.5M YR</div>
     <div class="annot a-br">★ CERTAINTY 1.0</div>
     <div class="tick top">042</div>
     <div class="tick bot">▾</div>

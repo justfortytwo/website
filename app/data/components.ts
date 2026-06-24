@@ -1,15 +1,16 @@
 export interface Component {
-  codename: string
-  role: string
+  /** Public name (also the unscoped package segment). */
+  name: string
+  /** npm package, or the GitHub source for the marketplace. */
+  pkg: string
   description: string
-  state?: 'live' | 'design'
 }
 export const components: Component[] = [
-  { codename:'vogon', role:'gate', description:'The PreToolUse safety gate. Every tool call passes through it — allow · defer · deny. Nothing crosses silently.' },
-  { codename:'guide', role:'memory', description:'Semantic memory over SQLite, full-text and vector recall. Remembers what you’d want remembered — with provenance.' },
-  { codename:'babelfish', role:'telegram', description:'The channel adapter. Talk to your assistant where you already are — mobile interface, approval cards, continuity.' },
-  { codename:'ford', role:'persona', description:'Identity & context — CLAUDE.md + context/*. Who the assistant is, and who it serves. Scaffolded, never shipped filled.' },
-  { codename:'magrathea', role:'cli', description:'The installer & lifecycle. init · doctor · update · rollback · enrich · forget. One operator over both surfaces.' },
-  { codename:'subetha', role:'marketplace', description:'The Claude Code plugin marketplace. Install any part, à la carte, and keep it current.' },
-  { codename:'deepthought', role:'cognition', description:'The reasoning layer.', state:'design' },
+  { name:'gate', pkg:'@justfortytwo/gate', description:'The PreToolUse safety gate. Every tool call passes through it — allow · defer · deny. Nothing crosses silently.' },
+  { name:'memory', pkg:'@justfortytwo/memory', description:'Semantic memory over SQLite — full-text and vector recall. Remembers what you’d want remembered, with provenance.' },
+  { name:'salience', pkg:'@justfortytwo/salience', description:'The model-driven salience engine. Decides what is worth remembering, so memory writes only what matters.' },
+  { name:'telegram', pkg:'@justfortytwo/telegram', description:'The channel adapter. Talk to your assistant where you already are — mobile, approval cards, continuity.' },
+  { name:'persona', pkg:'@justfortytwo/persona', description:'Identity & context — CLAUDE.md + context/*. Who the assistant is, and who it serves. Scaffolded, never shipped filled.' },
+  { name:'installer', pkg:'@justfortytwo/installer', description:'The installer & lifecycle CLI (create-fortytwo / fortytwo). init · doctor · pair · forget · unbind. One operator over both surfaces.' },
+  { name:'marketplace', pkg:'justfortytwo/marketplace', description:'The Claude Code plugin marketplace. Install any part à la carte, and keep it current.' },
 ]

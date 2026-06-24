@@ -11,7 +11,7 @@ assert(html.includes('<html') && /lang="en"/.test(html), 'html lang=en missing')
 assert((html.match(/<h1[\s>]/g) || []).length === 1, 'not exactly one <h1>')
 assert(/The answer is/.test(html), 'hero headline missing')
 for (const s of ['// 01','// 02','// 03','// 04','// 05']) assert(html.includes(s), `section ${s} missing`)
-for (const c of ['vogon','guide','babelfish','ford','magrathea','subetha','deepthought']) assert(html.includes(c), `component ${c} missing`)
+for (const c of ['gate','memory','salience','telegram','persona','installer','marketplace']) assert(html.includes(c), `component ${c} missing`)
 assert(/Ask the right question/i.test(html), 'motto missing')
 
 // seo

@@ -7,33 +7,31 @@ import { milestones } from '../app/data/status'
 describe('site', () => {
   it('has english lang, motto, nav, footer', () => {
     expect(site.lang).toBe('en')
-    expect(site.motto.join(' ')).toMatch(/Don't Panic/i)
+    expect(site.motto.join(' ')).toMatch(/Stay calm/i)
     expect(site.nav.length).toBeGreaterThanOrEqual(3)
     expect(site.org).toBe('justfortytwo')
+  })
+  it('carries the buried Douglas Adams acknowledgement', () => {
+    expect(site.footer.acknowledgement).toMatch(/Douglas Adams/)
   })
 })
 
 describe('components data', () => {
-  it('has the 7 codenames in canonical order', () => {
-    expect(components.map(c => c.codename)).toEqual([
-      'vogon','guide','babelfish','ford','magrathea','subetha','deepthought'
+  it('lists the seven public (role) names in canonical order', () => {
+    expect(components.map((c) => c.name)).toEqual([
+      'gate', 'memory', 'salience', 'telegram', 'persona', 'installer', 'marketplace',
     ])
   })
-  it('maps codenames to the right functions', () => {
-    const m = Object.fromEntries(components.map(c => [c.codename, c.role]))
-    expect(m).toEqual({
-      vogon:'gate', guide:'memory', babelfish:'telegram',
-      ford:'persona', magrathea:'cli', subetha:'marketplace', deepthought:'cognition'
-    })
+  it('uses neutral public names only — no HHGTTG codenames leak into marketing', () => {
+    const blob = JSON.stringify(components).toLowerCase()
+    for (const lore of ['vogon', 'babelfish', 'magrathea', 'subetha', 'deepthought']) {
+      expect(blob, `lore codename "${lore}" must not appear`).not.toContain(lore)
+    }
   })
-  it('marks deepthought as in-design', () => {
-    const dt = components.find(c => c.codename === 'deepthought')!
-    expect(dt.state).toBe('design')
-  })
-  it('every component has codename, role, description', () => {
+  it('every component has name, pkg, and a description', () => {
     for (const c of components) {
-      expect(c.codename).toBeTruthy()
-      expect(c.role).toBeTruthy()
+      expect(c.name).toBeTruthy()
+      expect(c.pkg).toBeTruthy()
       expect(c.description.length).toBeGreaterThan(10)
     }
   })
@@ -51,7 +49,7 @@ describe('principles data', () => {
 
 describe('status data', () => {
   it('has M1 done and M2 in progress', () => {
-    const byId = Object.fromEntries(milestones.map(m => [m.id, m]))
+    const byId = Object.fromEntries(milestones.map((m) => [m.id, m]))
     expect(byId.M1.state).toBe('done')
     expect(byId.M2.state).toBe('wip')
   })

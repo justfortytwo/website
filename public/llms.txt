@@ -4,18 +4,19 @@ fortytwo is a local-first personal-assistant spine for the agents and tools you 
 It wraps an existing harness with memory, a safety gate, channels, approvals, and audit.
 The answer is 42. The hard part is knowing the right question.
 
-## Components (codename → function)
-- vogon → gate (PreToolUse safety gate)
-- guide → memory (semantic memory, SQLite + vectors)
-- babelfish → telegram (channel adapter)
-- ford → persona (CLAUDE.md + context)
-- magrathea → cli (installer & lifecycle)
-- subetha → marketplace (Claude Code plugin marketplace)
-- deepthought → cognition (reasoning, in design)
-
 ## Install
-- npm: `npm create fortytwo`
-- Claude Code: `/plugin marketplace add justfortytwo/marketplace` then `/plugin install fortytwo@justfortytwo`
+- npm: `npm install @justfortytwo/installer` then `npx create-fortytwo init`
+  (init installs the engine packages it needs, then scaffolds the persona)
+- Claude Code: `/plugin marketplace add justfortytwo/marketplace` then `/plugin install fortytwo@fortytwo`
+
+## Packages (published to npm under @justfortytwo)
+- gate — PreToolUse safety gate: allow / defer / deny, fail-closed
+- memory — semantic-memory MCP server (SQLite + sqlite-vec vectors + FTS5)
+- salience — model-driven salience extraction for memory enrichment
+- telegram — Telegram channel adapter / pairing bridge
+- persona — CLAUDE.md + context templates (scaffolded per-user, never shipped filled)
+- installer — create-fortytwo / fortytwo: the install + lifecycle CLI
+- marketplace — the Claude Code plugin marketplace (installed from GitHub, not npm)
 
 ## Links
 - GitHub: https://github.com/justfortytwo
