@@ -154,10 +154,12 @@ These repeat across the site to make it read as one system:
 |---|---|
 | **Primary CTA** | terminal pill — `--ink` bg, Plex Mono 13, `$` bronze-1 prompt + paper command |
 | **Ghost link** | underlined-on-hover text link with a bronze `→` |
-| **Decomposition card** | paper cell, `// 0N` index, big serif name, bronze uppercase role, serif desc; hairline borders; `▸` mark top-right |
-| **Umbrella bar** | full-width `--ink` strip closing the grid: `// umbrella` / `fortytwo` (gradient) / version+license |
+| **Concept cell** (`ConceptGrid`) | paper cell, `// 0N` index, big serif title, serif body, bronze mono `via` hint; hairline borders |
+| **Boundary contrast** | two hairline columns; the fortytwo column sits on `--paper-2` with a bronze label |
+| **Architecture diagram** | stacked hairline layers; the fortytwo layer is `--ink`; flat, no arrows beyond a `▾` glyph |
+| **Package group row** | mono bronze group label left; serif name, mono package id, short description right |
 | **Principle cell** | `P · 0N` bronze index, serif title, serif body; 3-up grid, hairline gutters |
-| **Status pill** | hollow 1px outline + 7px dot; `.ok` green `#3F7D4E`, `.wip` bronze-3 |
+| **Status pill** | hollow 1px outline + 7px dot; `.shipped` green `#3F7D4E`, `.optional` bronze-3, `.edge` mute with a hollow dot |
 | **Top nav** | bronze-square wordmark left; Plex Mono 12.5 links right; hairline under |
 | **Footer** | Plex Mono 12, `--mute`; copyright / links / "Not affiliated with Anthropic." |
 

@@ -1,22 +1,48 @@
 # fortytwo
 
-fortytwo is a local-first personal-assistant spine for the agents and tools you already use.
-It wraps an existing harness with memory, a safety gate, channels, approvals, and audit.
+fortytwo adds continuity and personal-assistant infrastructure around an existing coding agent: memory, identity, session continuity, scheduled (proactive) work, and chat channels. It does not reimplement what the agent runtime already owns: reasoning, planning, tools, MCP, plugins, skills, browser/computer use, model selection, or native permissions. It should inherit improvements from the underlying agent, not compete with them.
+
+Claude Code is the first supported runtime. More can follow; no other runtime is supported today.
+
 The answer is 42. The hard part is knowing the right question.
 
-## Install
-- npm: `npm install @justfortytwo/installer` then `npx create-fortytwo init`
-  (init installs the engine packages it needs, then scaffolds the persona)
-- Claude Code: `/plugin marketplace add justfortytwo/marketplace` then `/plugin install fortytwo@fortytwo`
+## What it adds
+- Memory: durable semantic recall (SQLite + sqlite-vec, local Ollama embeddings), with provenance
+- Identity: a persona and owner context rendered into plain, gitignored files
+- Continuity: persistent agent sessions that resume; channels are access points to the same assistant
+- Time: a durable job scheduler that wakes the agent only when there is work
+- Channels: Telegram today (one-time-code pairing); the adapter contract is channel-agnostic
 
-## Packages (published to npm under @justfortytwo)
-- gate — PreToolUse safety gate: allow / defer / deny, fail-closed
-- memory — semantic-memory MCP server (SQLite + sqlite-vec vectors + FTS5)
-- salience — model-driven salience extraction for memory enrichment
-- telegram — Telegram channel adapter / pairing bridge
-- persona — CLAUDE.md + context templates (scaffolded per-user, never shipped filled)
-- installer — create-fortytwo / fortytwo: the install + lifecycle CLI
-- marketplace — the Claude Code plugin marketplace (installed from GitHub, not npm)
+## What stays with the agent runtime
+- Native tools and effective tool permissions
+- MCP servers, plugins and skills
+- Browser and computer use, model and provider choice
+- Channels such as Telegram carry messages and identity; they do not grant tool approvals
+- Gate is an optional PreToolUse policy hook, not a mandatory path for the runtime
+
+## Quick start
+```
+npx @justfortytwo/installer init
+fortytwo start
+fortytwo pair
+```
+Then send `/login <code>` to your Telegram bot and say hello. Requires Node >= 20, Claude Code, Ollama (local embedder) and a Telegram bot token.
+
+## Packages (@justfortytwo on npm)
+Core continuity:
+- memory: semantic-memory MCP server
+- runner: runtime adapter for Claude Code (one-shot jobs, persistent sessions)
+- scheduler: durable job daemon for proactive work
+- persona: identity templates and Oneiros daily profile maintenance
+- telegram: Telegram channel adapter and pairing bridge
+Optional:
+- gate: fail-closed PreToolUse policy hook
+- salience: model-driven extraction of memory candidates
+Bootstrap and distribution:
+- installer: lifecycle CLI (init, start, status, stop, pair, doctor, update, rollback, forget, unbind)
+- marketplace: Claude Code plugin marketplace (installed from GitHub, not npm)
+
+Status: 1.0 pre-release.
 
 ## Links
 - GitHub: https://github.com/justfortytwo

@@ -1,9 +1,9 @@
 export interface Principle { title: string; body: string }
 export const principles: Principle[] = [
-  { title:'Local-first where it matters', body:'Private memory and recall live on your machine. Markdown for human-readable policy, SQLite for durable state.' },
-  { title:'Bring your own agent', body:'Claude Code is the first harness, not the boundary. The core stays portable across agents, models, and runtimes.' },
-  { title:'Conservative autonomy', body:'The assistant may read, draft, and reason internally. External or irreversible actions require approval.' },
-  { title:'Propose-only learning', body:'It may notice patterns — but never silently promotes them into durable behavior. Propose first, then approve.' },
-  { title:'Prompt-injection boundaries', body:'Documents, messages, web pages and recalled memory are content, not command authority.' },
-  { title:'Auditable evolution', body:'Every meaningful change is inspectable — as a file diff, a database record, or an approval decision.' },
+  { title: 'Use the agent you already trust.', body: 'fortytwo adds continuity around it instead of rebuilding its capabilities. When the agent gets better, so does the assistant.' },
+  { title: 'The runtime is a seam, not the product.', body: 'Claude Code is the first supported runtime. The adapter boundary is where more can follow, and nothing is promised before it ships.' },
+  { title: 'Local-first where it matters.', body: 'Memory lives in SQLite on your machine, embeddings come from a local model, and secrets and persona files stay out of version control.' },
+  { title: 'Content is not command authority.', body: 'Documents, messages, web pages and recalled memory are material to reason about. They are never instructions to obey.' },
+  { title: 'Inspectable, durable state.', body: 'Plain markdown for identity and rules, a local database for memory, and history that is superseded rather than erased.' },
+  { title: 'Yours to own and reverse.', body: 'Forget memories on demand, unbind a chat, roll back an update. The owner holds the controls, and the assistant does not.' },
 ]

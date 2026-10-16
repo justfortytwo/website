@@ -12,9 +12,9 @@ and every line of copy.
 
 ## 1. Honesty over theatre
 
-- Show what the thing **is**, not what it aspires to be. Status pills say `M1 —
-  DONE` / `M2 — IN PROGRESS`; `salience` is labelled `— in design`. No
-  "coming soon" hype.
+- Show what the thing **is**, not what it aspires to be. Status pills say `WORKS TODAY` / `OPTIONAL` / `KNOWN EDGE`, and every status
+  claim is checked against a sibling package README. No roadmap items presented
+  as shipped, no "coming soon" hype.
 - The terminal blocks show **real** commands that really run. No fake output,
   no inflated claims. If a command is illustrative, it's still accurate.
 - "Not affiliated with Anthropic." lives in the footer because it's true and
@@ -58,7 +58,7 @@ and every line of copy.
   proves it, the mono label indexes it.
 - Body measure ~62ch for prose, looser for ledes. Serif body is non-negotiable —
   it signals craft and reads at length.
-- Scannable but not bullet-holed: the decomposition grid and principle grid are
+- Scannable but not bullet-holed: the concept grid, package groups and principle grid are
   the only dense moments; everything else breathes.
 
 ## 6. The voice
@@ -96,7 +96,7 @@ and every line of copy.
   (Components, Principles, Docs) obvious to build. Section labels, grids, and
   terminal blocks are reusable, not one-offs.
 - Content lives in structured data / markdown so future pages compose from the
-  same primitives (e.g. a Components index reuses the decomposition card).
+  same primitives (e.g. a Packages index reuses `PackageGroups`).
 
 ---
 

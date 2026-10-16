@@ -1,20 +1,23 @@
-# Spec — forty-two.it homepage (v0.1)
+# Spec — forty-two.it homepage (v2: continuity narrative)
 
 - **Date:** 2026-06-22
-- **Status:** Design approved; spec pending review
+- **Status:** v2 implemented. v1 (decomposition-first, gate-centred) is superseded; its design decisions D1–D8 still hold.
 - **Repo:** `git@github.com:justfortytwo/website.git` (Nuxt 4 SSG, bun, Cloudflare Pages)
 - **Living docs:** [`docs/design-system.md`](../../design-system.md) · [`docs/ux-ui-principles.md`](../../ux-ui-principles.md) · mockup [`docs/design/homepage-v1.html`](../../design/homepage-v1.html)
 
 ## Context
 
-`fortytwo` is a local-first personal-assistant spine around Claude
-Code, being open-sourced as composable pieces under the `justfortytwo` org. The
-umbrella is **fortytwo**; components are named for the role they play: **gate**,
-**memory**, **salience**, **telegram**, **persona**, **installer**, and
-**marketplace**. Copy is sourced from the org profile README and component READMEs.
+`fortytwo` adds continuity and personal-assistant infrastructure (memory,
+identity, session continuity, time, channels) around an existing coding agent.
+It does **not** reimplement what the runtime owns: reasoning, planning, tools,
+MCP, plugins, skills, browser/computer use, model choice, or native permissions.
+Claude Code is the first supported runtime, not the product boundary. The
+runtime owns tool permissions; Gate is an optional policy hook; channels such as
+Telegram carry messages and identity and never grant approvals.
 
-This site is the **English, SEO/GEO-oriented marketing + orientation surface**.
-Homepage first; other sections follow.
+Copy is sourced from the sibling package READMEs (see `source` on each item in
+`app/data/status.ts`). This site is the **English, SEO/GEO-oriented marketing +
+orientation surface**.
 
 ## Non-goals (this cycle)
 
@@ -36,16 +39,22 @@ Homepage first; other sections follow.
 | D7 | Fonts | **Self-hosted via Fontsource** | Google Fonts CDN |
 | D8 | References absorbed | Hermes (asymmetric hero, big serif, wordmark closer) + OpenClaw (terminal install, mono chrome) | copying either |
 
-## Homepage information architecture
+## Homepage information architecture (v2)
 
-1. **Top bar** — bronze-square `fortytwo` wordmark; nav: Components · Principles · Docs · GitHub ↗; hairline rule.
-2. **Hero** *(asymmetric)* — left: `// 01 — the answer`, headline *"The answer is fortytwo."*, italic *"The hard part is knowing the right question."*, lede, terminal CTA (`$ npm create fortytwo`) + ghost *"Read the brief →"*. Right: the **42 monument** on a blueprint field with mono annotations.
-3. **Quick start** `// 02` — terminal block (`npm create fortytwo` → `init`/`doctor`; plugin marketplace path) + "Two surfaces, one operator" note.
-4. **The decomposition** `// 03` — *"Seven parts. One spine."* → 7 codename cards (gate…salience) in a hairline grid, closed by the dark `fortytwo` umbrella bar.
-5. **Principles** `// 04` — *"Conservative by design."* → 3×2 grid (local-first, BYO agent, conservative autonomy, propose-only learning, prompt-injection boundaries, auditable evolution).
-6. **Status** `// 05` — M1 done / M2 in progress, two columns, status pills.
-7. **Motto** — `STAY CALM` stamp + *"Ask the right question. Never cross the gate silently."* + giant gradient `42`.
-8. **Footer** — © 2026 justfortytwo · MIT; links; "Not affiliated with Anthropic."
+Visitor questions, in order: why, what it adds, what stays with the agent, what
+it feels like, how it fits, what works, how to start.
+
+1. **Top bar** — wordmark; nav: Boundary · Architecture · Status · Quick start · GitHub ↗.
+2. **Hero `// 01`** — h1 *"Your coding agent is already powerful."*, bronze italic *"fortytwo makes it personal, persistent, and always there."*, body, copyable `npx @justfortytwo/installer init`, runtime note *"Claude Code is the first supported runtime. More can follow."*. Right: the 42 monument.
+3. **The boundary `// 02`** — *"Don't reinvent the agent."* Two-column contrast (the agent already knows how to / fortytwo makes it possible to), the *inherit improvements, not compete* line, and the ecosystem aside. (`BoundaryContrast`, `data/boundary.ts`)
+4. **What it adds `// 03`** — Memory, Identity, Continuity, Time, Channels, Your ecosystem; 3×2 hairline grid with the implementing packages as a quiet mono hint. (`ConceptGrid`, `data/concepts.ts`)
+5. **In use `// 04`** — four beats: phone, a day later, while away, over weeks. (`SceneList`, `data/scenes.ts`)
+6. **Architecture `// 05`** — fortytwo → runtime adapter → agent runtime (Claude Code today) → native tools / MCP·plugins·skills; optional Gate and salience called out as off the normal path; then *Under the hood*: packages grouped core / optional / bootstrap. (`ArchitectureDiagram`, `PackageGroups`)
+7. **Principles `// 06`** — six, led by *"Use the agent you already trust."* (`PrincipleGrid`)
+8. **What works today `// 07`** — shipped / optional / known-edge rows, each verified against a sibling README. (`StatusList`, `data/status.ts`)
+9. **Quick start `// 08`** — `init` → `start` → `pair`, then `/login <code>` in Telegram: *"Open Telegram. Say hello."*
+10. **Motto** — `STAY CALM` + *"The answer is 42. The hard part is knowing the right question."* + gradient `42`.
+11. **Footer** — © 2026 · MIT; links; "Not affiliated with Anthropic."
 
 ## Tech stack
 

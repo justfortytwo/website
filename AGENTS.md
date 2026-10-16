@@ -1,3 +1,11 @@
+# OpenWolf
+
+@.wolf/OPENWOLF.md
+
+This project uses OpenWolf for context management. Read and follow .wolf/OPENWOLF.md every session. Check .wolf/cerebrum.md before generating code. Check .wolf/anatomy.md before reading files.
+
+@AGENTS.md
+
 # AGENTS.md
 
 Guidance for AI coding agents working in this repo (`justfortytwo/website`).
@@ -5,7 +13,10 @@ Guidance for AI coding agents working in this repo (`justfortytwo/website`).
 ## What this is
 
 The marketing site for **fortytwo** (https://forty-two.it): a local-first
-personal-assistant spine distributed as the `@justfortytwo/*` packages. Today it
+personal-assistant spine distributed as the `@justfortytwo/*` packages. The site's
+thesis: fortytwo adds continuity (memory, identity, time, channels) around an
+existing agent runtime and does not reimplement what that runtime owns. Claude
+Code is the first supported runtime, not the product boundary. Today it
 is a single static homepage (`/`). Nuxt 4 in SSG mode, built with bun, deployed
 to Cloudflare Pages. Hand-written CSS with design tokens, self-hosted fonts
 (IBM Plex Mono + Newsreader via `@fontsource`). MIT.
@@ -16,10 +27,12 @@ to Cloudflare Pages. Hand-written CSS with design tokens, self-hosted fonts
 app/
   app.vue, layouts/default.vue   shell (SiteHeader / SiteFooter)
   pages/index.vue                the only page: SEO meta, JSON-LD, all sections
-  components/                    TheMonument (the "42"), DecompChart, StatusPanel,
-                                 StatusPill, PrincipleGrid, TerminalBlock, SectionLabel, ...
-  data/                          content as typed TS: site.ts, components.ts,
-                                 principles.ts, status.ts (milestones)
+  components/                    TheMonument (the "42"), BoundaryContrast, ConceptGrid,
+                                 SceneList, ArchitectureDiagram, PackageGroups,
+                                 PrincipleGrid, StatusList, StatusPill, TerminalBlock, ...
+  data/                          content as typed TS: site.ts, boundary.ts, concepts.ts,
+                                 scenes.ts, architecture.ts, packages.ts,
+                                 principles.ts, status.ts
   assets/css/tokens.css, base.css  global CSS (registered in nuxt.config.ts)
 public/                          favicon, og.png, llms.txt (served as-is)
 scripts/checks.mjs               post-build structural/SEO/no-motion checks
@@ -47,7 +60,7 @@ finishing a change, run `bun run test` and `bun run verify`.
 ## Architecture notes
 
 - **Content lives in `app/data/*.ts`, markup in components.** Edit copy, nav,
-  component list, principles, or milestone status in the data files rather than
+  packages, principles, or status in the data files rather than
   hardcoding strings in templates.
 - `nuxt.config.ts` prerenders only `/` with `crawlLinks: false`. Nav links point
   at `/#anchors` or GitHub. If you add a page, add its route to
@@ -61,20 +74,27 @@ finishing a change, run `bun run test` and `bun run verify`.
 ## Hard constraints (enforced by tests/checks)
 
 `scripts/checks.mjs` fails the build if the generated HTML/CSS:
-- lacks `lang="en"`, exactly one `<h1>`, "The answer is", section labels
-  `// 01`..`// 05`, all seven component names, or the "Ask the right question" motto;
+- lacks `lang="en"`, exactly one `<h1>` carrying the new positioning, no skipped
+  heading levels, section labels `// 01`..`// 08`, the five concept names, the
+  "Claude Code is the first supported runtime" note, the architecture layers,
+  the quick-start commands, or the "The answer is 42" motto;
+- contains retired claims (gate on every tool call, approval cards, "seven
+  packages", Claude-Code-only boundary, hype words) in the page or `llms.txt`;
 - lacks `<title>`, meta description, `og:image`, JSON-LD, canonical, or a
   sitemap reference in `robots.txt`;
 - contains any of `text-shadow`, `box-shadow`, `@keyframes`, `animation:`,
-  `transition:`, `filter:blur` in compiled CSS. **No motion, no shadows.**
+  `transition:`, `filter:blur`, `drop-shadow` in compiled CSS, lacks
+  `:focus-visible`, or ships a font family other than Plex Mono / Newsreader.
+  **No motion, no shadows, no glow.**
 
 `test/data.spec.ts` requires:
-- components in exact order: gate, memory, salience, telegram, persona,
-  installer, marketplace, each with `name`, `pkg`, `description` (>10 chars);
+- packages grouped by responsibility (core / optional / bootstrap), each with
+  `name`, `pkg`, `description`; concepts only reference real packages;
 - **no Hitchhiker's-Guide codenames** (vogon, babelfish, magrathea, subetha,
-  deepthought) anywhere in components data. Public names only;
-- 6 principles; milestone M1 `done`, M2 `wip`; `site.lang === 'en'`,
-  `site.org === 'justfortytwo'`.
+  deepthought) anywhere in site data. Public names only;
+- the runtime wording, boundary lists, optional-Gate architecture, 6 principles
+  (first: "Use the agent you already trust."), and a source README on every
+  status item; no retired claims anywhere in the typed content.
 
 If you intentionally change any of these, update the test/check in the same change.
 
@@ -146,7 +166,7 @@ The fortytwo project is intentionally split into small, focused repositories.
   Persona and context templates rendered by the installer into an individual fortytwo installation.
 
 - **`justfortytwo/gate`**
-  Optional external safety/policy enforcement layer for tool execution and approvals. Keep this separate from the agent runtime's own reasoning and permissions.
+  Optional external policy hook for tool execution where configured. It is not on the mandatory runtime path; the agent runtime owns its effective permissions, and channels such as Telegram never grant approvals.
 
 - **`justfortytwo/salience`**
   Optional model-driven salience extraction used to enrich durable memory.

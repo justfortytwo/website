@@ -29,3 +29,6 @@ Thumbs.db
 .codegraph/
 .wolf/
 .claude/
+.codex/
+.cursor/
+.opencode/

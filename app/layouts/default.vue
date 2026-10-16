@@ -1,5 +1,6 @@
 <template>
+  <a class="skip" href="#main">Skip to content</a>
   <SiteHeader />
-  <main><slot /></main>
+  <main id="main"><slot /></main>
   <SiteFooter />
 </template>
