@@ -17,4 +17,5 @@ import { principles } from '~/data/principles'
 .pn{font-family:var(--font-mono);font-size:11px;color:var(--bronze-3);letter-spacing:1.5px;margin-bottom:10px}
 .p h3{font-family:var(--font-serif);font-weight:500;font-size:21px;letter-spacing:-.3px;margin-bottom:8px}
 .p p{font-size:14px;color:var(--ink-2);line-height:1.5}
+@media (max-width:860px){.prin-grid{grid-template-columns:1fr}.p{border-right:none}}
 </style>

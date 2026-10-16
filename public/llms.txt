@@ -6,12 +6,22 @@ Claude Code is the first supported runtime. More can follow; no other runtime is
 
 The answer is 42. The hard part is knowing the right question.
 
+## Pages
+- https://forty-two.it/ : overview
+- https://forty-two.it/how-it-works : the stack, layer by layer, and who owns each layer
+- https://forty-two.it/always-on : running fortytwo on a laptop, a VPS or a homelab, and what 24/7 means
+- https://forty-two.it/runtimes : what is supported today and what the runtime adapter asks of a runtime
+- https://forty-two.it/trust : what fortytwo enforces and what it leaves to the runtime
+
 ## What it adds
 - Memory: durable semantic recall (SQLite + sqlite-vec, local Ollama embeddings), with provenance
-- Identity: a persona and owner context rendered into plain, gitignored files
+- Identity: a persona and owner context rendered into plain files in your project
 - Continuity: persistent agent sessions that resume; channels are access points to the same assistant
 - Time: a durable job scheduler that wakes the agent only when there is work
 - Channels: Telegram today (one-time-code pairing); the adapter contract is channel-agnostic
+
+## Always on
+Always on means the assistant infrastructure is available around the clock: the channel bridge, the scheduler, memory, identity files and saved session state. It does not mean the model runs continuously. The agent runtime is invoked when there is a turn to take, such as a message from the owner or a job that is due. fortytwo runs on a laptop, a VPS or a homelab; a VPS is not required. `fortytwo start` runs in the foreground so systemd or docker compose can supervise it.
 
 ## What stays with the agent runtime
 - Native tools and effective tool permissions
@@ -46,4 +56,5 @@ Status: 1.0 pre-release.
 
 ## Links
 - GitHub: https://github.com/justfortytwo
+- Docs: https://github.com/justfortytwo/docs
 - License: MIT

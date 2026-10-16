@@ -173,6 +173,8 @@ concept needs a picture, it becomes a **blueprint figure**, not an icon.
 
 ## 8. Motion policy: **none**
 
+> Static illustration geometry is not motion. The stack plate (`StackPlate.vue`) draws axonometric planes from computed coordinates (`app/utils/iso.ts`); the monument uses static offsets. Transitions, animations, SVG animation and filters remain forbidden and are checked in `scripts/checks.mjs`.
+
 - No entrance animations, no scroll reveals, no hover transitions beyond an
   **instant** color/border change, no parallax, no auto-playing anything.
 - Respect is trivially satisfied: there is no motion to reduce.

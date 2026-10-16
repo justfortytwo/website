@@ -6,7 +6,7 @@ const inGroup = (id: string) => packages.filter((p) => p.group === id)
   <div class="groups">
     <section v-for="g in packageGroups" :key="g.id" class="g">
       <header>
-        <h4>{{ g.label }}</h4>
+        <h3>{{ g.label }}</h3>
         <p>{{ g.blurb }}</p>
       </header>
       <ul>
@@ -22,7 +22,7 @@ const inGroup = (id: string) => packages.filter((p) => p.group === id)
 <style scoped>
 .groups{border-top:1px solid var(--rule)}
 .g{display:grid;grid-template-columns:240px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--rule)}
-h4{font-family:var(--font-mono);font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bronze-3);margin-bottom:6px}
+h3{font-family:var(--font-mono);font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bronze-3);margin-bottom:6px}
 header p{font-size:14px;color:var(--mute)}
 ul{list-style:none}
 li{display:grid;grid-template-columns:110px 220px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:baseline}

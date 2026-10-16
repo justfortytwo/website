@@ -29,6 +29,9 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.145",
+    "@iconify-json/simple-icons": "^1.2.100",
+    "@nuxt/icon": "^2.5.1",
     "vitest": "^3.0.0"
   },
   "trustedDependencies": [

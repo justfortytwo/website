@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { concepts } from '~/data/concepts'
+defineProps<{ via?: boolean }>()
 </script>
 <template>
   <div class="grid">
@@ -7,7 +8,7 @@ import { concepts } from '~/data/concepts'
       <div class="cn">// 0{{ i + 1 }}</div>
       <h3>{{ c.title }}</h3>
       <p>{{ c.body }}</p>
-      <div v-if="c.via.length" class="via">via {{ c.via.join(' · ') }}</div>
+      <div v-if="via && c.via.length" class="via">via {{ c.via.join(' · ') }}</div>
     </article>
   </div>
 </template>

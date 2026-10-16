@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/robots'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/robots', '@nuxt/icon'],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
   css: ['~/assets/css/tokens.css', '~/assets/css/base.css'],
@@ -15,13 +15,14 @@ export default defineNuxtConfig({
       ],
     },
   },
+  // Icons are inlined as SVG at build time from local collections: no runtime API calls, no icon font.
+  icon: { mode: 'svg', serverBundle: 'local', clientBundle: { scan: true }, fallbackToApi: false },
   site: { url: 'https://forty-two.it', name: 'fortytwo' },
   nitro: {
     prerender: {
-      // Only the homepage exists yet; nav links to future pages (/docs, /principles,
-      // /components, /security) are added in later tasks. Prerender just '/' explicitly
-      // and don't crawl, so the build stays green without masking real errors.
-      routes: ['/'],
+      // Every route is listed explicitly and links are not crawled, so a broken or
+      // forgotten page fails the build instead of being silently skipped.
+      routes: ['/', '/how-it-works', '/always-on', '/runtimes', '/trust'],
       crawlLinks: false,
     },
   },

@@ -1,16 +1,5 @@
-/** Layers of the architecture diagram, top to bottom. */
+/** Optional parts and ownership notes that sit beside the stack plate. */
 export const architecture = {
-  top: {
-    label: 'fortytwo',
-    caption: 'continuity infrastructure',
-    items: ['identity', 'memory', 'time', 'continuity', 'channels'],
-  },
-  adapter: { label: 'runtime adapter', caption: 'process and session lifecycle · today: runner' },
-  runtime: { label: 'agent runtime', caption: 'Claude Code today' },
-  owned: [
-    { label: 'native tools', caption: 'permissions · capabilities' },
-    { label: 'MCP · plugins · skills', caption: 'the agent’s ecosystem' },
-  ],
   optional: {
     label: 'optional, where configured',
     items: [
