@@ -18,7 +18,7 @@ export const site = {
     label: 'fortytwo',
     headline: 'Your coding agent is already powerful.',
     statement: 'fortytwo makes it personal, persistent, and always there.',
-    body: 'Run Claude Code as a persistent personal assistant: reach it from Telegram, let it remember you across sessions, and give it work to do later.',
+    body: 'Persistent identity, memory, time and channels for Claude Code.',
   },
   /** The separate documentation site: installation, configuration, reference. */
   docs: 'https://github.com/justfortytwo/docs',

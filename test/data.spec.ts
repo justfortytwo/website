@@ -31,7 +31,7 @@ describe('site', () => {
   it('says plainly that Claude Code is the only supported runtime today', () => {
     expect(site.runtime.current).toBe('Claude Code')
     expect(site.runtime.note).toBe('Claude Code is the only supported runtime today.')
-    expect(site.hero.body).toMatch(/Claude Code as a persistent personal assistant/)
+    expect(site.hero.body).toMatch(/identity, memory, time and channels for Claude Code/)
     expect(pages.home.description).toMatch(/only supported runtime today/)
   })
   it('leads the hero with the agent, then the product statement', () => {

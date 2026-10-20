@@ -21,7 +21,7 @@ usePageSeo('always-on')
           </div>
           <ArchiveFigure src="/img/channels-switchboard.jpg" :width="1920" :height="1527"
             alt="Five switchboard operators seated at a telephone exchange, photographed in 1958"
-            caption="A telephone exchange in 1958: someone is always on the line, and calls are routed when they arrive." />
+            caption="Switchboard operators, 1958." />
         </div>
         <AvailabilitySplit />
       </div>
@@ -58,7 +58,7 @@ usePageSeo('always-on')
           </div>
           <ArchiveFigure src="/img/time-pocket-watch.jpg" :width="1280" :height="1690" class="narrow"
             alt="Coloured engraving titled Mechanism of a Watch, showing the parts of a pocket watch"
-            caption="Mechanism of a watch, an early 19th-century engraving: time that runs without anyone watching." />
+            caption="Mechanism of a watch. Engraving, early 19th century." />
         </div>
         <DayTimeline />
       </div>

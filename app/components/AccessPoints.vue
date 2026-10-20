@@ -50,13 +50,13 @@ import { access as a } from '~/data/access'
 .tile{background:var(--paper);border:1px solid var(--ink);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center}
 .tile .big{font-size:34px;grid-row:1 / 3;color:var(--ink)}
 .tn{font-family:var(--font-serif);font-weight:500;font-size:22px;letter-spacing:-.3px;line-height:1.1}
-.td{font-size:14px;color:var(--ink-2);line-height:1.35}
-.gn{font-size:14px;color:var(--ink-2);margin-top:16px;max-width:62ch}
+.td{font-size:15.5px;color:var(--ink-2);line-height:1.35}
+.gn{font-size:16px;color:var(--ink-2);margin-top:16px;max-width:62ch}
 .core{border:1.5px solid var(--bronze-3);padding:14px 22px;text-align:center;min-width:min(360px,100%);background:var(--paper)}
 .cn{font-family:var(--font-serif);font-weight:500;font-size:26px;color:var(--bronze-3);letter-spacing:-.4px}
 .core ul{list-style:none;display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-top:4px}
 .core li{font-size:13px;color:var(--ink-2)}
 .box{border:1px solid var(--ink-2);padding:7px 20px;font-size:13px;letter-spacing:.5px;background:var(--paper)}
-figcaption{margin-top:24px;padding-top:12px;border-top:1px solid var(--rule);font-size:14.5px;color:var(--ink-2);max-width:62ch;text-align:left;align-self:stretch}
+figcaption{margin-top:24px;padding-top:12px;border-top:1px solid var(--rule);font-size:16px;color:var(--ink-2);max-width:62ch;text-align:left;align-self:stretch}
 @media (max-width:640px){.live{grid-template-columns:1fr}.band{padding:14px 14px 18px}}
 </style>

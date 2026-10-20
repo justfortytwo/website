@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { stack, owners, type Owner, type StackItem } from '~/data/stack'
 import { project, rect, points, round, alongX } from '~/utils/iso'
+import { site } from '~/data/site'
 
 const props = defineProps<{ compact?: boolean }>()
 
@@ -70,6 +71,9 @@ const rails = (['left', 'right'] as const).map(side => {
   return { side, x, y1: layers[0][side][1], y2: layers[5][side][1], stubs }
 })
 
+// The home-page plate reads as You / fortytwo / Claude Code: the three actors, named plainly.
+const actorNames: Record<Owner, string> = { fortytwo: site.name, runtime: site.runtime.current, you: 'You' }
+
 const titleId = useId()
 const descId = useId()
 const desc = stack.map(l => `${l.name}: ${l.items.map(i => i.label).join(', ')}`).join('. ')
@@ -129,7 +133,7 @@ const desc = stack.map(l => `${l.name}: ${l.items.map(i => i.label).join(', ')}`
       <g v-for="g in groups" :key="g.from" :class="['bracket', g.owner]">
         <line v-for="m in g.members" :key="m.id" class="tie" :x1="m.right[0] + RAIL + 6" :y1="m.right[1]" :x2="BRACKET_X" :y2="m.right[1]" />
         <path class="bar" :d="`M${BRACKET_X - 6},${g.y1} H${BRACKET_X} V${g.y2} H${BRACKET_X - 6}`" />
-        <text class="owner" :x="BRACKET_X + 14" :y="g.mid - (compact ? -4 : 4)">{{ owners[g.owner].label.toUpperCase() }}</text>
+        <text class="owner" :x="BRACKET_X + 14" :y="g.mid - (compact ? -9 : 4)">{{ compact ? actorNames[g.owner] : owners[g.owner].label.toUpperCase() }}</text>
         <text v-if="!compact" class="note" :x="BRACKET_X + 14" :y="g.mid + 13">{{ owners[g.owner].note }}</text>
       </g>
     </svg>
@@ -178,13 +182,15 @@ figcaption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wra
 .label circle{fill:var(--ink-2)}
 .label .name{font-family:var(--font-mono);font-size:13.5px;letter-spacing:1.2px;fill:var(--ink)}
 .label .cap{font-family:var(--font-mono);font-size:12.5px;fill:var(--mute)}
-.label.em .name{fill:var(--bronze-3)}
+.plate.compact .label .name{fill:var(--mute)}
+.label.em .name,.plate.compact .label.em .name{fill:var(--bronze-3)}
 .label.em .leader{stroke:var(--bronze-3)}
 .label.em circle{fill:var(--bronze-3)}
 .bracket .tie{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
 .bracket .bar{fill:none;stroke:var(--ink-2);stroke-width:1}
 .bracket .owner{font-family:var(--font-mono);font-size:13.5px;letter-spacing:1.4px;fill:var(--ink)}
 .bracket .note{font-family:var(--font-mono);font-size:12.5px;fill:var(--mute)}
+.plate.compact .bracket .owner{font-family:var(--font-serif);font-weight:500;font-size:34px;letter-spacing:-.5px}
 .bracket.fortytwo .bar{stroke:var(--bronze-3);stroke-width:1.6}
 .bracket.fortytwo .owner{fill:var(--bronze-3)}
 .bracket.you .bar{stroke:var(--mute)}

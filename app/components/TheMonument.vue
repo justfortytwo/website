@@ -46,5 +46,6 @@
 .tick{position:absolute;font-family:var(--font-mono);font-size:13px;color:var(--mute);z-index:4}
 .tick.top{top:6%;left:50%;transform:translateX(-50%)}
 .tick.bot{bottom:4%;left:50%;transform:translateX(-50%)}
-@media (max-width:520px){.tick.top{display:none}.annot{font-size:12px;letter-spacing:1px}.a-bl{bottom:16%}}
+@media (max-width:1100px){.tick.top{display:none}}
+@media (max-width:520px){.annot{font-size:12px;letter-spacing:1px}.a-bl{bottom:16%}.a-br{bottom:9%}}
 </style>

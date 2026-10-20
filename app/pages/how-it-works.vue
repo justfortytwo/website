@@ -36,7 +36,7 @@ usePageSeo('how-it-works')
           </div>
           <ArchiveFigure src="/img/telegram-telegraphists.jpg" :width="1080" :height="1230"
             alt="Engraving of three telegraph operators at their desks sending and receiving messages"
-            caption="Telegraph operators, 19th-century engraving: messages arrive from a distance and someone answers." />
+            caption="Telegraph operators. Engraving, 19th century." />
         </div>
         <AccessPoints />
       </div>
@@ -69,10 +69,10 @@ usePageSeo('how-it-works')
 </template>
 <style scoped>
 .notes{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
-.notes li{font-size:14.5px;color:var(--ink-2);line-height:1.45;border-top:1px solid var(--rule);padding-top:10px}
+.notes li{font-size:16.5px;color:var(--ink-2);line-height:1.45;border-top:1px solid var(--rule);padding-top:10px}
 .opt{max-width:62ch;border-top:1px solid var(--rule)}
 .opt > div{padding:16px 0;border-bottom:1px solid var(--rule)}
 dt{font-size:13px;letter-spacing:.5px;color:var(--bronze-3)}
-dd{font-size:15.5px;color:var(--ink-2);margin-top:2px}
+dd{font-size:16.5px;color:var(--ink-2);margin-top:2px}
 @media (max-width:860px){.notes{grid-template-columns:1fr}}
 </style>

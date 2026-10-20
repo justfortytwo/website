@@ -32,7 +32,7 @@ const lastNum = String(trustSections.length + 1).padStart(2, '0')
           </div>
           <ArchiveFigure src="/img/trust-lock-and-key.jpg" :width="1920" :height="1589"
             alt="Wood engraving of a medieval iron lock plate and its key"
-            caption="A medieval iron lock and key, wood engraving: a lock is useful for what it covers, and only that." />
+            caption="Medieval lock and key. Wood engraving." />
         </div>
         <div class="two-col">
           <div>

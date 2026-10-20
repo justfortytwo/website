@@ -21,7 +21,7 @@ usePageSeo('runtimes')
           </div>
           <ArchiveFigure src="/img/runtime-engine-governor.jpg" :width="1280" :height="1277" class="narrow"
             alt="Glass lantern slide of an engineering drawing of a steam-engine governor"
-            caption="A steam-engine governor, c. 1910 lantern slide: a part that regulates an engine it does not replace." />
+            caption="Steam-engine governor. Lantern slide, c. 1910." />
         </div>
         <RuntimeTable />
         <p class="aside more">{{ providerNote }}</p>

@@ -52,7 +52,8 @@ function copyInstall() {
           <p class="lede">{{ site.hero.body }}</p>
           <div class="cta-row">
             <button type="button" class="term" @click="copyInstall" :title="copied ? 'Copied' : 'Click to copy'"><span class="pr mono">$</span><span class="inst mono">{{ installCmd }}</span><span class="c mono" aria-live="polite">{{ copied ? 'copied' : 'copy' }}</span></button>
-            <NuxtLink class="ghost" to="/how-it-works">How it works <span class="ar">→</span></NuxtLink>
+            <a class="ghost primary" href="#quickstart">Get started <span class="ar">→</span></a>
+            <a class="ghost" :href="site.github">GitHub <span class="ar">↗</span></a>
           </div>
           <p class="runtime-note mono">{{ site.runtime.note }} <NuxtLink class="inline" to="/runtimes">Runtime support</NuxtLink></p>
         </div>
@@ -80,16 +81,16 @@ function copyInstall() {
         <SectionLabel num="03" title="what it adds" />
         <div class="intro">
           <h2>Five things <em>a session doesn’t keep.</em></h2>
-          <p>A coding session ends. An assistant should not. fortytwo gives Claude Code memory and time, and a way to be reached.</p>
+          <p>A coding session ends and takes its context with it. fortytwo supplies continuity across sessions: who the assistant is, what it remembers, when it acts and how you reach it.</p>
         </div>
         <ConceptGrid />
         <div class="pair">
           <ArchiveFigure src="/img/memory-card-catalogue.jpg" :width="1920" :height="1624"
             alt="Open drawer in a wooden library card catalogue, with index cards inside and labelled drawers around it"
-            caption="A library card catalogue: memory kept as cards you can look up by subject." />
+            caption="Library card catalogue." />
           <ArchiveFigure src="/img/time-pocket-watch.jpg" :width="1280" :height="1690"
             alt="Coloured engraving titled Mechanism of a Watch, showing the parts of a pocket watch"
-            caption="Mechanism of a watch, an early 19th-century engraving: time that runs without anyone watching." />
+            caption="Mechanism of a watch. Engraving, early 19th century." />
         </div>
         <div class="callout">
           <p>{{ sessionNote.lead }}</p>
@@ -116,7 +117,7 @@ function copyInstall() {
           </div>
           <ArchiveFigure src="/img/channels-switchboard.jpg" :width="1920" :height="1527"
             alt="Five switchboard operators seated at a telephone exchange, photographed in 1958"
-            caption="A telephone exchange in 1958: someone is always on the line, and calls are routed when they arrive." />
+            caption="Switchboard operators, 1958." />
         </div>
       </div>
     </section>
@@ -161,11 +162,21 @@ function copyInstall() {
             <h2 class="h2">Open Telegram. <em>Say hello.</em></h2>
             <p>Send the one-time code to your bot and you are talking to the assistant. Until a chat is paired, the bot ignores everyone.</p>
             <p class="meta mono">Needs Claude Code and Node ≥ 20. Full prerequisites are in the docs.</p>
-            <p class="more">Ready to run it? <a class="ghost" :href="site.docs">Read the installation guide <span class="ar">↗</span></a></p>
           </div>
           <ArchiveFigure class="qs-fig" src="/img/telegram-telegraphists.jpg" :width="1080" :height="1230"
             alt="Engraving of three telegraph operators at their desks sending and receiving messages"
-            caption="Telegraph operators, 19th-century engraving: messages arrive from a distance and someone answers." />
+            caption="Telegraph operators. Engraving, 19th century." />
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="sec final-cta">
+      <div class="wrap">
+        <p class="cta-h">Give your agent <em>continuity.</em></p>
+        <div class="cta-row">
+          <a class="ghost primary" :href="site.docs">Get started <span class="ar">→</span></a>
+          <a class="ghost" :href="site.github">GitHub <span class="ar">↗</span></a>
         </div>
       </div>
     </section>
@@ -185,14 +196,19 @@ function copyInstall() {
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
 .hero h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(40px,5.6vw,66px);line-height:1.02;letter-spacing:-1.6px;margin:6px 0 16px;max-width:15ch}
 .statement{font-family:var(--font-serif);font-style:italic;font-size:clamp(22px,2.6vw,30px);line-height:1.2;color:var(--bronze-3);margin-bottom:22px;max-width:26ch}
-.lede{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:48ch;margin-bottom:30px}
+.lede{font-size:21px;line-height:1.5;color:var(--ink);max-width:36ch;margin-bottom:30px}
 .term{background:var(--ink);color:#e9e4d8;padding:13px 16px;border-radius:3px;display:flex;align-items:center;gap:10px;border:0;font:inherit;cursor:pointer;text-align:left}
+.hero .term{flex:1 1 100%}
+.term .c{margin-left:auto}
 .term .pr{color:var(--bronze-1)} .term .inst{color:#fff;font-size:14px} .term .c{color:#9aa0a8}
 .term:hover .c{color:var(--bronze-1)}
-.runtime-note{margin-top:20px;font-size:13px;letter-spacing:.3px;color:var(--ink-2)}
+.runtime-note{margin-top:20px;font-size:14px;letter-spacing:.3px;color:var(--ink-2)}
 .qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
-.qs-note p{font-size:15.5px;color:var(--ink-2);max-width:46ch;margin-bottom:12px}
-.qs-note .meta{margin-top:14px;font-size:13px;color:var(--mute)}
+.qs-note p{font-size:17px;color:var(--ink-2);max-width:46ch;margin-bottom:12px}
+.qs-note .meta{margin-top:14px;font-size:14px;color:var(--mute)}
+.cta-h{font-family:var(--font-serif);font-weight:500;font-size:clamp(32px,4.2vw,46px);line-height:1.06;letter-spacing:-1px;margin-bottom:22px}
+.cta-h em{font-style:italic;color:var(--bronze-3)}
+.final-cta{padding:72px 0}
 .motto{text-align:center;padding:120px 0 70px}
 .motto .stamp{display:inline-block;font-size:13px;letter-spacing:3px;color:var(--bronze-3);border:1px solid var(--bronze-3);padding:6px 14px;margin-bottom:34px}
 .motto-h{font-family:var(--font-serif);font-weight:400;font-size:clamp(24px,2.6vw,36px);line-height:1.2;letter-spacing:-.5px;max-width:30ch;margin:0 auto}
@@ -206,6 +222,6 @@ function copyInstall() {
 @media (max-width:860px){
   .hero-grid,.qs-grid{grid-template-columns:1fr}
   .qs-fig{grid-column:1}
-  .term .inst{font-size:13px}
+  .term .inst{font-size:14px}
 }
 </style>
