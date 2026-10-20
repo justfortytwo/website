@@ -40,10 +40,11 @@
   color:var(--ink-2);z-index:4}
 .annot::before{content:"";display:inline-block;width:14px;height:1px;background:var(--ink-2);
   vertical-align:middle;margin-right:6px}
-.a-top{top:8%;left:6%}.a-right{top:30%;right:2%}.a-bl{bottom:9%;left:4%}
+.a-top{top:8%;left:6%}.a-right{top:8%;right:6%}.a-bl{bottom:9%;left:4%}
 .a-br{bottom:7%;right:6%;color:var(--bronze-3)}
 .a-br::before{background:var(--bronze-3)}
 .tick{position:absolute;font-family:var(--font-mono);font-size:13px;color:var(--mute);z-index:4}
 .tick.top{top:6%;left:50%;transform:translateX(-50%)}
 .tick.bot{bottom:4%;left:50%;transform:translateX(-50%)}
+@media (max-width:520px){.tick.top{display:none}.annot{font-size:12px;letter-spacing:1px}.a-bl{bottom:16%}}
 </style>

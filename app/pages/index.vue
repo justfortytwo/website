@@ -51,7 +51,7 @@ function copyInstall() {
           <p class="statement">{{ site.hero.statement }}</p>
           <p class="lede">{{ site.hero.body }}</p>
           <div class="cta-row">
-            <button type="button" class="term" @click="copyInstall" :title="copied ? 'Copied' : 'Click to copy'"><span class="pr mono">$</span><span class="inst mono">{{ installCmd }}</span><span class="c mono">{{ copied ? 'copied' : 'copy' }}</span></button>
+            <button type="button" class="term" @click="copyInstall" :title="copied ? 'Copied' : 'Click to copy'"><span class="pr mono">$</span><span class="inst mono">{{ installCmd }}</span><span class="c mono" aria-live="polite">{{ copied ? 'copied' : 'copy' }}</span></button>
             <NuxtLink class="ghost" to="/how-it-works">How it works <span class="ar">→</span></NuxtLink>
           </div>
           <p class="runtime-note mono">{{ site.runtime.note }} <NuxtLink class="inline" to="/runtimes">Runtime support</NuxtLink></p>

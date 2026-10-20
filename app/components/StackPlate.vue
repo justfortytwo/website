@@ -152,7 +152,7 @@ const desc = stack.map(l => `${l.name}: ${l.items.map(i => i.label).join(', ')}`
 .plate{border:1px solid var(--rule);background:var(--paper);padding:22px 22px 14px}
 .iso{display:block;width:100%;height:auto}
 .plate.compact .iso{max-width:900px;margin:0 auto}
-figcaption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
+figcaption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
 
 /* svg */
 .guides line{stroke:var(--grid);stroke-width:1;stroke-dasharray:2 5}
@@ -160,7 +160,7 @@ figcaption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wra
 .layer.runtime .plane{fill:var(--paper-2)}
 .layer.you .plane{stroke:var(--mute)}
 .layer.em .plane{stroke:var(--bronze-3);stroke-width:1.8}
-.row{font-family:var(--font-mono);font-size:12px;fill:var(--ink)}
+.row{font-family:var(--font-mono);font-size:13.5px;fill:var(--ink)}
 .row .sep{fill:var(--mute)}
 .axis line{stroke:var(--ink);stroke-width:1}
 .axis circle{fill:var(--ink)}
@@ -173,18 +173,18 @@ figcaption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wra
 .rail{stroke:var(--bronze-3);stroke-width:3;stroke-linecap:square}
 .stub{stroke:var(--bronze-3);stroke-width:1.5}
 .clip{fill:var(--bronze-3)}
-.rel{font-family:var(--font-mono);font-size:10px;letter-spacing:.5px;fill:var(--mute)}
+.rel{font-family:var(--font-mono);font-size:12px;letter-spacing:.5px;fill:var(--mute)}
 .label .leader{stroke:var(--ink-2);stroke-width:1}
 .label circle{fill:var(--ink-2)}
-.label .name{font-family:var(--font-mono);font-size:12.5px;letter-spacing:1.2px;fill:var(--ink)}
-.label .cap{font-family:var(--font-mono);font-size:11px;fill:var(--mute)}
+.label .name{font-family:var(--font-mono);font-size:13.5px;letter-spacing:1.2px;fill:var(--ink)}
+.label .cap{font-family:var(--font-mono);font-size:12.5px;fill:var(--mute)}
 .label.em .name{fill:var(--bronze-3)}
 .label.em .leader{stroke:var(--bronze-3)}
 .label.em circle{fill:var(--bronze-3)}
 .bracket .tie{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
 .bracket .bar{fill:none;stroke:var(--ink-2);stroke-width:1}
-.bracket .owner{font-family:var(--font-mono);font-size:12px;letter-spacing:1.4px;fill:var(--ink)}
-.bracket .note{font-family:var(--font-mono);font-size:11px;fill:var(--mute)}
+.bracket .owner{font-family:var(--font-mono);font-size:13.5px;letter-spacing:1.4px;fill:var(--ink)}
+.bracket .note{font-family:var(--font-mono);font-size:12.5px;fill:var(--mute)}
 .bracket.fortytwo .bar{stroke:var(--bronze-3);stroke-width:1.6}
 .bracket.fortytwo .owner{fill:var(--bronze-3)}
 .bracket.you .bar{stroke:var(--mute)}
@@ -208,12 +208,12 @@ figcaption .key{text-transform:none;letter-spacing:.5px}
   .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
   .n{font-family:var(--font-serif);font-weight:500;font-size:22px;letter-spacing:-.3px}
   .em .n{color:var(--bronze-3)}
-  .o{font-family:var(--font-mono);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
+  .o{font-family:var(--font-mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
   .fortytwo .o{color:var(--bronze-3)}
-  .c{font-family:var(--font-mono);font-size:11.5px;color:var(--mute);margin-top:2px}
+  .c{font-family:var(--font-mono);font-size:12.5px;color:var(--mute);margin-top:2px}
   .its{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   .its li{font-family:var(--font-mono);font-size:12px;padding:3px 9px;border:1px solid var(--rule)}
-  .link{position:absolute;left:16px;bottom:-22px;font-family:var(--font-mono);font-size:10.5px;color:var(--mute);line-height:20px}
+  .link{position:absolute;left:16px;bottom:-22px;font-family:var(--font-mono);font-size:12px;color:var(--mute);line-height:20px}
   .flat > li:last-child .link{display:none}
 }
 </style>

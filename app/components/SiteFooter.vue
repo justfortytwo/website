@@ -21,7 +21,8 @@ import { pictureCredits } from '~/data/credits'
 <style scoped>
 footer{border-top:1px solid var(--rule);padding:26px 0;font-family:var(--font-mono);font-size:13px;color:var(--mute)}
 .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.f-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.f-links{display:flex;flex-wrap:wrap;gap:0 18px}
+.f-links a{display:inline-block;padding:6px 0}
 .f-links a:hover{color:var(--bronze-3)}
 .credits{font-family:var(--font-serif);font-size:15px;line-height:1.5;margin-top:18px;color:var(--ink-2)}
 .credits a{border-bottom:1px solid var(--rule)}
