@@ -10,7 +10,7 @@ const lastNum = String(trustSections.length + 1).padStart(2, '0')
     <PageHero
       eyebrow="trust"
       title="Local-first, with the boundaries stated."
-      lede="What fortytwo enforces, what it leaves to the runtime, and where each claim comes from. This is a description of behaviour, not a promise of safety." />
+      lede="What fortytwo enforces, what it leaves to the runtime, and what still leaves your machine. This is a description of behaviour, not a promise of safety." />
 
     <section v-for="(s, i) in trustSections" :id="s.id" :key="s.id" class="sec">
       <div class="wrap">

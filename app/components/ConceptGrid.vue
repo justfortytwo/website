@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { concepts } from '~/data/concepts'
-defineProps<{ via?: boolean }>()
 </script>
 <template>
   <div class="grid">
@@ -8,7 +7,6 @@ defineProps<{ via?: boolean }>()
       <div class="cn">// 0{{ i + 1 }}</div>
       <h3>{{ c.title }}</h3>
       <p>{{ c.body }}</p>
-      <div v-if="via && c.via.length" class="via">via {{ c.via.join(' · ') }}</div>
     </article>
   </div>
 </template>
@@ -18,7 +16,6 @@ defineProps<{ via?: boolean }>()
 .cn{font-family:var(--font-mono);font-size:10px;color:var(--mute);letter-spacing:1.5px}
 h3{font-family:var(--font-serif);font-weight:500;font-size:28px;letter-spacing:-.5px;margin:4px 0 10px}
 p{font-size:15px;color:var(--ink-2);line-height:1.5}
-.via{font-family:var(--font-mono);font-size:11px;color:var(--bronze-3);letter-spacing:.3px;margin-top:14px}
 @media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
 @media (max-width:620px){.grid{grid-template-columns:1fr}}
 </style>

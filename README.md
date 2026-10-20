@@ -3,7 +3,7 @@
 The website for **fortytwo** — continuity and personal-assistant infrastructure
 (memory, identity, time, channels) around the coding agent you already use. It
 does not replace the agent runtime or reimplement its tools, permissions or
-integrations. Claude Code is the first supported runtime.
+integrations. Claude Code is the only supported runtime today.
 
 > *The answer is 42. The hard part is knowing the right question.*
 

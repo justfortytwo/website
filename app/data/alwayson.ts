@@ -1,4 +1,4 @@
-/** Content for /always-on and the home teaser. Claims are checked against sibling READMEs (see `source`). */
+/** Content for /always-on and the home teaser. Claims are checked against the sibling package READMEs. */
 
 export const presence = {
   session: {
@@ -37,7 +37,7 @@ export const availability: { stays: Lane; runs: Lane; footnote: string } = {
       { name: 'Scheduler', body: 'Keeps time, and claims jobs when they come due.' },
       { name: 'Memory', body: 'A local database the agent can query when it needs to.' },
       { name: 'Identity', body: 'Persona and owner context as plain files in your project.' },
-      { name: 'Session state', body: 'Session IDs saved as recovery hints, so a restarted bridge can resume a chat.' },
+      { name: 'Session state', body: 'Enough saved state to pick a chat back up after a restart.' },
     ],
   },
   runs: {
@@ -48,7 +48,7 @@ export const availability: { stays: Lane; runs: Lane; footnote: string } = {
       { name: 'Oneiros pass', body: 'Daily maintenance. A cheap check looks for new memory first; with none, nothing runs.' },
     ],
   },
-  footnote: 'A live session process can stay resident between messages. It does no inference while idle. Crash recovery is best effort.',
+  footnote: 'A live session process can stay resident between messages. It does no inference while idle.',
 }
 
 export interface DeployContext { id: string; name: string; tag: string; lines: string[] }
@@ -57,44 +57,35 @@ export const deployContexts: DeployContext[] = [
   { id: 'laptop', name: 'Laptop', tag: 'Try it, use it locally',
     lines: [
       'Best for trying fortytwo and everyday local use.',
-      'The assistant is available while the machine is awake and online.',
-      'Nothing to operate: fortytwo start in a terminal.',
+      'Reachable only while the machine is awake and online.',
+      'Nothing to operate: run it in a terminal.',
     ] },
   { id: 'vps', name: 'VPS', tag: 'Reachable around the clock',
     lines: [
-      'A small always-on machine keeps channels, scheduler, state and lifecycle available remotely.',
+      'A small always-on machine keeps channels, scheduler and state available remotely.',
       'Not required. Use one if you want the assistant reachable while your laptop is closed.',
-      'The embedder can run elsewhere: point memory at a remote Ollama URL.',
     ] },
   { id: 'homelab', name: 'Homelab', tag: 'Same model, your hardware',
     lines: [
       'The same architecture on infrastructure you control.',
-      'Sits next to services you already run. The embedder can be an Ollama in a sibling container or on another host.',
+      'Sits next to services you already run.',
       'You own the machine and the operational boundary.',
     ] },
 ]
 
-export const deployNote = 'The same architecture in all three. fortytwo start stays in the foreground on purpose, so systemd or docker compose owns restarts and logs.'
+export const deployNote = 'The same architecture in all three. fortytwo runs in the foreground on purpose, so your service manager or container runtime owns restarts and logs.'
 
-export const mentalModel = ['Your assistant.', 'Your runtime.', 'Your tools.', 'Your infrastructure.']
-export const mentalModelClose = 'fortytwo supplies the continuity between them.'
-
-export interface DayBeat { time: string; zone?: string; event: string; result: string; source: string }
+export interface DayBeat { time: string; zone?: string; event: string; result: string }
 
 export const day: DayBeat[] = [
   { time: '08:32', event: 'You message the assistant from Telegram.',
-    result: 'The chat’s session resumes, and memory brings back what you told it.', source: 'telegram/README.md' },
+    result: 'The chat’s session resumes, and memory brings back what you told it.' },
   { time: '11:00', event: 'A scheduled job becomes due.',
-    result: 'The scheduler claims it, checks that there is work, and wakes the agent through the runner. The result can be pushed to you.', source: 'scheduler/README.md' },
+    result: 'The scheduler claims it, checks that there is work, and wakes the agent through the runner. The result can be pushed to you.' },
   { time: '14:20', event: 'You open Claude Code in the same project over SSH.',
-    result: 'Same persona files and the same durable memory. It is a different session from your Telegram chat.', source: 'installer/README.md' },
+    result: 'Same persona files and the same durable memory. It is a different session from your Telegram chat.' },
   { time: '03:17', zone: 'UTC', event: 'Oneiros, the daily maintenance job, comes due.',
-    result: 'If memory has new entries, a tool-free pass may add evidence-backed notes to three profile sections. Otherwise nothing runs.', source: 'persona/README.md, scheduler/README.md' },
+    result: 'If memory has new entries, a tool-free pass may add notes to your profile. Otherwise nothing runs.' },
 ]
 
 export const dayNote = 'An illustrative day. Times are examples, except Oneiros, whose default schedule is 03:17 UTC.'
-
-export const serviceExample = {
-  tag: 'as a service',
-  note: 'Run the foreground command under whatever already supervises your machine.',
-}

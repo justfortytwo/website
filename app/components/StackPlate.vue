@@ -94,7 +94,7 @@ const desc = stack.map(l => `${l.name}: ${l.items.map(i => i.label).join(', ')}`
         <polygon class="plane" :points="l.plane" />
         <text v-if="l.slab" :transform="l.slab.mark" class="mark">42</text>
         <text v-for="(r, n) in l.rows" :key="n" :transform="r.at" class="row">
-          <template v-for="(it, m) in r.items" :key="it.label"><tspan v-if="m" class="sep"> · </tspan><tspan :class="{ future: it.future }">{{ it.label }}</tspan></template>
+          <template v-for="(it, m) in r.items" :key="it.label"><tspan v-if="m" class="sep"> · </tspan><tspan>{{ it.label }}</tspan></template>
         </text>
       </g>
 
@@ -139,7 +139,7 @@ const desc = stack.map(l => `${l.name}: ${l.items.map(i => i.label).join(', ')}`
       <li v-for="l in layers" :key="l.id" :class="[l.owner, { em: l.emphasis }]">
         <div class="head"><span class="n">{{ l.name }}</span><span class="o">{{ owners[l.owner].label }}</span></div>
         <div v-if="l.caption.length" class="c">{{ l.caption.join(' ') }}</div>
-        <ul v-if="!compact" class="its"><li v-for="it in l.items" :key="it.label" :class="{ future: it.future }">{{ it.label }}</li></ul>
+        <ul v-if="!compact" class="its"><li v-for="it in l.items" :key="it.label">{{ it.label }}</li></ul>
         <div v-if="l.relation" class="link" aria-hidden="true">↕ {{ l.relation }}</div>
       </li>
     </ol>
@@ -161,7 +161,7 @@ figcaption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wra
 .layer.you .plane{stroke:var(--mute)}
 .layer.em .plane{stroke:var(--bronze-3);stroke-width:1.8}
 .row{font-family:var(--font-mono);font-size:12px;fill:var(--ink)}
-.row .future,.row .sep{fill:var(--mute)}
+.row .sep{fill:var(--mute)}
 .axis line{stroke:var(--ink);stroke-width:1}
 .axis circle{fill:var(--ink)}
 .axis line.ours{stroke:var(--bronze-3);stroke-width:2}
@@ -213,7 +213,6 @@ figcaption .key{text-transform:none;letter-spacing:.5px}
   .c{font-family:var(--font-mono);font-size:11.5px;color:var(--mute);margin-top:2px}
   .its{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   .its li{font-family:var(--font-mono);font-size:12px;padding:3px 9px;border:1px solid var(--rule)}
-  .its li.future{color:var(--mute);border-style:dashed}
   .link{position:absolute;left:16px;bottom:-22px;font-family:var(--font-mono);font-size:10.5px;color:var(--mute);line-height:20px}
   .flat > li:last-child .link{display:none}
 }

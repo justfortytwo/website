@@ -12,19 +12,19 @@ export const site = {
   /** The one runtime fortytwo supports today. Not the conceptual boundary of the product. */
   runtime: {
     current: 'Claude Code',
-    note: 'Claude Code is the first supported runtime. More can follow.',
+    note: 'Claude Code is the only supported runtime today.',
   },
   hero: {
     label: 'fortytwo',
     headline: 'Your coding agent is already powerful.',
     statement: 'fortytwo makes it personal, persistent, and always there.',
-    body: 'fortytwo adds memory, identity, continuity, time and channels around the agent runtime you already trust — without replacing its tools, permissions or integrations.',
+    body: 'Run Claude Code as a persistent personal assistant: reach it from Telegram, let it remember you across sessions, and give it work to do later.',
   },
+  /** The separate documentation site: installation, configuration, reference. */
   docs: 'https://github.com/justfortytwo/docs',
   nav: [
     { label: 'How it works', href: '/how-it-works' },
-    { label: 'Always on', href: '/always-on' },
-    { label: 'Runtimes', href: '/runtimes' },
+    { label: 'Run it 24/7', href: '/always-on' },
     { label: 'Trust', href: '/trust' },
     { label: 'Docs ↗', href: 'https://github.com/justfortytwo/docs' },
     { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
@@ -34,9 +34,9 @@ export const site = {
     disclaimer: 'Not affiliated with Anthropic.',
     links: [
       { label: 'How it works', href: '/how-it-works' },
-      { label: 'Always on', href: '/always-on' },
-      { label: 'Runtimes', href: '/runtimes' },
+      { label: 'Run it 24/7', href: '/always-on' },
       { label: 'Trust', href: '/trust' },
+      { label: 'Runtime support', href: '/runtimes' },
       { label: 'Docs ↗', href: 'https://github.com/justfortytwo/docs' },
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
       { label: 'Marketplace ↗', href: 'https://github.com/justfortytwo/marketplace' },

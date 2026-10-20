@@ -1,21 +1,19 @@
 import { describe, it, expect } from 'vitest'
 import { site } from '../app/data/site'
 import { boundary } from '../app/data/boundary'
-import { concepts } from '../app/data/concepts'
+import { concepts, sessionNote } from '../app/data/concepts'
 import { architecture } from '../app/data/architecture'
-import { packages, packageGroups } from '../app/data/packages'
-import { principles } from '../app/data/principles'
 import { status, statusLabels } from '../app/data/status'
 import { pages, pageOrder } from '../app/data/pages'
-import { stack, owners, stackNotes, responsibilities } from '../app/data/stack'
+import { stack, owners, stackNotes } from '../app/data/stack'
 import { presence, alwaysOnClaim, availability, deployContexts, deployNote, day, dayNote } from '../app/data/alwayson'
 import { access } from '../app/data/access'
-import { runtimeTable, runtimeOwns, adapterNeeds, providerNote, noDuplication } from '../app/data/runtimes'
+import { runtimeTable, runtimeBoundary, providerNote, noDuplication } from '../app/data/runtimes'
 import { trustSections, enforces, doesNotEnforce } from '../app/data/trust'
 import { project, rect, points, ISO } from '../app/utils/iso'
 
 /** Every user-facing string the site can render from typed data. */
-const allContent = JSON.stringify({ site, pages, boundary, concepts, architecture, packages, packageGroups, principles, status, stack, owners, stackNotes, responsibilities, presence, alwaysOnClaim, availability, deployContexts, deployNote, day, dayNote, access, runtimeTable, runtimeOwns, adapterNeeds, providerNote, noDuplication, trustSections, enforces, doesNotEnforce }).toLowerCase()
+const allContent = JSON.stringify({ site, pages, boundary, concepts, sessionNote, architecture, status, stack, owners, stackNotes, presence, alwaysOnClaim, availability, deployContexts, deployNote, day, dayNote, access, runtimeTable, runtimeBoundary, providerNote, noDuplication, trustSections, enforces, doesNotEnforce }).toLowerCase()
 
 describe('site', () => {
   it('has english lang, org, nav and footer', () => {
@@ -30,11 +28,11 @@ describe('site', () => {
     expect(motto).toMatch(/The answer is 42/)
     expect(motto).toMatch(/right question/i)
   })
-  it('positions Claude Code as the first runtime, not the boundary', () => {
+  it('says plainly that Claude Code is the only supported runtime today', () => {
     expect(site.runtime.current).toBe('Claude Code')
-    expect(site.runtime.note).toBe('Claude Code is the first supported runtime. More can follow.')
-    expect(site.hero.body).not.toMatch(/claude/i)
-    expect(pages.home.title).not.toMatch(/claude/i)
+    expect(site.runtime.note).toBe('Claude Code is the only supported runtime today.')
+    expect(site.hero.body).toMatch(/Claude Code as a persistent personal assistant/)
+    expect(pages.home.description).toMatch(/only supported runtime today/)
   })
   it('leads the hero with the agent, then the product statement', () => {
     expect(site.hero.headline).toBe('Your coding agent is already powerful.')
@@ -59,9 +57,12 @@ describe('pages', () => {
     expect(new Set(list.map((p) => p.title)).size).toBe(list.length)
     expect(new Set(list.map((p) => p.description)).size).toBe(list.length)
   })
-  it('nav points at every inner page, then docs and github', () => {
+  it('nav points at the product pages, then docs and github; runtime support is in the footer', () => {
     const hrefs = site.nav.map((n) => n.href)
-    for (const k of pageOrder) expect(hrefs).toContain(pages[k].path)
+    for (const k of pageOrder.filter((k) => k !== 'runtimes')) expect(hrefs).toContain(pages[k].path)
+    expect(hrefs).not.toContain(pages.runtimes.path)
+    expect(site.footer.links.map((l) => l.href)).toContain(pages.runtimes.path)
+    expect(site.nav.map((n) => n.label)).toEqual(['How it works', 'Run it 24/7', 'Trust', 'Docs ↗', 'GitHub ↗'])
     expect(hrefs.some((h) => h.includes('/docs'))).toBe(true)
     expect(hrefs).toContain(site.github)
     expect(site.nav.map((n) => n.label.toLowerCase())).not.toContain('components')
@@ -70,24 +71,35 @@ describe('pages', () => {
 
 describe('boundary', () => {
   it('splits agent-owned capabilities from fortytwo continuity', () => {
-    expect(boundary.agentOwns).toEqual(expect.arrayContaining(['use tools', 'call MCP servers', 'ask for permission']))
-    expect(boundary.fortytwoAdds).toEqual(expect.arrayContaining(['remember you', 'wake up later']))
+    expect(boundary.agentOwns).toEqual(expect.arrayContaining(['tools', 'permissions', 'MCP servers', 'skills and plugins']))
+    expect(boundary.fortytwoAdds).toEqual(['identity', 'memory', 'continuity', 'time', 'channels'])
     const overlap = boundary.agentOwns.filter((x) => boundary.fortytwoAdds.includes(x))
     expect(overlap).toEqual([])
   })
-  it('states the inherit-not-compete principle', () => {
-    expect(boundary.principle).toMatch(/inherit improvements/)
-    expect(boundary.principle).toMatch(/not compete/)
+  it('leads with continuity, not capabilities', () => {
+    expect(`${boundary.heading} ${boundary.headingEm}`).toBe('fortytwo adds continuity, not capabilities.')
+  })
+  it('states that a better runtime makes a better assistant', () => {
+    expect(boundary.principle).toBe('When the runtime gets better, the assistant gets better.')
+  })
+  it('keeps the ecosystem with the runtime instead of listing it as a fortytwo primitive', () => {
+    expect(boundary.ecosystem).toMatch(/keeps its own ecosystem/)
+    expect(boundary.fortytwoAdds.join(' ')).not.toMatch(/ecosystem/)
   })
 })
 
 describe('concepts', () => {
   it('foregrounds the product concepts, in order', () => {
-    expect(concepts.map((c) => c.id)).toEqual(['memory', 'identity', 'continuity', 'time', 'channels', 'ecosystem'])
+    expect(concepts.map((c) => c.id)).toEqual(['identity', 'memory', 'continuity', 'time', 'channels'])
   })
-  it('only points at packages that exist', () => {
-    const names = new Set(packages.map((p) => p.name))
-    for (const c of concepts) for (const v of c.via) expect(names.has(v), `${c.id} -> ${v}`).toBe(true)
+  it('separates shared identity and memory from live session context', () => {
+    expect(sessionNote.lead).toBe('Channels share identity and durable memory.')
+    expect(sessionNote.body).toBe('Each live conversation still has its own session context.')
+  })
+  it('describes Telegram as a transport, not as the assistant', () => {
+    const channels = concepts.find((c) => c.id === 'channels')!
+    expect(channels.body).toMatch(/first channel adapter/)
+    expect(channels.body).toMatch(/uses a bot for transport/)
   })
   it('has real bodies', () => {
     for (const c of concepts) expect(c.body.length).toBeGreaterThan(40)
@@ -99,10 +111,8 @@ describe('architecture', () => {
     expect(architecture.optional.label).toMatch(/optional/)
     expect(architecture.optional.items.map((i) => i.name)).toEqual(['gate', 'salience'])
   })
-  it('says the runtime owns permissions and channels do not approve', () => {
-    const notes = architecture.notes.join(' ')
-    expect(notes).toMatch(/runtime owns its effective tool permissions/)
-    expect(notes).toMatch(/do not grant approvals/)
+  it('says channels do not approve', () => {
+    expect(stackNotes.join(' ')).toMatch(/do not grant approvals/)
   })
 })
 
@@ -119,22 +129,16 @@ describe('stack', () => {
     expect(caps.owner).toBe('runtime')
     expect(caps.items.map((i) => i.label)).toEqual(expect.arrayContaining(['MCP', 'plugins', 'skills', 'native tools', 'permissions']))
   })
-  it('names Claude Code as today and marks later runtimes as future', () => {
+  it('names Claude Code and Telegram as the only runtime and channel', () => {
     const agent = stack.find((l) => l.id === 'agent')!
-    expect(agent.items[0].label).toBe('Claude Code today')
-    expect(agent.items.filter((i) => i.future).map((i) => i.label)).toEqual(['more runtimes later'])
-    expect(stack.find((l) => l.id === 'channels')!.items.find((i) => i.future)?.label).toBe('future adapters')
+    expect(agent.items.map((i) => i.label)).toEqual(['Claude Code'])
+    expect(stack.find((l) => l.id === 'channels')!.items.map((i) => i.label)).toEqual(['Telegram'])
   })
   it('gives fortytwo exactly one emphasised layer', () => {
     expect(stack.filter((l) => l.emphasis).map((l) => l.id)).toEqual(['fortytwo'])
   })
   it('says fortytwo is not between the agent and its capabilities', () => {
     expect(stackNotes.join(' ')).toMatch(/not inserted between the agent and its capabilities/)
-  })
-  it('explains responsibilities without package names', () => {
-    expect(responsibilities.map((r) => r.label)).toEqual(['Personal assistant layer', 'Runtime', 'Capabilities', 'Infrastructure'])
-    const text = JSON.stringify(responsibilities).toLowerCase()
-    for (const pkg of ['runner', 'scheduler', 'telegram', 'salience', 'persona', 'installer']) expect(text).not.toMatch(new RegExp(`\\b${pkg}\\b`))
   })
   it('keeps package names off the plate itself', () => {
     const text = JSON.stringify({ stack, owners }).toLowerCase()
@@ -177,38 +181,43 @@ describe('always on', () => {
     expect(day.map((d) => d.time)).toEqual(['08:32', '11:00', '14:20', '03:17'])
     expect(day.at(-1)!.zone).toBe('UTC')
     expect(day.at(-1)!.event).toMatch(/Oneiros/)
-    for (const d of day) expect(d.source).toMatch(/README/)
   })
   it('does not claim a terminal shares the telegram session', () => {
     expect(JSON.stringify(day)).toMatch(/different session from your Telegram chat/)
-    expect(access.note).toMatch(/Live sessions are per chat/)
+    expect(access.note).toMatch(/own session context/)
   })
-  it('shows Telegram and Terminal as live and every other channel as not shipped', () => {
+  it('shows Telegram and Terminal as live and does not list any other channel', () => {
     expect(access.live.points.map((p) => p.name)).toEqual(['Telegram', 'Terminal'])
-    expect(access.later.badge).toBe('Not shipped')
-    expect(access.later.points.length).toBeGreaterThanOrEqual(4)
-    expect(access.later.note).toMatch(/No other adapter ships today/)
-    expect(access.later.note).toMatch(/not a roadmap/)
+    expect(access.live.note).toBe('Other channel adapters can follow. Telegram is the only one that ships today.')
+    expect(JSON.stringify(access)).not.toMatch(/slack|discord|whatsapp|signal|matrix|email/i)
   })
 })
 
 describe('runtimes', () => {
   it('supports exactly one runtime today', () => {
     expect(runtimeTable.filter((r) => r.state === 'supported').map((r) => r.name)).toEqual(['Claude Code'])
-    expect(runtimeTable.find((r) => r.state === 'none')!.body).toMatch(/none ships today/)
+    expect(runtimeTable.find((r) => r.state === 'none')!.body).toBe('Not supported.')
   })
   it('leaves tools, MCP, plugins and skills to the runtime', () => {
-    expect(runtimeOwns).toEqual(expect.arrayContaining(['MCP servers', 'plugins and skills']))
+    expect(runtimeBoundary.agentOwns).toEqual(expect.arrayContaining(['permissions', 'MCP servers', 'skills and plugins']))
     expect(noDuplication).toMatch(/does not rebuild integrations/)
   })
-  it('lists what the adapter relies on', () => {
-    expect(adapterNeeds.length).toBeGreaterThanOrEqual(3)
+  it('gives fortytwo identity, memory, time, continuity, channels and lifecycle', () => {
+    expect(runtimeBoundary.fortytwoAdds).toEqual(['identity', 'durable memory', 'time and scheduling', 'session continuity', 'channels', 'lifecycle'])
+    expect(providerNote).toMatch(/no model decisions/)
   })
 })
 
 describe('trust', () => {
-  it('cites a source README for every claim', () => {
-    for (const s of trustSections) for (const c of s.claims) expect(c.source).toMatch(/README\.md/)
+  it('carries no provenance metadata on claims', () => {
+    for (const s of trustSections) for (const c of s.claims) expect(Object.keys(c).sort()).toEqual(['body', 'title'])
+  })
+  it('does not oversell local', () => {
+    const all = JSON.stringify(trustSections)
+    expect(all).toMatch(/runs no hosted backend/)
+    expect(all).toMatch(/model provider still sees context/)
+    expect(all).toMatch(/Telegram carries your messages/)
+    expect(all).toMatch(/Integrations keep their own boundaries/)
   })
   it('covers locality, pairing, native permissions, optional gate and content-is-not-authority', () => {
     expect(trustSections.map((s) => s.id)).toEqual(['local', 'who', 'actions', 'content'])
@@ -216,8 +225,9 @@ describe('trust', () => {
     expect(all).toMatch(/one-time code/)
     expect(all).toMatch(/Native permissions are authoritative/)
     expect(all).toMatch(/Gate is optional/)
-    expect(all).toMatch(/not on the mandatory path/)
+    expect(all).toMatch(/not in the normal Telegram → Claude Code → tool path unless you enable it/)
     expect(all).toMatch(/not permissions/)
+    expect(all).toMatch(/never grants tool approvals/)
   })
   it('states what is enforced and what is left to others', () => {
     expect(enforces.length).toBeGreaterThan(2)
@@ -225,23 +235,7 @@ describe('trust', () => {
   })
 })
 
-describe('packages', () => {
-  it('lists the current packages by responsibility', () => {
-    const by = (g: string) => packages.filter((p) => p.group === g).map((p) => p.name)
-    expect(by('core')).toEqual(['memory', 'runner', 'scheduler', 'persona', 'telegram'])
-    expect(by('optional')).toEqual(['gate', 'salience'])
-    expect(by('bootstrap')).toEqual(['installer', 'marketplace'])
-  })
-  it('every group is declared and non-empty', () => {
-    for (const g of packageGroups) expect(packages.some((p) => p.group === g.id)).toBe(true)
-    for (const p of packages) expect(packageGroups.some((g) => g.id === p.group)).toBe(true)
-  })
-  it('has a package id and description for each', () => {
-    for (const p of packages) {
-      expect(p.pkg).toMatch(/^(@justfortytwo\/|justfortytwo\/)/)
-      expect(p.description.length).toBeGreaterThan(10)
-    }
-  })
+describe('codenames', () => {
   it('uses public names only — no HHGTTG codenames', () => {
     for (const lore of ['vogon', 'babelfish', 'magrathea', 'subetha', 'deepthought']) {
       expect(allContent, `codename "${lore}" must not appear`).not.toContain(lore)
@@ -249,29 +243,19 @@ describe('packages', () => {
   })
 })
 
-describe('principles', () => {
-  it('leads with the restraint principle', () => {
-    expect(principles[0].title).toBe('Use the agent you already trust.')
-    expect(principles[0].body).toMatch(/instead of rebuilding its capabilities/)
-  })
-  it('keeps content-is-not-authority and local-first', () => {
-    const titles = principles.map((p) => p.title).join('|')
-    expect(titles).toMatch(/Content is not command authority/)
-    expect(titles).toMatch(/Local-first/)
-  })
-  it('has title + body for each', () => {
-    expect(principles).toHaveLength(6)
-    for (const p of principles) { expect(p.title).toBeTruthy(); expect(p.body.length).toBeGreaterThan(15) }
-  })
-})
-
 describe('status', () => {
-  it('cites a source README for every claim', () => {
-    for (const s of status) expect(s.source, s.title).toMatch(/README\.md/)
+  it('carries no provenance metadata', () => {
+    for (const s of status) expect(Object.keys(s).sort(), s.title).toEqual(['body', 'state', 'title'])
   })
   it('covers the verified current themes', () => {
     const titles = status.map((s) => s.title).join('|')
-    for (const t of [/sessions/i, /Telegram/, /memory/i, /Scheduler/, /Persona/, /Lifecycle CLI/, /Gate/]) expect(titles).toMatch(t)
+    for (const t of [/sessions/i, /Telegram/, /memory/i, /Scheduling/, /Identity/, /Gate/]) expect(titles).toMatch(t)
+  })
+  it('states the session-recovery limit without a replay claim', () => {
+    const edge = status.filter((s) => s.state === 'edge').map((s) => s.body).join(' ')
+    expect(edge).toMatch(/best effort/)
+    expect(edge).toMatch(/not a durable message queue/)
+    expect(allContent).not.toMatch(/input replay/)
   })
   it('marks gate optional and is honest about limits', () => {
     expect(status.find((s) => s.title === 'Gate')?.state).toBe('optional')
@@ -298,6 +282,10 @@ describe('retired claims', () => {
     ['hosted service', /fortytwo cloud|hosted fortytwo|managed hosting/],
     ['unsupported runtimes as supported', /codex|gemini cli|openai|cursor|aider|opencode/],
     ['kubernetes in the core story', /kubernetes|helm chart/],
+    ['visible source metadata', /\bsource: /],
+    ['roadmap language for runtimes', /first supported runtime|more can follow|more runtimes|future adapters/],
+    ['unsupported channel names', /slack|discord|whatsapp|matrix/],
+    ['one shared live context', /same (live )?(context window|conversation)|one universal|shared context window/],
   ]
   for (const [name, re] of banned) {
     it(`does not contain: ${name}`, () => expect(allContent).not.toMatch(re))

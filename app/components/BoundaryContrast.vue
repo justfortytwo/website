@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import { boundary } from '~/data/boundary'
+
+const props = defineProps<{ agentLabel?: string; agentOwns?: string[]; fortytwoLabel?: string; fortytwoAdds?: string[] }>()
+const c = computed(() => ({
+  agentLabel: props.agentLabel ?? boundary.agentLabel,
+  agentOwns: props.agentOwns ?? boundary.agentOwns,
+  fortytwoLabel: props.fortytwoLabel ?? boundary.fortytwoLabel,
+  fortytwoAdds: props.fortytwoAdds ?? boundary.fortytwoAdds,
+}))
 </script>
 <template>
   <div class="contrast">
     <div class="col agent">
-      <h3 class="lab">{{ boundary.agentLabel }}</h3>
+      <h3 class="lab">{{ c.agentLabel }}</h3>
       <ul>
-        <li v-for="a in boundary.agentOwns" :key="a">{{ a }}</li>
+        <li v-for="a in c.agentOwns" :key="a">{{ a }}</li>
       </ul>
     </div>
     <div class="col ours">
-      <h3 class="lab">{{ boundary.fortytwoLabel }}</h3>
+      <h3 class="lab">{{ c.fortytwoLabel }}</h3>
       <ul>
-        <li v-for="a in boundary.fortytwoAdds" :key="a">{{ a }}</li>
+        <li v-for="a in c.fortytwoAdds" :key="a">{{ a }}</li>
       </ul>
     </div>
   </div>

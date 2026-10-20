@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { architecture } from '~/data/architecture'
 import { stackNotes } from '~/data/stack'
+import { site } from '~/data/site'
 
 usePageSeo('how-it-works')
 </script>
@@ -9,7 +10,7 @@ usePageSeo('how-it-works')
     <PageHero
       eyebrow="how it works"
       title="Continuity around the runtime, not a layer in front of it."
-      lede="fortytwo does not sit between the agent and each of its capabilities. It surrounds the runtime with what a personal assistant needs and a coding session does not keep." />
+      lede="You own the machine. fortytwo owns continuity and lifecycle. Claude Code owns reasoning and capabilities." />
 
     <section id="stack" class="sec">
       <div class="wrap">
@@ -25,26 +26,12 @@ usePageSeo('how-it-works')
       </div>
     </section>
 
-    <section id="responsibilities" class="sec">
-      <div class="wrap">
-        <SectionLabel num="02" title="responsibilities" />
-        <div class="intro">
-          <h2>Four jobs, <em>kept apart.</em></h2>
-          <p>Understand the system by what each part is responsible for. Package names come last.</p>
-        </div>
-        <ResponsibilityMap />
-        <ul class="notes">
-          <li v-for="n in architecture.notes" :key="n">{{ n }}</li>
-        </ul>
-      </div>
-    </section>
-
     <section id="access" class="sec">
       <div class="wrap">
-        <SectionLabel num="03" title="access points" />
+        <SectionLabel num="02" title="access points" />
         <div class="intro">
           <h2>Channels are doors, <em>not separate assistants.</em></h2>
-          <p>Telegram is not a bot with its own brain. It is one way of reaching the assistant that already lives in your project. A terminal is another.</p>
+          <p>Telegram is the first channel adapter. It uses a bot for transport; the bot is not the assistant. A terminal is another way in.</p>
         </div>
         <AccessPoints />
       </div>
@@ -52,7 +39,7 @@ usePageSeo('how-it-works')
 
     <section id="optional" class="sec">
       <div class="wrap">
-        <SectionLabel num="04" title="optional parts" />
+        <SectionLabel num="03" title="optional parts" />
         <div class="intro">
           <h2>Off the normal path, <em>on purpose.</em></h2>
           <p>Some pieces are useful but not required for the assistant to run.</p>
@@ -63,25 +50,13 @@ usePageSeo('how-it-works')
       </div>
     </section>
 
-    <section id="principles" class="sec">
+    <section id="deeper" class="sec">
       <div class="wrap">
-        <SectionLabel num="05" title="principles" />
+        <SectionLabel num="04" title="under the hood" />
         <div class="intro">
-          <h2>Restraint, <em>on purpose.</em></h2>
-          <p>The most useful thing fortytwo can do is stay out of the agent’s way.</p>
+          <h2>Small packages, <em>documented elsewhere.</em></h2>
+          <p>fortytwo ships as small packages, and what each one does is in the <a class="inline" :href="site.docs">docs</a> and the <a class="inline" :href="site.github">package repositories</a>.</p>
         </div>
-        <PrincipleGrid />
-      </div>
-    </section>
-
-    <section id="packages" class="sec">
-      <div class="wrap">
-        <SectionLabel num="06" title="under the hood" />
-        <div class="intro">
-          <h2>Packages, <em>after the model.</em></h2>
-          <p>Packages matter for installing and contributing. They are not the product. Grouped by what they are for. Each package’s README is the source of truth.</p>
-        </div>
-        <PackageGroups />
         <p class="more"><NuxtLink class="ghost" to="/always-on">Next: run it 24/7 <span class="ar">→</span></NuxtLink></p>
       </div>
     </section>

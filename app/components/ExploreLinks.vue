@@ -2,7 +2,7 @@
 import { pages, pageOrder, type PageKey } from '~/data/pages'
 const props = defineProps<{ keys?: PageKey[] }>()
 const list = (props.keys ?? pageOrder).map(k => pages[k])
-const cta: Record<string, string> = { 'how-it-works': 'Explore how it works', 'always-on': 'Run it 24/7', runtimes: 'Runtimes', trust: 'Trust model' }
+const cta: Record<string, string> = { 'how-it-works': 'Explore how it works', 'always-on': 'Run it 24/7', runtimes: 'Runtime support', trust: 'Trust' }
 </script>
 <template>
   <nav class="ex" aria-label="Explore">

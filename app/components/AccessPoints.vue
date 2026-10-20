@@ -20,14 +20,7 @@ import { access as a } from '~/data/access'
         </ul>
       </div>
 
-      <div class="grp later">
-        <h3 class="gl mono">{{ a.later.label }} <span class="badge">{{ a.later.badge }}</span></h3>
-        <ul class="soon">
-          <li v-for="p in a.later.points" :key="p.name" class="chip"><Icon :name="p.icon" class="ic" aria-hidden="true" /><span>{{ p.name }}</span></li>
-          <li class="chip plus"><Icon name="lucide:plus" class="ic" aria-hidden="true" /><span>{{ a.later.yours }}</span></li>
-        </ul>
-        <p class="gn">{{ a.later.note }}</p>
-      </div>
+      <p class="gn">{{ a.live.note }}</p>
     </div>
 
     <div class="vl" aria-hidden="true"></div>
@@ -58,13 +51,7 @@ import { access as a } from '~/data/access'
 .tile .big{font-size:34px;grid-row:1 / 3;color:var(--ink)}
 .tn{font-family:var(--font-serif);font-weight:500;font-size:22px;letter-spacing:-.3px;line-height:1.1}
 .td{font-size:14px;color:var(--ink-2);line-height:1.35}
-.later{padding-top:16px;border-top:1px dashed var(--mute)}
-.badge{color:var(--bronze-3);border:1px solid var(--bronze-3);padding:1px 7px;letter-spacing:1.2px}
-.soon{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
-.chip{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--mute);color:var(--mute);padding:8px 13px;font-family:var(--font-mono);font-size:12.5px}
-.chip .ic{font-size:18px}
-.chip.plus{color:var(--bronze-3);border-color:var(--bronze-3)}
-.gn{font-size:14px;color:var(--ink-2);margin-top:12px;max-width:62ch}
+.gn{font-size:14px;color:var(--ink-2);margin-top:16px;max-width:62ch}
 .core{border:1.5px solid var(--bronze-3);padding:14px 22px;text-align:center;min-width:min(360px,100%);background:var(--paper)}
 .cn{font-family:var(--font-serif);font-weight:500;font-size:26px;color:var(--bronze-3);letter-spacing:-.4px}
 .core ul{list-style:none;display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-top:4px}

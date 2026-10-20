@@ -4,29 +4,23 @@ export interface StatusItem {
   state: StatusState
   title: string
   body: string
-  /** Sibling-repo README the claim was checked against. */
-  source: string
 }
 
 export const status: StatusItem[] = [
-  { state: 'shipped', title: 'Persistent agent sessions',
-    body: 'A long-lived Claude Code session per chat, resumable by session ID, run through the runner.', source: 'runner/README.md' },
-  { state: 'shipped', title: 'Telegram channel with continuity',
-    body: 'Locked-down bot, one-time-code pairing, live sessions that resume after a restart.', source: 'telegram/README.md' },
-  { state: 'shipped', title: 'Durable semantic memory',
-    body: 'Store and recall by meaning, keyword or filter, with provenance and supersession.', source: 'memory/README.md' },
-  { state: 'shipped', title: 'Scheduler and proactive jobs',
-    body: 'A durable job queue and daemon that wakes the agent only when there is work.', source: 'scheduler/README.md' },
-  { state: 'shipped', title: 'Persona and Oneiros',
-    body: 'Identity scaffolding in plain files, and a daily tool-free pass that adds evidence-backed notes to three profile sections.', source: 'persona/README.md' },
-  { state: 'shipped', title: 'Lifecycle CLI',
-    body: 'init, start, status, stop, pair, doctor, update, rollback, forget and unbind.', source: 'installer/README.md' },
+  { state: 'shipped', title: 'Persistent sessions',
+    body: 'A long-lived Claude Code session per Telegram chat, picked back up after a restart.' },
+  { state: 'shipped', title: 'Telegram channel',
+    body: 'Locked down until a chat is paired with a one-time code. The only channel adapter that ships today.' },
+  { state: 'shipped', title: 'Durable memory',
+    body: 'Store and recall by meaning, keyword or filter. Corrections supersede history instead of erasing it.' },
+  { state: 'shipped', title: 'Scheduling',
+    body: 'Jobs that become due later. The model is invoked only when there is work.' },
+  { state: 'shipped', title: 'Identity and lifecycle',
+    body: 'Persona and owner context in plain files, and a CLI to set up, run, update and roll back an installation.' },
   { state: 'optional', title: 'Gate',
-    body: 'An optional PreToolUse policy hook. Wire it in if you want one; the runtime’s own permissions apply either way.', source: 'gate/README.md' },
-  { state: 'edge', title: 'One runtime, one channel',
-    body: 'Claude Code is the only supported runtime and Telegram the only channel. The channel contract is adapter-shaped; no other adapter ships.', source: 'telegram/README.md' },
-  { state: 'edge', title: '1.0 pre-release',
-    body: 'Packages are pre-release. Crash recovery is best effort: no input replay, and recovery IDs are hints.', source: 'installer/README.md, telegram/README.md' },
+    body: 'An optional policy hook for tool execution. The runtime’s own permissions apply either way.' },
+  { state: 'edge', title: 'Pre-release',
+    body: 'Session recovery is best effort. fortytwo is not a durable message queue and does not promise exactly-once delivery.' },
 ]
 
 export const statusLabels: Record<StatusState, string> = {

@@ -1,15 +1,10 @@
-/** Optional parts and ownership notes that sit beside the stack plate. */
+/** Optional parts that sit beside the stack. */
 export const architecture = {
   optional: {
     label: 'optional, where configured',
     items: [
-      { name: 'gate', body: 'A policy hook on the runtime’s own hook points. Not on the normal path unless you wire it in.' },
-      { name: 'salience', body: 'Model-driven extraction that enriches what memory stores.' },
+      { name: 'gate', body: 'An optional policy hook for tool execution. Not in the normal path unless you enable it.' },
+      { name: 'salience', body: 'Optional enrichment that helps memory keep what is worth keeping.' },
     ],
   },
-  notes: [
-    'The runtime owns its effective tool permissions.',
-    'Channels carry messages and identity. They do not grant approvals.',
-    'fortytwo memory is an MCP server the runtime calls like any other.',
-  ],
 }

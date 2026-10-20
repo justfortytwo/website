@@ -3,6 +3,7 @@ import { site } from '~/data/site'
 import { pages } from '~/data/pages'
 import { boundary } from '~/data/boundary'
 import { alwaysOnClaim } from '~/data/alwayson'
+import { sessionNote } from '~/data/concepts'
 
 usePageSeo('home')
 useHead({
@@ -51,9 +52,9 @@ function copyInstall() {
           <p class="lede">{{ site.hero.body }}</p>
           <div class="cta-row">
             <button type="button" class="term" @click="copyInstall" :title="copied ? 'Copied' : 'Click to copy'"><span class="pr mono">$</span><span class="inst mono">{{ installCmd }}</span><span class="c mono">{{ copied ? 'copied' : 'copy' }}</span></button>
-            <NuxtLink class="ghost" to="/always-on">Run it 24/7 <span class="ar">→</span></NuxtLink>
+            <NuxtLink class="ghost" to="/how-it-works">How it works <span class="ar">→</span></NuxtLink>
           </div>
-          <p class="runtime-note mono">{{ site.runtime.note }}</p>
+          <p class="runtime-note mono">{{ site.runtime.note }} <NuxtLink class="inline" to="/runtimes">Runtime support</NuxtLink></p>
         </div>
         <TheMonument />
       </div>
@@ -64,7 +65,7 @@ function copyInstall() {
       <div class="wrap">
         <SectionLabel num="02" title="the boundary" />
         <div class="intro">
-          <h2>{{ boundary.heading }}</h2>
+          <h2>{{ boundary.heading }} <em>{{ boundary.headingEm }}</em></h2>
           <p>{{ boundary.intro }}</p>
         </div>
         <BoundaryContrast />
@@ -78,10 +79,14 @@ function copyInstall() {
       <div class="wrap">
         <SectionLabel num="03" title="what it adds" />
         <div class="intro">
-          <h2>Your agent already has tools. <em>fortytwo gives it continuity.</em></h2>
-          <p>A coding session ends. An assistant should not. These are the pieces that carry across, and they are continuity, not new intelligence.</p>
+          <h2>Five things <em>a session doesn’t keep.</em></h2>
+          <p>A coding session ends. An assistant should not. fortytwo gives Claude Code memory and time, and a way to be reached.</p>
         </div>
         <ConceptGrid />
+        <div class="callout">
+          <p>{{ sessionNote.lead }}</p>
+          <p>{{ sessionNote.body }}</p>
+        </div>
       </div>
     </section>
 
@@ -91,9 +96,8 @@ function copyInstall() {
         <SectionLabel num="04" title="session to presence" />
         <div class="intro">
           <h2>From a session <em>to a presence.</em></h2>
-          <p>A coding agent usually feels like something you launch. Put fortytwo on a machine that stays online and the same kind of agent can stay reachable.</p>
+          <p>A coding agent usually feels like something you launch. Put fortytwo on a machine that stays online and Claude Code can stay reachable.</p>
         </div>
-        <PresenceContrast />
         <div class="callout">
           <p>{{ alwaysOnClaim.headline }}</p>
           <p>{{ alwaysOnClaim.body }}</p>
@@ -107,8 +111,8 @@ function copyInstall() {
       <div class="wrap">
         <SectionLabel num="05" title="architecture" />
         <div class="intro">
-          <h2>Around the agent, <em>not in front of it.</em></h2>
-          <p>fortytwo surrounds the runtime. {{ site.runtime.note }} Everything the agent can do natively, it still does natively.</p>
+          <h2>You, fortytwo, <em>Claude Code.</em></h2>
+          <p>You own the machine. fortytwo owns continuity and lifecycle. Claude Code owns reasoning and capabilities.</p>
         </div>
         <StackPlate compact />
         <p class="more"><NuxtLink class="ghost" to="/how-it-works">Explore how it works <span class="ar">→</span></NuxtLink></p>
@@ -121,7 +125,7 @@ function copyInstall() {
         <SectionLabel num="06" title="go deeper" />
         <div class="intro">
           <h2>Four short pages, <em>no maze.</em></h2>
-          <p>Package-level detail lives in the GitHub repositories and the <a class="inline" :href="site.docs">design docs</a>.</p>
+          <p>This site explains the product. Installation, configuration and reference live in the <a class="inline" :href="site.docs">docs</a>.</p>
         </div>
         <ExploreLinks />
       </div>
@@ -136,15 +140,13 @@ function copyInstall() {
             <div class="s"># in a new, empty directory</div>
             <div><span class="pr">$</span> <span class="k">npx @justfortytwo/installer init</span></div>
             <div><span class="pr">$</span> <span class="k">fortytwo start</span>   <span class="s"># foreground · Ctrl+C stops it</span></div>
-            <div><span class="pr">$</span> <span class="k">fortytwo pair</span>    <span class="s"># second terminal · prints a code</span></div>
-            <div class="s" style="margin-top:12px"># then, in Telegram</div>
-            <div><span class="pr">&gt;</span> <span class="c">/login</span> <span class="k">&lt;code&gt;</span></div>
-            <div><span class="pr">&gt;</span> <span class="k">hello</span></div>
+            <div><span class="pr">$</span> <span class="k">fortytwo pair</span>    <span class="s"># second terminal · prints a one-time code</span></div>
           </TerminalBlock>
           <div class="qs-note">
             <h2 class="h2">Open Telegram. <em>Say hello.</em></h2>
-            <p><span class="mono">init</span> installs the engine packages, captures who the assistant is and who it serves, wires memory, and renders the persona into plain files. <span class="mono">pair</span> issues a one-time code; until a chat redeems it, the bot ignores everyone.</p>
-            <p class="meta mono">Needs Node ≥ 20 · Claude Code · Ollama for the local embedder · a Telegram bot token in <span class="mono">.env</span>.</p>
+            <p>Send the one-time code to your bot and you are talking to the assistant. Until a chat is paired, the bot ignores everyone.</p>
+            <p class="meta mono">Needs Claude Code and Node ≥ 20. Full prerequisites are in the docs.</p>
+            <p class="more">Ready to run it? <a class="ghost" :href="site.docs">Read the installation guide <span class="ar">↗</span></a></p>
           </div>
         </div>
       </div>
@@ -169,13 +171,11 @@ function copyInstall() {
 .term{background:var(--ink);color:#e9e4d8;padding:13px 16px;border-radius:3px;display:flex;align-items:center;gap:10px;border:0;font:inherit;cursor:pointer;text-align:left}
 .term .pr{color:var(--bronze-1)} .term .inst{color:#fff;font-size:14px} .term .c{color:#9aa0a8}
 .term:hover .c{color:var(--bronze-1)}
-.runtime-note{margin-top:20px;font-size:12px;letter-spacing:.4px;color:var(--mute)}
+.runtime-note{margin-top:20px;font-size:13px;letter-spacing:.3px;color:var(--ink-2)}
 .qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
 .qs-note p{font-size:15.5px;color:var(--ink-2);max-width:46ch;margin-bottom:12px}
 .qs-note .meta{margin-top:14px;font-size:13px;color:var(--mute)}
 .motto{text-align:center;padding:120px 0 70px}
-.inline{border-bottom:1px solid var(--ink)}
-.inline:hover{color:var(--bronze-3);border-bottom-color:var(--bronze-3)}
 .motto .stamp{display:inline-block;font-size:11px;letter-spacing:3px;color:var(--bronze-3);border:1px solid var(--bronze-3);padding:6px 14px;margin-bottom:34px}
 .motto-h{font-family:var(--font-serif);font-weight:400;font-size:clamp(32px,4.6vw,52px);line-height:1.14;letter-spacing:-1px;max-width:20ch;margin:0 auto}
 .motto-h em{font-style:italic;color:var(--ink-2)}

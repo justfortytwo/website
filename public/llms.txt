@@ -1,34 +1,37 @@
 # fortytwo
 
-fortytwo adds continuity and personal-assistant infrastructure around an existing coding agent: memory, identity, session continuity, scheduled (proactive) work, and chat channels. It does not reimplement what the agent runtime already owns: reasoning, planning, tools, MCP, plugins, skills, browser/computer use, model selection, or native permissions. It should inherit improvements from the underlying agent, not compete with them.
+fortytwo is continuity infrastructure around an existing coding-agent runtime: identity, durable memory, session continuity, scheduled work and persistent channels. It does not reimplement what the runtime owns: reasoning, planning, tools, permissions, MCP servers, plugins, skills, browser/computer use or model choice. When the runtime gets better, the assistant gets better.
 
-Claude Code is the first supported runtime. More can follow; no other runtime is supported today.
+Claude Code is the only supported runtime today.
 
 The answer is 42. The hard part is knowing the right question.
 
 ## Pages
 - https://forty-two.it/ : overview
-- https://forty-two.it/how-it-works : the stack, layer by layer, and who owns each layer
-- https://forty-two.it/always-on : running fortytwo on a laptop, a VPS or a homelab, and what 24/7 means
-- https://forty-two.it/runtimes : what is supported today and what the runtime adapter asks of a runtime
+- https://forty-two.it/how-it-works : who owns what: you, fortytwo and the runtime
+- https://forty-two.it/always-on : what 24/7 means, and running fortytwo on a laptop, a VPS or a homelab
+- https://forty-two.it/runtimes : runtime support: what is supported today and where the boundary sits
 - https://forty-two.it/trust : what fortytwo enforces and what it leaves to the runtime
 
 ## What it adds
-- Memory: durable semantic recall (SQLite + sqlite-vec, local Ollama embeddings), with provenance
-- Identity: a persona and owner context rendered into plain files in your project
-- Continuity: persistent agent sessions that resume; channels are access points to the same assistant
-- Time: a durable job scheduler that wakes the agent only when there is work
-- Channels: Telegram today (one-time-code pairing); the adapter contract is channel-agnostic
+- Identity: a persona and owner context kept in plain files in your project
+- Memory: durable recall kept on your machine, with provenance
+- Continuity: conversations can resume after a process restart (best effort)
+- Time: scheduled work that wakes the agent only when there is work
+- Channels: Telegram is the only channel adapter that ships today. It uses a bot for transport; the bot is not the assistant.
+
+Channels share identity and durable memory. Each live conversation still has its own session context.
 
 ## Always on
-Always on means the assistant infrastructure is available around the clock: the channel bridge, the scheduler, memory, identity files and saved session state. It does not mean the model runs continuously. The agent runtime is invoked when there is a turn to take, such as a message from the owner or a job that is due. fortytwo runs on a laptop, a VPS or a homelab; a VPS is not required. `fortytwo start` runs in the foreground so systemd or docker compose can supervise it.
+Always on means the assistant infrastructure is available around the clock: the channel bridge, the scheduler, memory and identity. It does not mean the model runs continuously. The agent runtime is invoked when there is work, such as a message from the owner or a job that is due. fortytwo runs on a laptop, a VPS or a homelab; a VPS is not required. It runs in the foreground so a service manager or container runtime owns restarts and logs.
 
 ## What stays with the agent runtime
-- Native tools and effective tool permissions
+- Reasoning, planning and the model
+- Tools and effective tool permissions
 - MCP servers, plugins and skills
-- Browser and computer use, model and provider choice
+- Browser and computer use
 - Channels such as Telegram carry messages and identity; they do not grant tool approvals
-- Gate is an optional PreToolUse policy hook, not a mandatory path for the runtime
+- Gate is an optional policy hook, not in the normal execution path unless enabled
 
 ## Quick start
 ```
@@ -36,23 +39,9 @@ npx @justfortytwo/installer init
 fortytwo start
 fortytwo pair
 ```
-Then send `/login <code>` to your Telegram bot and say hello. Requires Node >= 20, Claude Code, Ollama (local embedder) and a Telegram bot token.
+Then send the one-time code to your Telegram bot. Installation, configuration and reference are in the documentation.
 
-## Packages (@justfortytwo on npm)
-Core continuity:
-- memory: semantic-memory MCP server
-- runner: runtime adapter for Claude Code (one-shot jobs, persistent sessions)
-- scheduler: durable job daemon for proactive work
-- persona: identity templates and Oneiros daily profile maintenance
-- telegram: Telegram channel adapter and pairing bridge
-Optional:
-- gate: fail-closed PreToolUse policy hook
-- salience: model-driven extraction of memory candidates
-Bootstrap and distribution:
-- installer: lifecycle CLI (init, start, status, stop, pair, doctor, update, rollback, forget, unbind)
-- marketplace: Claude Code plugin marketplace (installed from GitHub, not npm)
-
-Status: 1.0 pre-release.
+Status: 1.0 pre-release. fortytwo runs no hosted backend for its own state.
 
 ## Links
 - GitHub: https://github.com/justfortytwo
