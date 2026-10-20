@@ -55,6 +55,8 @@ for (const [route, { html, text }] of Object.entries(pages)) {
   titles.add(title)
   assert(/name="description" content="[^"]{60,}"/.test(html), at('meta description missing or too short'))
   assert(/property="og:image"/.test(html), at('og:image missing'))
+  assert(/property="og:image" content="https:\/\//.test(html), at('og:image must be an absolute URL'))
+  assert(/name="twitter:image" content="https:\/\//.test(html), at('twitter:image must be an absolute URL'))
   assert(/property="og:title"/.test(html), at('og:title missing'))
   assert(/name="twitter:card"/.test(html), at('twitter:card missing'))
   const canon = html.match(/rel="canonical"[^>]*href="([^"]+)"/)?.[1] ?? html.match(/href="([^"]+)"[^>]*rel="canonical"/)?.[1]

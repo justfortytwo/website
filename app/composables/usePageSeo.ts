@@ -5,6 +5,8 @@ import { site } from '~/data/site'
 export function usePageSeo(key: PageKey) {
   const p = pages[key]
   const url = key === 'home' ? `${site.url}/` : `${site.url}${p.path}`
+  const image = `${site.url}/og.png`
+  const imageAlt = 'fortytwo: a brass 42 beside the fortytwo wordmark'
   useSeoMeta({
     title: p.title,
     description: p.description,
@@ -12,11 +14,17 @@ export function usePageSeo(key: PageKey) {
     ogDescription: p.ogDescription,
     ogType: 'website',
     ogUrl: url,
-    ogImage: '/og.png',
+    ogSiteName: site.name,
+    ogLocale: 'en_US',
+    ogImage: image,
+    ogImageAlt: imageAlt,
+    ogImageWidth: 1983,
+    ogImageHeight: 793,
     twitterCard: 'summary_large_image',
     twitterTitle: p.ogTitle,
     twitterDescription: p.ogDescription,
-    twitterImage: '/og.png',
+    twitterImage: image,
+    twitterImageAlt: imageAlt,
   })
   const script = key === 'home' ? [] : [{
     type: 'application/ld+json',
