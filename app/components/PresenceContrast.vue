@@ -25,7 +25,7 @@ import { presence as p } from '~/data/alwayson'
 .pc{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule)}
 .col{padding:28px 30px 32px}
 .col.ours{background:var(--paper-2);border-left:1px solid var(--rule)}
-.tag{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
+.tag{font-family:var(--font-mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
 .ours .tag{color:var(--bronze-3)}
 h3{font-family:var(--font-serif);font-weight:500;font-size:24px;letter-spacing:-.4px;margin:6px 0 20px;line-height:1.15}
 .flow{list-style:none}

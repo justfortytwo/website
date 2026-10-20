@@ -14,9 +14,14 @@ usePageSeo('always-on')
     <section id="what-247-means" class="sec">
       <div class="wrap">
         <SectionLabel num="01" title="what 24/7 means" />
-        <div class="intro">
-          <h2>{{ alwaysOnClaim.headline }}</h2>
-          <p>{{ alwaysOnClaim.body }}</p>
+        <div class="split">
+          <div class="intro">
+            <h2>{{ alwaysOnClaim.headline }}</h2>
+            <p>{{ alwaysOnClaim.body }}</p>
+          </div>
+          <ArchiveFigure src="/img/channels-switchboard.jpg" :width="1920" :height="1527"
+            alt="Five switchboard operators seated at a telephone exchange, photographed in 1958"
+            caption="A telephone exchange in 1958: someone is always on the line, and calls are routed when they arrive." />
         </div>
         <AvailabilitySplit />
       </div>
@@ -47,8 +52,13 @@ usePageSeo('always-on')
     <section id="day" class="sec">
       <div class="wrap">
         <SectionLabel num="04" title="a day in the life" />
-        <div class="intro">
-          <h2>What “still there” <em>looks like.</em></h2>
+        <div class="split">
+          <div class="intro">
+            <h2>What “still there” <em>looks like.</em></h2>
+          </div>
+          <ArchiveFigure src="/img/time-pocket-watch.jpg" :width="1280" :height="1690" class="narrow"
+            alt="Coloured engraving titled Mechanism of a Watch, showing the parts of a pocket watch"
+            caption="Mechanism of a watch, an early 19th-century engraving: time that runs without anyone watching." />
         </div>
         <DayTimeline />
       </div>

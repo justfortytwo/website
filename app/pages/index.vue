@@ -83,6 +83,14 @@ function copyInstall() {
           <p>A coding session ends. An assistant should not. fortytwo gives Claude Code memory and time, and a way to be reached.</p>
         </div>
         <ConceptGrid />
+        <div class="pair">
+          <ArchiveFigure src="/img/memory-card-catalogue.jpg" :width="1920" :height="1624"
+            alt="Open drawer in a wooden library card catalogue, with index cards inside and labelled drawers around it"
+            caption="A library card catalogue: memory kept as cards you can look up by subject." />
+          <ArchiveFigure src="/img/time-pocket-watch.jpg" :width="1280" :height="1690"
+            alt="Coloured engraving titled Mechanism of a Watch, showing the parts of a pocket watch"
+            caption="Mechanism of a watch, an early 19th-century engraving: time that runs without anyone watching." />
+        </div>
         <div class="callout">
           <p>{{ sessionNote.lead }}</p>
           <p>{{ sessionNote.body }}</p>
@@ -98,11 +106,18 @@ function copyInstall() {
           <h2>From a session <em>to a presence.</em></h2>
           <p>A coding agent usually feels like something you launch. Put fortytwo on a machine that stays online and Claude Code can stay reachable.</p>
         </div>
-        <div class="callout">
-          <p>{{ alwaysOnClaim.headline }}</p>
-          <p>{{ alwaysOnClaim.body }}</p>
+        <div class="split">
+          <div>
+            <div class="callout first-callout">
+              <p>{{ alwaysOnClaim.headline }}</p>
+              <p>{{ alwaysOnClaim.body }}</p>
+            </div>
+            <p class="more"><NuxtLink class="ghost" to="/always-on">Run it 24/7 <span class="ar">→</span></NuxtLink></p>
+          </div>
+          <ArchiveFigure src="/img/channels-switchboard.jpg" :width="1920" :height="1527"
+            alt="Five switchboard operators seated at a telephone exchange, photographed in 1958"
+            caption="A telephone exchange in 1958: someone is always on the line, and calls are routed when they arrive." />
         </div>
-        <p class="more"><NuxtLink class="ghost" to="/always-on">Run it 24/7 <span class="ar">→</span></NuxtLink></p>
       </div>
     </section>
 
@@ -148,6 +163,9 @@ function copyInstall() {
             <p class="meta mono">Needs Claude Code and Node ≥ 20. Full prerequisites are in the docs.</p>
             <p class="more">Ready to run it? <a class="ghost" :href="site.docs">Read the installation guide <span class="ar">↗</span></a></p>
           </div>
+          <ArchiveFigure class="qs-fig" src="/img/telegram-telegraphists.jpg" :width="1080" :height="1230"
+            alt="Engraving of three telegraph operators at their desks sending and receiving messages"
+            caption="Telegraph operators, 19th-century engraving: messages arrive from a distance and someone answers." />
         </div>
       </div>
     </section>
@@ -176,14 +194,18 @@ function copyInstall() {
 .qs-note p{font-size:15.5px;color:var(--ink-2);max-width:46ch;margin-bottom:12px}
 .qs-note .meta{margin-top:14px;font-size:13px;color:var(--mute)}
 .motto{text-align:center;padding:120px 0 70px}
-.motto .stamp{display:inline-block;font-size:11px;letter-spacing:3px;color:var(--bronze-3);border:1px solid var(--bronze-3);padding:6px 14px;margin-bottom:34px}
-.motto-h{font-family:var(--font-serif);font-weight:400;font-size:clamp(32px,4.6vw,52px);line-height:1.14;letter-spacing:-1px;max-width:20ch;margin:0 auto}
+.motto .stamp{display:inline-block;font-size:13px;letter-spacing:3px;color:var(--bronze-3);border:1px solid var(--bronze-3);padding:6px 14px;margin-bottom:34px}
+.motto-h{font-family:var(--font-serif);font-weight:400;font-size:clamp(24px,2.6vw,36px);line-height:1.2;letter-spacing:-.5px;max-width:30ch;margin:0 auto}
+.split{margin-bottom:0}
+.first-callout{margin-top:0}
+.qs-fig{grid-column:2;max-width:420px}
 .motto-h em{font-style:italic;color:var(--ink-2)}
 .wordmark{font-family:var(--font-serif);font-weight:600;font-size:clamp(120px,18vw,200px);line-height:.8;letter-spacing:-10px;
   background:linear-gradient(158deg,var(--bronze-1) 0%,var(--bronze-2) 50%,var(--bronze-3) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;margin:54px 0 10px}
 @media (max-width:860px){
   .hero-grid,.qs-grid{grid-template-columns:1fr}
-  .term .inst{font-size:12.5px}
+  .qs-fig{grid-column:1}
+  .term .inst{font-size:13px}
 }
 </style>

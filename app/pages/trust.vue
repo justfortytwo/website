@@ -26,8 +26,13 @@ const lastNum = String(trustSections.length + 1).padStart(2, '0')
     <section id="limits" class="sec">
       <div class="wrap">
         <SectionLabel :num="lastNum" title="enforces and does not" />
-        <div class="intro">
-          <h2>What fortytwo <em>enforces, and what it doesn’t.</em></h2>
+        <div class="split">
+          <div class="intro">
+            <h2>What fortytwo <em>enforces, and what it doesn’t.</em></h2>
+          </div>
+          <ArchiveFigure src="/img/trust-lock-and-key.jpg" :width="1920" :height="1589"
+            alt="Wood engraving of a medieval iron lock plate and its key"
+            caption="A medieval iron lock and key, wood engraving: a lock is useful for what it covers, and only that." />
         </div>
         <div class="two-col">
           <div>

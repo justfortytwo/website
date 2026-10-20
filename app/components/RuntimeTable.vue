@@ -20,7 +20,7 @@ import { runtimeTable } from '~/data/runtimes'
 .rt{width:100%;border-collapse:collapse;border:1px solid var(--rule)}
 .sr{position:absolute;left:-9999px}
 th,td{text-align:left;vertical-align:top;padding:16px 18px;border-bottom:1px solid var(--rule);font-size:15px;color:var(--ink-2)}
-thead th{font-family:var(--font-mono);font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
+thead th{font-family:var(--font-mono);font-weight:400;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
 tbody th{font-family:var(--font-serif);font-weight:500;font-size:22px;color:var(--ink);white-space:nowrap}
 @media (max-width:760px){
   .rt,.rt tbody,.rt tr,.rt th,.rt td{display:block;width:100%}

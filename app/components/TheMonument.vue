@@ -36,14 +36,14 @@
 .extr.e3{transform:translate(6px,6px);color:#47340c}
 .extr.e4{transform:translate(8px,8px);color:#352708}
 .extr.e5{transform:translate(10px,10px);color:#241a05}
-.annot{position:absolute;font-family:var(--font-mono);font-size:10px;letter-spacing:1.4px;
+.annot{position:absolute;font-family:var(--font-mono);font-size:13px;letter-spacing:1.4px;
   color:var(--ink-2);z-index:4}
 .annot::before{content:"";display:inline-block;width:14px;height:1px;background:var(--ink-2);
   vertical-align:middle;margin-right:6px}
 .a-top{top:8%;left:6%}.a-right{top:30%;right:2%}.a-bl{bottom:9%;left:4%}
 .a-br{bottom:7%;right:6%;color:var(--bronze-3)}
 .a-br::before{background:var(--bronze-3)}
-.tick{position:absolute;font-family:var(--font-mono);font-size:9px;color:var(--mute);z-index:4}
+.tick{position:absolute;font-family:var(--font-mono);font-size:13px;color:var(--mute);z-index:4}
 .tick.top{top:6%;left:50%;transform:translateX(-50%)}
 .tick.bot{bottom:4%;left:50%;transform:translateX(-50%)}
 </style>

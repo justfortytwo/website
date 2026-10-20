@@ -22,10 +22,10 @@ import { day, dayNote } from '~/data/alwayson'
 .tl li:last-child{padding-bottom:6px}
 .tl li:last-child::before{border-color:var(--bronze-3);background:var(--bronze-3)}
 .t{font-size:22px;letter-spacing:-.5px;line-height:1.5}
-.z{font-size:11px;letter-spacing:1.5px;color:var(--mute);margin-left:8px}
+.z{font-size:13px;letter-spacing:1.5px;color:var(--mute);margin-left:8px}
 .ev{font-family:var(--font-serif);font-size:21px;line-height:1.3;letter-spacing:-.2px}
 .res{font-size:15.5px;color:var(--ink-2);margin-top:4px;max-width:62ch}
 .ar{color:var(--bronze-3);margin-right:8px}
-.note{font-size:12px;color:var(--mute);margin-top:24px}
+.note{font-size:13px;color:var(--mute);margin-top:24px}
 @media (max-width:680px){.tl li{grid-template-columns:1fr;gap:4px}}
 </style>

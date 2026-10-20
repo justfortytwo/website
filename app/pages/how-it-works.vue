@@ -29,9 +29,14 @@ usePageSeo('how-it-works')
     <section id="access" class="sec">
       <div class="wrap">
         <SectionLabel num="02" title="access points" />
-        <div class="intro">
-          <h2>Channels are doors, <em>not separate assistants.</em></h2>
-          <p>Telegram is the first channel adapter. It uses a bot for transport; the bot is not the assistant. A terminal is another way in.</p>
+        <div class="split">
+          <div class="intro">
+            <h2>Channels are doors, <em>not separate assistants.</em></h2>
+            <p>Telegram is the first channel adapter. It uses a bot for transport; the bot is not the assistant. A terminal is another way in.</p>
+          </div>
+          <ArchiveFigure src="/img/telegram-telegraphists.jpg" :width="1080" :height="1230"
+            alt="Engraving of three telegraph operators at their desks sending and receiving messages"
+            caption="Telegraph operators, 19th-century engraving: messages arrive from a distance and someone answers." />
         </div>
         <AccessPoints />
       </div>

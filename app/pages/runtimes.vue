@@ -14,9 +14,14 @@ usePageSeo('runtimes')
     <section id="support" class="sec">
       <div class="wrap">
         <SectionLabel num="01" title="supported today" />
-        <div class="intro">
-          <h2>One runtime, <em>said plainly.</em></h2>
-          <p>{{ site.runtime.note }} Nothing else is supported, and nothing here should read as if it were.</p>
+        <div class="split">
+          <div class="intro">
+            <h2>One runtime, <em>said plainly.</em></h2>
+            <p>{{ site.runtime.note }} Nothing else is supported, and nothing here should read as if it were.</p>
+          </div>
+          <ArchiveFigure src="/img/runtime-engine-governor.jpg" :width="1280" :height="1277" class="narrow"
+            alt="Glass lantern slide of an engineering drawing of a steam-engine governor"
+            caption="A steam-engine governor, c. 1910 lantern slide: a part that regulates an engine it does not replace." />
         </div>
         <RuntimeTable />
         <p class="aside more">{{ providerNote }}</p>

@@ -13,7 +13,7 @@ import { concepts } from '~/data/concepts'
 <style scoped>
 .grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .cell{padding:28px 26px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.cn{font-family:var(--font-mono);font-size:10px;color:var(--mute);letter-spacing:1.5px}
+.cn{font-family:var(--font-mono);font-size:13px;color:var(--mute);letter-spacing:1.5px}
 h3{font-family:var(--font-serif);font-weight:500;font-size:28px;letter-spacing:-.5px;margin:4px 0 10px}
 p{font-size:15px;color:var(--ink-2);line-height:1.5}
 @media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}

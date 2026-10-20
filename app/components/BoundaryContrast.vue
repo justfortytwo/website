@@ -29,7 +29,7 @@ const c = computed(() => ({
 .contrast{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule)}
 .col{padding:30px 30px 34px}
 .col.ours{border-left:1px solid var(--rule);background:var(--paper-2)}
-.lab{font-family:var(--font-mono);font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.lab{font-family:var(--font-mono);font-weight:400;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
 .ours .lab{color:var(--bronze-3)}
 ul{list-style:none}
 li{font-family:var(--font-serif);font-size:21px;line-height:1.3;letter-spacing:-.2px;padding:9px 0;border-bottom:1px solid var(--rule);color:var(--ink-2)}

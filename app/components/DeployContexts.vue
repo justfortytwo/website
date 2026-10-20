@@ -16,9 +16,9 @@ import { deployContexts, deployNote } from '~/data/alwayson'
 <style scoped>
 .row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .cell{padding:26px 26px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.tag{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
+.tag{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
 h3{font-family:var(--font-serif);font-weight:500;font-size:30px;letter-spacing:-.5px;margin:4px 0 12px}
 p{font-size:15px;color:var(--ink-2);line-height:1.5;margin-bottom:10px}
-.note{font-size:12px;color:var(--mute);margin-top:14px;max-width:80ch}
+.note{font-size:13px;color:var(--mute);margin-top:14px;max-width:80ch}
 @media (max-width:860px){.row{grid-template-columns:1fr}}
 </style>

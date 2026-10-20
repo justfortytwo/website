@@ -37,15 +37,15 @@ import { access as a } from '~/data/access'
 </template>
 <style scoped>
 .ap{border:1px solid var(--rule);padding:30px 24px 22px;display:flex;flex-direction:column;align-items:center;background:var(--paper)}
-.you{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:3px;color:var(--ink-2)}
+.you{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;letter-spacing:3px;color:var(--ink-2)}
 .you .ic{font-size:30px}
 .ic{display:inline-block;width:1em;height:1em;flex:none}
 .vl{width:1px;height:24px;background:var(--ink-2)}
 .band{width:min(820px,100%);border:1px solid var(--ink);background:var(--paper-2);padding:16px 22px 22px}
-.band-h{font-size:11px;letter-spacing:2.5px;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.band-h{font-size:13px;letter-spacing:2.5px;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--rule)}
 .band-h span{color:var(--mute);letter-spacing:1px;text-transform:lowercase}
 .grp{margin-top:18px}
-.gl{font-weight:400;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gl{font-weight:400;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .live{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .tile{background:var(--paper);border:1px solid var(--ink);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center}
 .tile .big{font-size:34px;grid-row:1 / 3;color:var(--ink)}
@@ -55,8 +55,8 @@ import { access as a } from '~/data/access'
 .core{border:1.5px solid var(--bronze-3);padding:14px 22px;text-align:center;min-width:min(360px,100%);background:var(--paper)}
 .cn{font-family:var(--font-serif);font-weight:500;font-size:26px;color:var(--bronze-3);letter-spacing:-.4px}
 .core ul{list-style:none;display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-top:4px}
-.core li{font-size:12px;color:var(--ink-2)}
-.box{border:1px solid var(--ink-2);padding:7px 20px;font-size:12.5px;letter-spacing:.5px;background:var(--paper)}
+.core li{font-size:13px;color:var(--ink-2)}
+.box{border:1px solid var(--ink-2);padding:7px 20px;font-size:13px;letter-spacing:.5px;background:var(--paper)}
 figcaption{margin-top:24px;padding-top:12px;border-top:1px solid var(--rule);font-size:14.5px;color:var(--ink-2);max-width:62ch;text-align:left;align-self:stretch}
 @media (max-width:640px){.live{grid-template-columns:1fr}.band{padding:14px 14px 18px}}
 </style>
