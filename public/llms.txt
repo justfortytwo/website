@@ -45,5 +45,5 @@ Status: 1.0 pre-release. fortytwo runs no hosted backend for its own state.
 
 ## Links
 - GitHub: https://github.com/justfortytwo
-- Docs: https://github.com/justfortytwo/docs
+- Docs: https://docs.forty-two.it
 - License: MIT

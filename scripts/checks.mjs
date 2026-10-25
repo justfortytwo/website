@@ -82,7 +82,7 @@ for (const [route, { html, text }] of Object.entries(pages)) {
     if (r === '/runtimes') assert(html.includes(`href="${r}"`), at('footer link /runtimes missing'))
     else assert(header.includes(`href="${r}"`), at(`header nav link ${r} missing`))
   }
-  assert(/<header[\s\S]*?href="https:\/\/github\.com\/justfortytwo\/docs"[\s\S]*?<\/header>/.test(html), at('header Docs link missing'))
+  assert(/<header[\s\S]*?href="https:\/\/docs\.forty-two\.it"[\s\S]*?<\/header>/.test(html), at('header Docs link missing'))
 }
 assert(/\/sitemap\.xml|sitemap_index\.xml/.test(robots), 'robots.txt missing sitemap ref')
 
@@ -96,7 +96,7 @@ if (home) {
   assert(home.text.includes('fortytwo adds continuity, not capabilities.'), '/: boundary heading missing')
   assert(home.text.includes('When the runtime gets better, the assistant gets better.'), '/: runtime-improves principle missing')
   assert(home.text.includes('Channels share identity and durable memory. Each live conversation still has its own session context.'), '/: session-context distinction missing')
-  assert(/Get started/.test(home.text) && /href="https:\/\/github\.com\/justfortytwo\/docs"/.test(home.html), '/: docs call to action missing')
+  assert(/Get started/.test(home.text) && /href="https:\/\/docs\.forty-two\.it"/.test(home.html), '/: docs call to action missing')
   for (const c of ['Memory', 'Identity', 'Continuity', 'Time', 'Channels']) assert(new RegExp(`>\\s*${c}\\s*<`).test(home.html), `/: concept "${c}" missing`)
   assert(/npx @justfortytwo\/installer init/.test(home.text) && /fortytwo start/.test(home.text) && /fortytwo pair/.test(home.text), '/: quick start commands missing')
   assert(/The answer is 42/.test(home.text) && /right question/i.test(home.text), '/: 42 motto missing')

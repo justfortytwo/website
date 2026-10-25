@@ -21,12 +21,12 @@ export const site = {
     body: 'Persistent identity, memory, time and channels for Claude Code.',
   },
   /** The separate documentation site: installation, configuration, reference. */
-  docs: 'https://github.com/justfortytwo/docs',
+  docs: 'https://docs.forty-two.it',
   nav: [
     { label: 'How it works', href: '/how-it-works' },
     { label: 'Run it 24/7', href: '/always-on' },
     { label: 'Trust', href: '/trust' },
-    { label: 'Docs ↗', href: 'https://github.com/justfortytwo/docs' },
+    { label: 'Docs ↗', href: 'https://docs.forty-two.it' },
     { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
   ] satisfies NavItem[],
   footer: {
@@ -37,7 +37,7 @@ export const site = {
       { label: 'Run it 24/7', href: '/always-on' },
       { label: 'Trust', href: '/trust' },
       { label: 'Runtime support', href: '/runtimes' },
-      { label: 'Docs ↗', href: 'https://github.com/justfortytwo/docs' },
+      { label: 'Docs ↗', href: 'https://docs.forty-two.it' },
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
       { label: 'Marketplace ↗', href: 'https://github.com/justfortytwo/marketplace' },
     ] satisfies NavItem[],
