@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { illustrations } from '~/data/illustrations'
 import { trustSections, enforces, doesNotEnforce } from '~/data/trust'
 
 usePageSeo('trust')
@@ -26,13 +27,11 @@ const lastNum = String(trustSections.length + 1).padStart(2, '0')
     <section id="limits" class="sec">
       <div class="wrap">
         <SectionLabel :num="lastNum" title="enforces and does not" />
-        <div class="split">
+        <div class="split split--compact">
           <div class="intro">
             <h2>What fortytwo <em>enforces, and what it doesn’t.</em></h2>
           </div>
-          <ArchiveFigure src="/img/trust-lock-and-key.jpg" :width="1920" :height="1589"
-            alt="Wood engraving of a medieval iron lock plate and its key"
-            caption="Medieval lock and key. Wood engraving." />
+          <ArchiveFigure v-bind="illustrations.trust" />
         </div>
         <div class="two-col">
           <div>

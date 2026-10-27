@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { illustrations } from '~/data/illustrations'
 import { site } from '~/data/site'
 import { pages } from '~/data/pages'
 import { boundary } from '~/data/boundary'
@@ -79,19 +80,17 @@ function copyInstall() {
     <section id="adds" class="sec">
       <div class="wrap">
         <SectionLabel num="03" title="what it adds" />
-        <div class="intro">
-          <h2>Five things <em>a session doesn’t keep.</em></h2>
-          <p>A coding session ends and takes its context with it. fortytwo supplies continuity across sessions: who the assistant is, what it remembers, when it acts and how you reach it.</p>
+        <div class="concept-intro">
+          <div class="intro">
+            <h2>Five things <em>a session doesn’t keep.</em></h2>
+            <p>A coding session ends and takes its context with it. fortytwo supplies continuity across sessions: who the assistant is, what it remembers, when it acts and how you reach it.</p>
+          </div>
+          <div class="concept-art">
+            <ArchiveFigure v-bind="illustrations.memory" />
+            <ArchiveFigure v-bind="illustrations.time" />
+          </div>
         </div>
         <ConceptGrid />
-        <div class="pair">
-          <ArchiveFigure src="/img/memory-card-catalogue.jpg" :width="1920" :height="1624"
-            alt="Open drawer in a wooden library card catalogue, with index cards inside and labelled drawers around it"
-            caption="Library card catalogue." />
-          <ArchiveFigure src="/img/time-pocket-watch.jpg" :width="1280" :height="1690"
-            alt="Coloured engraving titled Mechanism of a Watch, showing the parts of a pocket watch"
-            caption="Mechanism of a watch. Engraving, early 19th century." />
-        </div>
         <div class="callout">
           <p>{{ sessionNote.lead }}</p>
           <p>{{ sessionNote.body }}</p>
@@ -115,9 +114,7 @@ function copyInstall() {
             </div>
             <p class="more"><NuxtLink class="ghost" to="/always-on">Run it 24/7 <span class="ar">→</span></NuxtLink></p>
           </div>
-          <ArchiveFigure src="/img/channels-switchboard.jpg" :width="1920" :height="1527"
-            alt="Five switchboard operators seated at a telephone exchange, photographed in 1958"
-            caption="Switchboard operators, 1958." />
+          <ArchiveFigure v-bind="illustrations.channels" />
         </div>
       </div>
     </section>
@@ -163,9 +160,7 @@ function copyInstall() {
             <p>Send the one-time code to your bot and you are talking to the assistant. Until a chat is paired, the bot ignores everyone.</p>
             <p class="meta mono">Needs Claude Code and Node ≥ 20. Full prerequisites are in the docs.</p>
           </div>
-          <ArchiveFigure class="qs-fig" src="/img/telegram-telegraphists.jpg" :width="1080" :height="1230"
-            alt="Engraving of three telegraph operators at their desks sending and receiving messages"
-            caption="Telegraph operators. Engraving, 19th century." />
+          <ArchiveFigure v-bind="illustrations.telegram" class="qs-fig" />
         </div>
       </div>
     </section>
@@ -203,7 +198,13 @@ function copyInstall() {
 .term .pr{color:var(--bronze-1)} .term .inst{color:#fff;font-size:14px} .term .c{color:#9aa0a8}
 .term:hover .c{color:var(--bronze-1)}
 .runtime-note{margin-top:20px;font-size:14px;letter-spacing:.3px;color:var(--ink-2)}
-.qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.concept-intro{display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:center;gap:64px;margin-bottom:42px}
+.concept-intro .intro{margin-bottom:0}
+.concept-art{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:center}
+.concept-art :deep(img){max-height:160px}
+.qs-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"commands illustration" "note illustration";column-gap:64px;row-gap:28px;align-items:start}
+.qs-grid > :first-child{grid-area:commands}
+.qs-note{grid-area:note}
 .qs-note p{font-size:17px;color:var(--ink-2);max-width:46ch;margin-bottom:12px}
 .qs-note .meta{margin-top:14px;font-size:14px;color:var(--mute)}
 .cta-h{font-family:var(--font-serif);font-weight:500;font-size:clamp(32px,4.2vw,46px);line-height:1.06;letter-spacing:-1px;margin-bottom:22px}
@@ -214,14 +215,20 @@ function copyInstall() {
 .motto-h{font-family:var(--font-serif);font-weight:400;font-size:clamp(24px,2.6vw,36px);line-height:1.2;letter-spacing:-.5px;max-width:30ch;margin:0 auto}
 .split{margin-bottom:0}
 .first-callout{margin-top:0}
-.qs-fig{grid-column:2;max-width:420px}
+.qs-fig{grid-area:illustration;align-self:center;max-width:240px}
+.qs-fig :deep(img){max-height:300px}
 .motto-h em{font-style:italic;color:var(--ink-2)}
 .wordmark{font-family:var(--font-serif);font-weight:600;font-size:clamp(120px,18vw,200px);line-height:.8;letter-spacing:-10px;
   background:linear-gradient(158deg,var(--bronze-1) 0%,var(--bronze-2) 50%,var(--bronze-3) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;margin:54px 0 10px}
 @media (max-width:860px){
-  .hero-grid,.qs-grid{grid-template-columns:1fr}
-  .qs-fig{grid-column:1}
+  .hero-grid,.concept-intro{grid-template-columns:1fr}
+  .concept-intro{gap:24px}
+  .concept-art{width:260px;max-width:100%;justify-self:center}
+  .concept-art :deep(img){max-height:130px}
+  .qs-grid{grid-template-columns:1fr;grid-template-areas:"commands" "note" "illustration";gap:28px}
+  .qs-fig{max-width:180px}
+  .qs-fig :deep(img){max-height:220px}
   .term .inst{font-size:14px}
 }
 </style>

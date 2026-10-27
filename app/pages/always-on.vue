@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { illustrations } from '~/data/illustrations'
 import { alwaysOnClaim } from '~/data/alwayson'
 import { site } from '~/data/site'
 
@@ -19,9 +20,7 @@ usePageSeo('always-on')
             <h2>{{ alwaysOnClaim.headline }}</h2>
             <p>{{ alwaysOnClaim.body }}</p>
           </div>
-          <ArchiveFigure src="/img/channels-switchboard.jpg" :width="1920" :height="1527"
-            alt="Five switchboard operators seated at a telephone exchange, photographed in 1958"
-            caption="Switchboard operators, 1958." />
+          <ArchiveFigure v-bind="illustrations.channels" />
         </div>
         <AvailabilitySplit />
       </div>
@@ -52,13 +51,11 @@ usePageSeo('always-on')
     <section id="day" class="sec">
       <div class="wrap">
         <SectionLabel num="04" title="a day in the life" />
-        <div class="split">
+        <div class="split split--compact">
           <div class="intro">
             <h2>What “still there” <em>looks like.</em></h2>
           </div>
-          <ArchiveFigure src="/img/time-pocket-watch.jpg" :width="1280" :height="1690" class="narrow"
-            alt="Coloured engraving titled Mechanism of a Watch, showing the parts of a pocket watch"
-            caption="Mechanism of a watch. Engraving, early 19th century." />
+          <ArchiveFigure v-bind="illustrations.time" />
         </div>
         <DayTimeline />
       </div>

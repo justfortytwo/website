@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { illustrations } from '~/data/illustrations'
 import { site } from '~/data/site'
 import { runtimeBoundary, providerNote, noDuplication } from '~/data/runtimes'
 
@@ -19,9 +20,7 @@ usePageSeo('runtimes')
             <h2>One runtime, <em>said plainly.</em></h2>
             <p>{{ site.runtime.note }} Nothing else is supported, and nothing here should read as if it were.</p>
           </div>
-          <ArchiveFigure src="/img/runtime-engine-governor.jpg" :width="1280" :height="1277" class="narrow"
-            alt="Glass lantern slide of an engineering drawing of a steam-engine governor"
-            caption="Steam-engine governor. Lantern slide, c. 1910." />
+          <ArchiveFigure v-bind="illustrations.runtime" />
         </div>
         <RuntimeTable />
         <p class="aside more">{{ providerNote }}</p>

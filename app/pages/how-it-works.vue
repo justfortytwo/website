@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { illustrations } from '~/data/illustrations'
 import { architecture } from '~/data/architecture'
 import { stackNotes } from '~/data/stack'
 import { site } from '~/data/site'
@@ -34,9 +35,7 @@ usePageSeo('how-it-works')
             <h2>Channels are doors, <em>not separate assistants.</em></h2>
             <p>Telegram is the first channel adapter. It uses a bot for transport; the bot is not the assistant. A terminal is another way in.</p>
           </div>
-          <ArchiveFigure src="/img/telegram-telegraphists.jpg" :width="1080" :height="1230"
-            alt="Engraving of three telegraph operators at their desks sending and receiving messages"
-            caption="Telegraph operators. Engraving, 19th century." />
+          <ArchiveFigure v-bind="illustrations.telegram" />
         </div>
         <AccessPoints />
       </div>
