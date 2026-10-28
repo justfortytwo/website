@@ -1,5 +1,5 @@
 /** One entry per route. Drives nav, per-page SEO, canonicals, JSON-LD and the sitemap check. */
-export type PageKey = 'home' | 'how-it-works' | 'always-on' | 'runtimes' | 'trust'
+export type PageKey = 'home' | 'how-it-works' | 'always-on' | 'trust'
 
 export interface PageMeta {
   key: PageKey
@@ -18,9 +18,9 @@ export const pages: Record<PageKey, PageMeta> = {
   home: {
     key: 'home', path: '/', label: 'Home',
     title: 'fortytwo — continuity for the coding agent you already trust',
-    description: 'fortytwo gives Claude Code memory, identity, time and channels, so it can work as a persistent personal assistant. Claude Code is the only supported runtime today.',
+    description: 'Reach Claude Code from Telegram, let it remember you, search every past conversation and give it work for later. Claude Code is the only supported runtime today.',
     ogTitle: 'fortytwo — your coding agent, made personal and persistent',
-    ogDescription: 'Memory, identity, time and channels for Claude Code. Reach it from Telegram, let it remember you, give it work for later. Local-first, open source.',
+    ogDescription: 'Reach it from Telegram, let it remember you, search every past conversation, give it work for later. Local-first, open source.',
     teaser: 'Overview.',
   },
   'how-it-works': {
@@ -39,14 +39,6 @@ export const pages: Record<PageKey, PageMeta> = {
     ogDescription: 'From a session to a presence. fortytwo keeps identity, memory, time and channels available on a laptop, a VPS or a homelab. The model runs only when there is work.',
     teaser: 'What 24/7 means, and where to run it.',
   },
-  runtimes: {
-    key: 'runtimes', path: '/runtimes', label: 'Runtime support',
-    title: 'Runtime support — Claude Code is the only one today',
-    description: 'Claude Code is the only supported runtime today. It owns reasoning, tools, permissions, MCP and skills; fortytwo adds identity, memory, time, channels and continuity.',
-    ogTitle: 'Runtime support — Claude Code today',
-    ogDescription: 'What the runtime owns, what fortytwo adds, and what is supported today.',
-    teaser: 'Claude Code today, and where the boundary sits.',
-  },
   trust: {
     key: 'trust', path: '/trust', label: 'Trust',
     title: 'Trust model — what fortytwo enforces and what it does not',
@@ -57,4 +49,4 @@ export const pages: Record<PageKey, PageMeta> = {
   },
 }
 
-export const pageOrder: PageKey[] = ['how-it-works', 'always-on', 'trust', 'runtimes']
+export const pageOrder: PageKey[] = ['how-it-works', 'always-on', 'trust']

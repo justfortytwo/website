@@ -1,19 +1,17 @@
 import { describe, it, expect } from 'vitest'
 import { site } from '../app/data/site'
-import { boundary } from '../app/data/boundary'
-import { concepts, sessionNote } from '../app/data/concepts'
+import { benefits, benefitsNote } from '../app/data/benefits'
 import { architecture } from '../app/data/architecture'
 import { status, statusLabels } from '../app/data/status'
 import { pages, pageOrder } from '../app/data/pages'
 import { stack, owners, stackNotes } from '../app/data/stack'
-import { presence, alwaysOnClaim, availability, deployContexts, deployNote, day, dayNote } from '../app/data/alwayson'
+import { presence, alwaysOnClaim, availability, deployContexts, day, dayNote } from '../app/data/alwayson'
 import { access } from '../app/data/access'
-import { runtimeTable, runtimeBoundary, providerNote, noDuplication } from '../app/data/runtimes'
 import { trustSections, enforces, doesNotEnforce } from '../app/data/trust'
 import { project, rect, points, ISO } from '../app/utils/iso'
 
 /** Every user-facing string the site can render from typed data. */
-const allContent = JSON.stringify({ site, pages, boundary, concepts, sessionNote, architecture, status, stack, owners, stackNotes, presence, alwaysOnClaim, availability, deployContexts, deployNote, day, dayNote, access, runtimeTable, runtimeBoundary, providerNote, noDuplication, trustSections, enforces, doesNotEnforce }).toLowerCase()
+const allContent = JSON.stringify({ site, pages, benefits, benefitsNote, architecture, status, stack, owners, stackNotes, presence, alwaysOnClaim, availability, deployContexts, day, dayNote, access, trustSections, enforces, doesNotEnforce }).toLowerCase()
 
 describe('site', () => {
   it('has english lang, org, nav and footer', () => {
@@ -31,12 +29,11 @@ describe('site', () => {
   it('says plainly that Claude Code is the only supported runtime today', () => {
     expect(site.runtime.current).toBe('Claude Code')
     expect(site.runtime.note).toBe('Claude Code is the only supported runtime today.')
-    expect(site.hero.body).toMatch(/identity, memory, time and channels for Claude Code/)
     expect(pages.home.description).toMatch(/only supported runtime today/)
   })
   it('leads the hero with the agent, then the product statement', () => {
     expect(site.hero.headline).toBe('Your coding agent is already powerful.')
-    expect(site.hero.statement).toMatch(/personal, persistent/)
+    expect(site.hero.statement).toBe('Reach it from Telegram. Let it remember you. Search every past conversation. Give it work for later.')
   })
 })
 
@@ -57,11 +54,10 @@ describe('pages', () => {
     expect(new Set(list.map((p) => p.title)).size).toBe(list.length)
     expect(new Set(list.map((p) => p.description)).size).toBe(list.length)
   })
-  it('nav points at the product pages, then docs and github; runtime support is in the footer', () => {
+  it('nav points at the product pages, then docs and github', () => {
     const hrefs = site.nav.map((n) => n.href)
-    for (const k of pageOrder.filter((k) => k !== 'runtimes')) expect(hrefs).toContain(pages[k].path)
-    expect(hrefs).not.toContain(pages.runtimes.path)
-    expect(site.footer.links.map((l) => l.href)).toContain(pages.runtimes.path)
+    for (const k of pageOrder) expect(hrefs).toContain(pages[k].path)
+    expect(Object.keys(pages)).toEqual(['home', 'how-it-works', 'always-on', 'trust'])
     expect(site.nav.map((n) => n.label)).toEqual(['How it works', 'Run it 24/7', 'Trust', 'Docs ↗', 'GitHub ↗'])
     expect(hrefs.some((h) => h.includes('/docs'))).toBe(true)
     expect(hrefs).toContain(site.github)
@@ -69,40 +65,21 @@ describe('pages', () => {
   })
 })
 
-describe('boundary', () => {
-  it('splits agent-owned capabilities from fortytwo continuity', () => {
-    expect(boundary.agentOwns).toEqual(expect.arrayContaining(['tools', 'permissions', 'MCP servers', 'skills and plugins']))
-    expect(boundary.fortytwoAdds).toEqual(['identity', 'memory', 'continuity', 'time', 'channels'])
-    const overlap = boundary.agentOwns.filter((x) => boundary.fortytwoAdds.includes(x))
-    expect(overlap).toEqual([])
+describe('benefits', () => {
+  it('lists the five outcomes a visitor should leave with, in order', () => {
+    expect(benefits.map((b) => b.id)).toEqual(['phone', 'memory', 'transcript', 'work', 'local'])
+    for (const b of benefits) expect(b.after.length).toBeGreaterThan(40)
   })
-  it('leads with continuity, not capabilities', () => {
-    expect(`${boundary.heading} ${boundary.headingEm}`).toBe('fortytwo adds continuity, not capabilities.')
+  it('makes the searchable transcript a headline benefit', () => {
+    const t = benefits.find((b) => b.id === 'transcript')!
+    expect(t.title).toBe('Every conversation, searchable')
+    expect(t.after).toMatch(/transcript_search/)
   })
-  it('states that a better runtime makes a better assistant', () => {
-    expect(boundary.principle).toBe('When the runtime gets better, the assistant gets better.')
+  it('does not oversell local state', () => {
+    expect(JSON.stringify(benefits)).not.toMatch(/data stays|never leaves/i)
   })
-  it('keeps the ecosystem with the runtime instead of listing it as a fortytwo primitive', () => {
-    expect(boundary.ecosystem).toMatch(/keeps its own ecosystem/)
-    expect(boundary.fortytwoAdds.join(' ')).not.toMatch(/ecosystem/)
-  })
-})
-
-describe('concepts', () => {
-  it('foregrounds the product concepts, in order', () => {
-    expect(concepts.map((c) => c.id)).toEqual(['identity', 'memory', 'continuity', 'time', 'channels'])
-  })
-  it('separates shared identity and memory from live session context', () => {
-    expect(sessionNote.lead).toBe('Channels share identity and durable memory.')
-    expect(sessionNote.body).toBe('Each live conversation still has its own session context.')
-  })
-  it('describes Telegram as a transport, not as the assistant', () => {
-    const channels = concepts.find((c) => c.id === 'channels')!
-    expect(channels.body).toMatch(/first channel adapter/)
-    expect(channels.body).toMatch(/uses a bot for transport/)
-  })
-  it('has real bodies', () => {
-    for (const c of concepts) expect(c.body.length).toBeGreaterThan(40)
+  it('keeps the capabilities with the runtime', () => {
+    expect(benefitsNote).toBe('Claude Code still does the work. fortytwo adds what a session forgets.')
   })
 })
 
@@ -180,10 +157,9 @@ describe('always on', () => {
   it('links the homelab card to the docs guide on the docs site', () => {
     expect(deployContexts.find((d) => d.id === 'homelab')!.link!.href).toBe(`${site.docs}/homelab.html`)
   })
-  it('keeps the day timeline in order, with Oneiros in UTC as the only scheduled default', () => {
-    expect(day.map((d) => d.time)).toEqual(['08:32', '11:00', '14:20', '03:17'])
-    expect(day.at(-1)!.zone).toBe('UTC')
-    expect(day.at(-1)!.event).toMatch(/Oneiros/)
+  it('keeps the day timeline in order, and lets the terminal search the Telegram chat', () => {
+    expect(day.map((d) => d.time)).toEqual(['08:32', '11:00', '14:20'])
+    expect(day.at(-1)!.result).toMatch(/search that conversation in the transcript/)
   })
   it('does not claim a terminal shares the telegram session', () => {
     expect(JSON.stringify(day)).toMatch(/different session from your Telegram chat/)
@@ -193,21 +169,6 @@ describe('always on', () => {
     expect(access.live.points.map((p) => p.name)).toEqual(['Telegram', 'Terminal'])
     expect(access.live.note).toBe('Other channel adapters can follow. Telegram is the only one that ships today.')
     expect(JSON.stringify(access)).not.toMatch(/slack|discord|whatsapp|signal|matrix|email/i)
-  })
-})
-
-describe('runtimes', () => {
-  it('supports exactly one runtime today', () => {
-    expect(runtimeTable.filter((r) => r.state === 'supported').map((r) => r.name)).toEqual(['Claude Code'])
-    expect(runtimeTable.find((r) => r.state === 'none')!.body).toBe('Not supported.')
-  })
-  it('leaves tools, MCP, plugins and skills to the runtime', () => {
-    expect(runtimeBoundary.agentOwns).toEqual(expect.arrayContaining(['permissions', 'MCP servers', 'skills and plugins']))
-    expect(noDuplication).toMatch(/does not rebuild integrations/)
-  })
-  it('gives fortytwo identity, memory, time, continuity, channels and lifecycle', () => {
-    expect(runtimeBoundary.fortytwoAdds).toEqual(['identity', 'durable memory', 'time and scheduling', 'session continuity', 'channels', 'lifecycle'])
-    expect(providerNote).toMatch(/no model decisions/)
   })
 })
 
@@ -252,12 +213,13 @@ describe('status', () => {
   })
   it('covers the verified current themes', () => {
     const titles = status.map((s) => s.title).join('|')
-    for (const t of [/sessions/i, /Telegram/, /memory/i, /Scheduling/, /Identity/, /Gate/]) expect(titles).toMatch(t)
+    for (const t of [/Telegram/, /memory/i, /transcript/i, /Scheduling/, /Identity/, /Gate/]) expect(titles).toMatch(t)
   })
   it('states the session-recovery limit without a replay claim', () => {
     const edge = status.filter((s) => s.state === 'edge').map((s) => s.body).join(' ')
     expect(edge).toMatch(/best effort/)
     expect(edge).toMatch(/not a durable message queue/)
+    expect(edge).toMatch(/no function to delete/)
     expect(allContent).not.toMatch(/input replay/)
   })
   it('marks gate optional and is honest about limits', () => {

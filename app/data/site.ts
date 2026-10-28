@@ -17,8 +17,7 @@ export const site = {
   hero: {
     label: 'fortytwo',
     headline: 'Your coding agent is already powerful.',
-    statement: 'fortytwo makes it personal, persistent, and always there.',
-    body: 'Persistent identity, memory, time and channels for Claude Code.',
+    statement: 'Reach it from Telegram. Let it remember you. Search every past conversation. Give it work for later.',
   },
   /** The separate documentation site: installation, configuration, reference. */
   docs: 'https://docs.forty-two.it',
@@ -36,7 +35,6 @@ export const site = {
       { label: 'How it works', href: '/how-it-works' },
       { label: 'Run it 24/7', href: '/always-on' },
       { label: 'Trust', href: '/trust' },
-      { label: 'Runtime support', href: '/runtimes' },
       { label: 'Docs ↗', href: 'https://docs.forty-two.it' },
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
       { label: 'Marketplace ↗', href: 'https://github.com/justfortytwo/marketplace' },

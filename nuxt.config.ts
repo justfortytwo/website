@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     prerender: {
       // Every route is listed explicitly and links are not crawled, so a broken or
       // forgotten page fails the build instead of being silently skipped.
-      routes: ['/', '/how-it-works', '/always-on', '/runtimes', '/trust'],
+      routes: ['/', '/how-it-works', '/always-on', '/trust'],
       crawlLinks: false,
     },
   },

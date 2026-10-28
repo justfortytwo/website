@@ -3,7 +3,7 @@ import { join } from 'node:path'
 
 const out = '.output/public'
 const ORIGIN = 'https://forty-two.it'
-const routes = ['/', '/how-it-works', '/always-on', '/runtimes', '/trust']
+const routes = ['/', '/how-it-works', '/always-on', '/trust']
 const fails = []
 const assert = (cond, msg) => { if (!cond) fails.push(msg) }
 
@@ -76,37 +76,32 @@ for (const [route, { html, text }] of Object.entries(pages)) {
     if (/\.(svg|png|ico|txt|xml)$/.test(href)) continue
     assert(routes.includes(href), at(`links to ${m[1]}, which is not a prerendered route`))
   }
-  // header nav carries the product IA; runtime support is reached from the footer and in context
+  // header nav carries the product IA
   const header = html.match(/<header[\s\S]*?<\/header>/)?.[0] ?? ''
-  for (const r of routes.slice(1)) {
-    if (r === '/runtimes') assert(html.includes(`href="${r}"`), at('footer link /runtimes missing'))
-    else assert(header.includes(`href="${r}"`), at(`header nav link ${r} missing`))
-  }
+  for (const r of routes.slice(1)) assert(header.includes(`href="${r}"`), at(`header nav link ${r} missing`))
   assert(/<header[\s\S]*?href="https:\/\/docs\.forty-two\.it"[\s\S]*?<\/header>/.test(html), at('header Docs link missing'))
 }
 assert(/\/sitemap\.xml|sitemap_index\.xml/.test(robots), 'robots.txt missing sitemap ref')
 
 // --- per-page product invariants ----------------------------------------------
-const home = pages['/'], how = pages['/how-it-works'], on = pages['/always-on'], rt = pages['/runtimes'], tr = pages['/trust']
+const home = pages['/'], how = pages['/how-it-works'], on = pages['/always-on'], tr = pages['/trust']
 if (home) {
   assert(/<h1[^>]*>\s*Your coding agent is already powerful\./.test(home.html), '/: h1 does not carry the positioning')
-  assert(home.text.includes('fortytwo makes it personal, persistent, and always there.'), '/: product statement missing')
+  assert(home.text.includes('Reach it from Telegram. Let it remember you. Search every past conversation. Give it work for later.'), '/: product statement missing')
   assert(home.text.includes('Claude Code is the only supported runtime today.'), '/: current-runtime note missing')
-  assert(home.text.includes('Persistent identity, memory, time and channels for Claude Code.'), '/: concrete experience line missing')
-  assert(home.text.includes('fortytwo adds continuity, not capabilities.'), '/: boundary heading missing')
-  assert(home.text.includes('When the runtime gets better, the assistant gets better.'), '/: runtime-improves principle missing')
-  assert(home.text.includes('Channels share identity and durable memory. Each live conversation still has its own session context.'), '/: session-context distinction missing')
   assert(/Get started/.test(home.text) && /href="https:\/\/docs\.forty-two\.it"/.test(home.html), '/: docs call to action missing')
-  for (const c of ['Memory', 'Identity', 'Continuity', 'Time', 'Channels']) assert(new RegExp(`>\\s*${c}\\s*<`).test(home.html), `/: concept "${c}" missing`)
+  for (const t of ['Reach it from your phone', 'It remembers you', 'Every conversation, searchable', 'Work while you are away', 'One command, your machine']) assert(home.text.includes(t), `/: benefit "${t}" missing`)
+  assert(/transcript_search/.test(home.text), '/: searchable-transcript benefit missing')
+  assert(home.text.includes('Claude Code still does the work. fortytwo adds what a session forgets.'), '/: capabilities-stay-with-the-runtime line missing')
+  for (const t of ['08:32', '11:00', '14:20']) assert(home.text.includes(t), `/: timeline ${t} missing`)
+  assert(/WORKS TODAY/.test(home.text) && /Searchable transcript/.test(home.text) && /Known limits/.test(home.text), '/: status list missing')
   assert(/npx @justfortytwo\/installer init/.test(home.text) && /fortytwo start/.test(home.text) && /fortytwo pair/.test(home.text), '/: quick start commands missing')
+  assert(/Ollama/.test(home.text) && /Telegram bot token/.test(home.text), '/: quick start prerequisites missing')
   assert(/The answer is 42/.test(home.text) && /right question/i.test(home.text), '/: 42 motto missing')
-  assert(/<svg[^>]*class="[^"]*iso/.test(home.html), '/: compact stack plate missing')
-  assert(/From a session/.test(home.text) && /to a presence/.test(home.text), '/: session-to-presence section missing')
-  assert(/does not mean the model is running 24\/7/.test(home.text), '/: 24/7 clarification missing')
   // the homepage leads out, it does not repeat the deep pages
   for (const r of routes.slice(1)) assert((home.html.match(new RegExp(`href="${r}"`, 'g')) || []).length >= 2, `/: does not lead to ${r}`)
   assert(!/>\s*gate\s*</.test(home.html) && !/@justfortytwo\/scheduler/.test(home.text), '/: package decomposition is still on the homepage')
-  assert(!/Ollama|bot token|\.env/.test(home.text), '/: setup detail belongs in the docs')
+  assert(!/\.env/.test(home.text), '/: configuration detail belongs in the docs')
 }
 if (how) {
   assert(/<svg[^>]*class="[^"]*iso[^"]*"[^>]*role="img"/.test(how.html), '/how-it-works: stack plate svg (role=img) missing')
@@ -128,19 +123,10 @@ if (on) {
   assert(/infrastructure is available 24\/7/.test(on.text), '/always-on: infrastructure-availability line missing')
   for (const w of ['Laptop', 'VPS', 'Homelab']) assert(on.text.includes(w), `/always-on: ${w} missing`)
   assert(/Not required/.test(on.text), '/always-on: does not say a VPS is not required')
-  for (const t of ['08:32', '11:00', '14:20', '03:17']) assert(on.text.includes(t), `/always-on: timeline ${t} missing`)
-  assert(/Oneiros/.test(on.text) && /03:17\s*UTC/.test(on.text), '/always-on: Oneiros must be the UTC 03:17 beat')
   assert(/From a session/.test(on.text), '/always-on: session-to-presence missing')
   assert(/foreground on purpose/.test(on.text) && /service manager or container runtime/.test(on.text), '/always-on: foreground-service fact missing')
   assert(/Reachable only while the machine is awake and online/.test(on.text), '/always-on: laptop availability caveat missing')
   assert(!/systemd|ExecStart|WorkingDirectory|docker compose/i.test(on.text), '/always-on: service setup belongs in the docs')
-}
-if (rt) {
-  assert(/Claude Code is the only supported runtime today/.test(rt.text), '/runtimes: only-supported-runtime statement missing')
-  assert((rt.text.match(/(?<!NOT )SUPPORTED/g) || []).length === 1, '/runtimes: exactly one runtime should be marked SUPPORTED')
-  assert(/NOT SUPPORTED/.test(rt.text), '/runtimes: unsupported runtimes not stated')
-  assert(/The runtime owns/.test(rt.text) && /fortytwo owns/.test(rt.text), '/runtimes: ownership boundary missing')
-  assert(!/input replay|recovery IDs/i.test(rt.text), '/runtimes: ambiguous recovery wording present')
 }
 if (tr) {
   for (const k of [/one-time code/, /Native permissions are authoritative/, /Gate is optional/, /not in the normal Telegram → Claude Code → tool path unless you enable it/, /Content is not authority/, /runs no hosted backend/, /model provider still sees context/, /Telegram is transport, not authorization/]) assert(k.test(tr.text), `/trust: ${k} missing`)

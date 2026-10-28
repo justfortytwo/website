@@ -48,22 +48,9 @@ usePageSeo('always-on')
       </div>
     </section>
 
-    <section id="day" class="sec">
-      <div class="wrap">
-        <SectionLabel num="04" title="a day in the life" />
-        <div class="split split--compact">
-          <div class="intro">
-            <h2>What “still there” <em>looks like.</em></h2>
-          </div>
-          <ArchiveFigure v-bind="illustrations.time" />
-        </div>
-        <DayTimeline />
-      </div>
-    </section>
-
     <section id="service" class="sec">
       <div class="wrap">
-        <SectionLabel num="05" title="as a service" />
+        <SectionLabel num="04" title="as a service" />
         <div class="intro">
           <h2>Let your <em>supervisor</em> supervise.</h2>
           <p>fortytwo runs in the foreground on purpose. Your service manager or container runtime owns restarts and logs, and fortytwo exits non-zero if one of its services dies so a restart policy can do its job.</p>

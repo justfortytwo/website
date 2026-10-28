@@ -16,7 +16,6 @@ export const presence = {
       'memory persists',
       'the scheduler keeps time',
       'channels stay reachable',
-      'the agent runtime runs when there is work',
     ],
   },
 }
@@ -45,7 +44,7 @@ export const availability: { stays: Lane; runs: Lane; footnote: string } = {
     note: 'Inference happens per turn.',
     items: [
       { name: 'Agent turn', body: 'Started by a message from you, or by a job that is due.' },
-      { name: 'Oneiros pass', body: 'Daily maintenance. A cheap check looks for new memory first; with none, nothing runs.' },
+      { name: 'Oneiros pass', body: 'Daily maintenance. A cheap check looks for new memory or transcript entries first; with none, nothing runs.' },
     ],
   },
   footnote: 'A live session process can stay resident between messages. It does no inference while idle.',
@@ -74,19 +73,15 @@ export const deployContexts: DeployContext[] = [
     link: { label: 'Homelab guide ↗', href: 'https://docs.forty-two.it/homelab.html' } },
 ]
 
-export const deployNote = 'The same architecture in all three. fortytwo runs in the foreground on purpose, so your service manager or container runtime owns restarts and logs.'
-
 export interface DayBeat { time: string; zone?: string; event: string; result: string }
 
 export const day: DayBeat[] = [
   { time: '08:32', event: 'You message the assistant from Telegram.',
-    result: 'The chat’s session resumes, and memory brings back what you told it.' },
+    result: 'The chat’s session resumes, and the agent can recall what you told it from memory.' },
   { time: '11:00', event: 'A scheduled job becomes due.',
     result: 'The scheduler claims it, checks that there is work, and wakes the agent through the runner. The result can be pushed to you.' },
   { time: '14:20', event: 'You open Claude Code in the same project over SSH.',
-    result: 'Same persona files and the same durable memory. It is a different session from your Telegram chat.' },
-  { time: '03:17', zone: 'UTC', event: 'Oneiros, the daily maintenance job, comes due.',
-    result: 'If memory has new entries, a tool-free pass may add notes to your profile. Otherwise nothing runs.' },
+    result: 'Same persona files and the same durable memory. It is a different session from your Telegram chat, but it can search that conversation in the transcript.' },
 ]
 
-export const dayNote = 'An illustrative day. Times are examples, except Oneiros, whose default schedule is 03:17 UTC.'
+export const dayNote = 'An illustrative day. The times are examples.'

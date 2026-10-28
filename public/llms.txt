@@ -1,6 +1,6 @@
 # fortytwo
 
-fortytwo is continuity infrastructure around an existing coding-agent runtime: identity, durable memory, session continuity, scheduled work and persistent channels. It does not reimplement what the runtime owns: reasoning, planning, tools, permissions, MCP servers, plugins, skills, browser/computer use or model choice. When the runtime gets better, the assistant gets better.
+fortytwo is continuity infrastructure around an existing coding-agent runtime: identity, durable memory, a searchable conversation transcript, session continuity, scheduled work and persistent channels. It does not reimplement what the runtime owns: reasoning, planning, tools, permissions, MCP servers, plugins, skills, browser/computer use or model choice. When the runtime gets better, the assistant gets better.
 
 Claude Code is the only supported runtime today.
 
@@ -10,12 +10,12 @@ The answer is 42. The hard part is knowing the right question.
 - https://forty-two.it/ : overview
 - https://forty-two.it/how-it-works : who owns what: you, fortytwo and the runtime
 - https://forty-two.it/always-on : what 24/7 means, and running fortytwo on a laptop, a VPS or a homelab
-- https://forty-two.it/runtimes : runtime support: what is supported today and where the boundary sits
 - https://forty-two.it/trust : what fortytwo enforces and what it leaves to the runtime
 
 ## What it adds
 - Identity: a persona and owner context kept in plain files in your project
-- Memory: durable recall kept on your machine, with provenance
+- Memory: durable facts kept on your machine, with provenance; a correction supersedes the old fact and history is kept
+- Transcript: every conversation is kept in the same local database and searchable by keyword or meaning from any session. It is kept forever and there is no function to delete a message
 - Continuity: conversations can resume after a process restart (best effort)
 - Time: scheduled work that wakes the agent only when there is work
 - Channels: Telegram is the only channel adapter that ships today. It uses a bot for transport; the bot is not the assistant.
@@ -39,9 +39,9 @@ npx @justfortytwo/installer init
 fortytwo start
 fortytwo pair
 ```
-Then send the one-time code to your Telegram bot. Installation, configuration and reference are in the documentation.
+Needs Claude Code, Node 20 or later, an Ollama endpoint for embeddings and a Telegram bot token. Then send the one-time code to your Telegram bot. Installation, configuration and reference are in the documentation.
 
-Status: 1.0 pre-release. fortytwo runs no hosted backend for its own state.
+Status: 1.0 for the core packages. Session recovery is best effort and fortytwo is not a durable message queue. fortytwo runs no hosted backend for its own state; the model provider, Telegram and any remote embedder you enable still see what you send them.
 
 ## Links
 - GitHub: https://github.com/justfortytwo
