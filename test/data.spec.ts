@@ -177,6 +177,9 @@ describe('always on', () => {
     expect(deployContexts.map((d) => d.id)).toEqual(['laptop', 'vps', 'homelab'])
     expect(JSON.stringify(deployContexts)).toMatch(/Not required/)
   })
+  it('links the homelab card to the docs guide on the docs site', () => {
+    expect(deployContexts.find((d) => d.id === 'homelab')!.link!.href).toBe(`${site.docs}/homelab.html`)
+  })
   it('keeps the day timeline in order, with Oneiros in UTC as the only scheduled default', () => {
     expect(day.map((d) => d.time)).toEqual(['08:32', '11:00', '14:20', '03:17'])
     expect(day.at(-1)!.zone).toBe('UTC')

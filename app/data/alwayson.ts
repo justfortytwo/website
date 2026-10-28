@@ -51,7 +51,7 @@ export const availability: { stays: Lane; runs: Lane; footnote: string } = {
   footnote: 'A live session process can stay resident between messages. It does no inference while idle.',
 }
 
-export interface DeployContext { id: string; name: string; tag: string; lines: string[] }
+export interface DeployContext { id: string; name: string; tag: string; lines: string[]; link?: { label: string; href: string } }
 
 export const deployContexts: DeployContext[] = [
   { id: 'laptop', name: 'Laptop', tag: 'Try it, use it locally',
@@ -70,7 +70,8 @@ export const deployContexts: DeployContext[] = [
       'The same architecture on infrastructure you control.',
       'Sits next to services you already run.',
       'You own the machine and the operational boundary.',
-    ] },
+    ],
+    link: { label: 'Homelab guide ↗', href: 'https://docs.forty-two.it/homelab.html' } },
 ]
 
 export const deployNote = 'The same architecture in all three. fortytwo runs in the foreground on purpose, so your service manager or container runtime owns restarts and logs.'
