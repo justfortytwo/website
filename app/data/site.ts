@@ -37,7 +37,6 @@ export const site = {
       { label: 'Trust', href: '/trust' },
       { label: 'Docs ↗', href: 'https://docs.forty-two.it' },
       { label: 'GitHub ↗', href: 'https://github.com/justfortytwo' },
-      { label: 'Marketplace ↗', href: 'https://github.com/justfortytwo/marketplace' },
     ] satisfies NavItem[],
   },
 }
