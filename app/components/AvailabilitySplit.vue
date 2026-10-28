@@ -13,7 +13,6 @@ const lanes = [a.stays, a.runs]
         </dl>
       </section>
     </div>
-    <p class="foot mono">{{ a.footnote }}</p>
   </div>
 </template>
 <style scoped>
@@ -25,6 +24,5 @@ h3{font-family:var(--font-serif);font-weight:500;font-size:26px;letter-spacing:-
 .it{padding:11px 0;border-top:1px solid var(--rule)}
 dt{font-family:var(--font-mono);font-size:13px;letter-spacing:.3px}
 dd{font-size:16.5px;color:var(--ink-2);line-height:1.45;margin-top:2px}
-.foot{font-size:13px;color:var(--mute);margin-top:14px;max-width:80ch}
 @media (max-width:860px){.split{grid-template-columns:1fr}.lane.runs{border-left:none;border-top:1px solid var(--rule)}}
 </style>

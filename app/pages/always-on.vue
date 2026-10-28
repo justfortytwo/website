@@ -10,7 +10,7 @@ usePageSeo('always-on')
     <PageHero
       eyebrow="give it somewhere to live"
       title="Your agent already works. Now give it somewhere to stay."
-      lede="On a machine that stays online, fortytwo keeps identity, memory, time and channels available, and Claude Code runs only when there is work." />
+      lede="On a machine that stays online, the assistant stays reachable, and Claude Code runs only when there is work." />
 
     <section id="what-247-means" class="sec">
       <div class="wrap">

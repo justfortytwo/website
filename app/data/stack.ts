@@ -45,6 +45,6 @@ export const owners: Record<Owner, { label: string; note: string }> = {
 
 export const stackNotes = [
   'fortytwo is not inserted between the agent and its capabilities. It surrounds the runtime.',
-  'fortytwo memory reaches the agent as an MCP server, the same way any other server does.',
-  'Channels carry messages and identity. They do not grant approvals.',
+  'fortytwo memory and the transcript reach the agent as an MCP server, the same way any other server does.',
+  'Claude Code is the only supported runtime today. fortytwo makes no model decisions: a Claude Code configured for a compatible provider keeps working as configured.',
 ]

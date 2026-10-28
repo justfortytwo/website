@@ -27,7 +27,7 @@ export const alwaysOnClaim = {
 
 export interface Lane { heading: string; note: string; items: { name: string; body: string }[] }
 
-export const availability: { stays: Lane; runs: Lane; footnote: string } = {
+export const availability: { stays: Lane; runs: Lane } = {
   stays: {
     heading: 'Stays available',
     note: 'No model running. No tokens spent.',
@@ -47,7 +47,6 @@ export const availability: { stays: Lane; runs: Lane; footnote: string } = {
       { name: 'Oneiros pass', body: 'Daily maintenance. A cheap check looks for new memory or transcript entries first; with none, nothing runs.' },
     ],
   },
-  footnote: 'A live session process can stay resident between messages. It does no inference while idle.',
 }
 
 export interface DeployContext { id: string; name: string; tag: string; lines: string[]; link?: { label: string; href: string } }

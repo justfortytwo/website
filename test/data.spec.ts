@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { site } from '../app/data/site'
 import { benefits, benefitsNote } from '../app/data/benefits'
-import { architecture } from '../app/data/architecture'
 import { status, statusLabels } from '../app/data/status'
 import { pages, pageOrder } from '../app/data/pages'
 import { stack, owners, stackNotes } from '../app/data/stack'
@@ -11,7 +10,7 @@ import { trustSections, enforces, doesNotEnforce } from '../app/data/trust'
 import { project, rect, points, ISO } from '../app/utils/iso'
 
 /** Every user-facing string the site can render from typed data. */
-const allContent = JSON.stringify({ site, pages, benefits, benefitsNote, architecture, status, stack, owners, stackNotes, presence, alwaysOnClaim, availability, deployContexts, day, dayNote, access, trustSections, enforces, doesNotEnforce }).toLowerCase()
+const allContent = JSON.stringify({ site, pages, benefits, benefitsNote, status, stack, owners, stackNotes, presence, alwaysOnClaim, availability, deployContexts, day, dayNote, access, trustSections, enforces, doesNotEnforce }).toLowerCase()
 
 describe('site', () => {
   it('has english lang, org, nav and footer', () => {
@@ -83,13 +82,13 @@ describe('benefits', () => {
   })
 })
 
-describe('architecture', () => {
-  it('presents gate and salience as optional', () => {
-    expect(architecture.optional.label).toMatch(/optional/)
-    expect(architecture.optional.items.map((i) => i.name)).toEqual(['gate', 'salience'])
+describe('how it works', () => {
+  it('says plainly that Claude Code is the only supported runtime and that fortytwo makes no model decisions', () => {
+    expect(stackNotes.join(' ')).toMatch(/Claude Code is the only supported runtime today/)
+    expect(stackNotes.join(' ')).toMatch(/no model decisions/)
   })
-  it('says channels do not approve', () => {
-    expect(stackNotes.join(' ')).toMatch(/do not grant approvals/)
+  it('keeps the transcript on the MCP side, like any other server', () => {
+    expect(stackNotes.join(' ')).toMatch(/memory and the transcript reach the agent as an MCP server/)
   })
 })
 
@@ -165,9 +164,8 @@ describe('always on', () => {
     expect(JSON.stringify(day)).toMatch(/different session from your Telegram chat/)
     expect(access.note).toMatch(/own session context/)
   })
-  it('shows Telegram and Terminal as live and does not list any other channel', () => {
-    expect(access.live.points.map((p) => p.name)).toEqual(['Telegram', 'Terminal'])
-    expect(access.live.note).toBe('Other channel adapters can follow. Telegram is the only one that ships today.')
+  it('names Telegram as the only channel adapter and lists no other channel', () => {
+    expect(access.adapters).toBe('Telegram is the only channel adapter that ships today.')
     expect(JSON.stringify(access)).not.toMatch(/slack|discord|whatsapp|signal|matrix|email/i)
   })
 })

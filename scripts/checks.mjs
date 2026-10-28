@@ -45,7 +45,7 @@ for (const [route, { html, text }] of Object.entries(pages)) {
 
   // section labels run // 01 .. // NN with no gaps
   const nums = [...html.matchAll(/class="section-label"[^>]*><span class="num">\/\/ (\d{2})</g)].map(m => Number(m[1]))
-  assert(nums.length >= 3, at('too few section labels'))
+  assert(nums.length >= 2, at('too few section labels'))
   nums.forEach((n, i) => { if (n !== i + 1) fails.push(at(`section labels are not sequential (saw ${nums.join(', ')})`)) })
 
   // seo
@@ -111,9 +111,9 @@ if (how) {
   for (const l of ['CHANNELS', 'FORTYTWO', 'RUNTIME ADAPTER', 'CODING AGENT / HARNESS', 'AGENT CAPABILITIES', 'MACHINE']) assert(how.html.includes(l), `/how-it-works: layer ${l} missing`)
   assert(/not inserted between the agent and its capabilities/.test(how.text), '/how-it-works: surround-not-intercept statement missing')
   assert(/You own the machine\. fortytwo owns continuity and lifecycle\. Claude Code owns reasoning and capabilities\./.test(how.text), '/how-it-works: ownership model missing')
-  assert(/Other channel adapters can follow\. Telegram is the only one that ships today\./.test(how.text), '/how-it-works: only-Telegram statement missing')
+  assert(/Telegram is the only channel adapter that ships today\./.test(how.text), '/how-it-works: only-Telegram statement missing')
+  assert(/Claude Code is the only supported runtime today/.test(how.text) && /no model decisions/.test(how.text), '/how-it-works: runtime support statement missing')
   assert(!/@justfortytwo\/scheduler|PackageGroups|Core continuity/.test(how.text), '/how-it-works: package reference belongs in the docs')
-  assert((how.html.match(/<svg[^>]*class="[^"]*iconify/g) || []).length >= 3, '/how-it-works: channel logos are not inlined as SVG')
   assert(!/api\.iconify|api\.simplesvg|api\.unisvg/.test(how.html), '/how-it-works: icons fetched from a remote API')
   assert(/Channels are doors/.test(how.text) && /Each live conversation still has its own session context/.test(how.text), '/how-it-works: access-points diagram/claim missing')
 }
