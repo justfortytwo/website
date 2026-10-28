@@ -129,7 +129,7 @@ if (on) {
   assert(!/systemd|ExecStart|WorkingDirectory|docker compose/i.test(on.text), '/always-on: service setup belongs in the docs')
 }
 if (tr) {
-  for (const k of [/one-time code/, /Native permissions are authoritative/, /Gate is optional/, /not in the normal Telegram → Claude Code → tool path unless you enable it/, /Content is not authority/, /runs no hosted backend/, /model provider still sees context/, /Telegram is transport, not authorization/]) assert(k.test(tr.text), `/trust: ${k} missing`)
+  for (const k of [/one-time code/, /Native permissions are authoritative/, /Gate is optional/, /not in the normal Telegram → Claude Code → tool path unless you enable it/, /Content is not authority/, /runs no hosted backend/, /no function to delete a message/, /model provider still sees context/, /Telegram is transport, not authorization/]) assert(k.test(tr.text), `/trust: ${k} missing`)
 }
 
 // --- stale / false / unsupported claims, in every page and in llms.txt ---------------

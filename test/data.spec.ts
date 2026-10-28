@@ -180,6 +180,8 @@ describe('trust', () => {
     expect(all).toMatch(/model provider still sees context/)
     expect(all).toMatch(/Telegram carries your messages/)
     expect(all).toMatch(/Integrations keep their own boundaries/)
+    expect(all).toMatch(/no function to delete a message/)
+    expect(all).toMatch(/A remote embedder, if you configure one/)
   })
   it('covers locality, pairing, native permissions, optional gate and content-is-not-authority', () => {
     expect(trustSections.map((s) => s.id)).toEqual(['local', 'who', 'actions', 'content'])

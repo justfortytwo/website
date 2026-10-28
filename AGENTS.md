@@ -16,8 +16,8 @@ The marketing site for **fortytwo** (https://forty-two.it): a local-first
 personal-assistant spine distributed as the `@justfortytwo/*` packages. The site's
 thesis: fortytwo adds continuity (memory, identity, time, channels) around an
 existing agent runtime and does not reimplement what that runtime owns. Claude
-Code is the only supported runtime today. The site is five static pages
-(`/`, `/how-it-works`, `/always-on`, `/runtimes`, `/trust`); technical docs live in a separate repo. Nuxt 4 in SSG mode, built with bun, deployed
+Code is the only supported runtime today. The site is four static pages
+(`/`, `/how-it-works`, `/always-on`, `/trust`); technical docs live in a separate repo. Nuxt 4 in SSG mode, built with bun, deployed
 to Cloudflare Pages. Hand-written CSS with design tokens, self-hosted fonts
 (IBM Plex Mono + Newsreader via `@fontsource`). MIT.
 
@@ -27,12 +27,11 @@ to Cloudflare Pages. Hand-written CSS with design tokens, self-hosted fonts
 app/
   app.vue, layouts/default.vue   shell (SiteHeader / SiteFooter)
   pages/index.vue                the only page: SEO meta, JSON-LD, all sections
-  components/                    TheMonument (the "42"), BoundaryContrast, ConceptGrid,
-                                 StackPlate, AccessPoints, StatusList, StatusPill,
+  components/                    TheMonument (the "42"), BenefitList, DayTimeline,
+                                 StackPlate, StatusList, StatusPill,
                                  TerminalBlock, ...
-  data/                          content as typed TS: site.ts, boundary.ts, concepts.ts,
-                                 architecture.ts, stack.ts, access.ts, alwayson.ts,
-                                 runtimes.ts, trust.ts, status.ts, pages.ts
+  data/                          content as typed TS: site.ts, benefits.ts, stack.ts,
+                                 access.ts, alwayson.ts, trust.ts, status.ts, pages.ts
   assets/css/tokens.css, base.css  global CSS (registered in nuxt.config.ts)
 public/                          favicon, og.png, llms.txt (served as-is)
 scripts/checks.mjs               post-build structural/SEO/no-motion checks
@@ -75,9 +74,11 @@ finishing a change, run `bun run test` and `bun run verify`.
 
 `scripts/checks.mjs` fails the build if the generated HTML/CSS:
 - lacks `lang="en"`, exactly one `<h1>` carrying the new positioning, no skipped
-  heading levels, section labels `// 01`..`// 08`, the five concept names, the
-  "Claude Code is the only supported runtime today" note, the architecture layers,
-  the quick-start commands, or the "The answer is 42" motto;
+  heading levels, sequential section labels (`// 01`.. with no gaps), the five
+  benefit rows and the `transcript_search` benefit on the home page, the
+  "Claude Code is the only supported runtime today" note, the architecture layers
+  on `/how-it-works`, the quick-start commands and prerequisites, or the
+  "The answer is 42" motto;
 - contains retired claims (gate on every tool call, approval cards, "seven
   packages", Claude-Code-only boundary, hype words) in the page or `llms.txt`;
 - lacks `<title>`, meta description, `og:image`, JSON-LD, canonical, or a
@@ -88,12 +89,13 @@ finishing a change, run `bun run test` and `bun run verify`.
   **No motion, no shadows, no glow.**
 
 `test/data.spec.ts` requires:
-- the five concepts in order, the "channels share identity and durable memory"
-  note, and no visible provenance (`source`) fields on trust or status items;
+- the five benefits in order (the searchable transcript among them), the
+  "channels share identity and durable memory" note, and no visible provenance
+  (`source`) fields on trust or status items;
 - **no Hitchhiker's-Guide codenames** (vogon, babelfish, magrathea, subetha,
   deepthought) anywhere in site data. Public names only;
-- the runtime wording, boundary lists, optional-Gate architecture and trust
-  claims; no retired claims anywhere in the typed content.
+- the runtime wording, the transcript-retention and local-state trust claims;
+  no retired claims anywhere in the typed content.
 
 Scope: this repo explains the product. Installation, configuration, package
 reference and runtime internals belong in the separate docs repo; link to it
